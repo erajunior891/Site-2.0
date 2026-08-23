@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — K.K. Tour (Алматы, Панфилов көшесі, 52)</title>
+  <meta name="description" content="Контакты K.K. Tour: Панфилов көшесі, 52, Алматы. Время работы 09:00 – 21:00. WhatsApp: +7 747 280 16 71. Оплата Kaspi Pay.">
+  <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F2FBF6', 100: '#E1F7EC', 500: '#10B981', 600: '#059669',
+              700: '#047857', 800: '#065F46', 900: '#064E3B', dark: '#0B291F'
+            },
+            amber: { 500: '#F59E0B', 600: '#D97706' },
+            natureBg: '#F9FBF9'
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#F9FBF9] text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300">📞</span>
+    <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="top_bar_contact" class="hover:text-emerald-300 transition-colors underline decoration-emerald-400/40">Офис K.K. Tour: Панфилов көшесі, 52, Алматы • Время работы: 09:00 – 21:00</a>
+  </div>
+
+  <!-- Main Navbar -->
+  <header id="mainNavbar" class="sticky top-0 z-40 transition-all duration-300 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform border border-emerald-200/50">
+        <div class="flex flex-col">
+          <span class="text-2xl font-bold font-serif tracking-tight text-emerald-950">K.K. <span class="text-emerald-600">Tour</span></span>
+          <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="brand_sub" class="text-[10px] tracking-widest uppercase font-semibold text-emerald-700/80 hover:text-emerald-600 transition-colors">Алматы • Панфилов көшесі, 52</a>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" data-i18n="nav_home" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Главная</a>
+        <a href="destinations.html" data-i18n="nav_album" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Фотоальбом</a>
+        <a href="about.html" data-i18n="nav_about" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">О нас & Отзывы 2ГИС</a>
+        <a href="contact.html" data-i18n="nav_contact" class="text-emerald-700 font-semibold text-sm transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-emerald-600">Контакты</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-4">
+        <!-- Language Switcher -->
+        <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+          <button data-set-lang="kz" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200">🇰🇿 KZ</button>
+          <button data-set-lang="ru" class="px-2.5 py-1 rounded-lg transition-all bg-emerald-600 text-white font-bold">🇷🇺 RU</button>
+          <button data-set-lang="en" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200">🇬🇧 EN</button>
+        </div>
+        <a href="https://wa.me/77472801671" target="_blank" class="flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-emerald-600 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200">
+          <i data-lucide="message-square" class="w-4 h-4 text-emerald-600"></i>
+          <span>+7 747 280 16 71</span>
+        </a>
+        <button data-open-booking data-tour="kolsay-2days" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-emerald-600/25 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span data-i18n="btn_select_tour">Забронировать тур</span>
+        </button>
+      </div>
+
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-emerald-50 focus:outline-none" aria-label="Открыть меню">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileMenuBackdrop" class="fixed inset-0 bg-slate-900/60 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="mobileMenuDrawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-6">
+    <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+      <div class="flex items-center gap-2.5">
+        <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-10 h-10 rounded-xl object-cover shadow">
+        <span class="text-xl font-bold font-serif text-emerald-950">K.K. Tour</span>
+      </div>
+      <button id="closeMobileMenuBtn" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div class="py-4 border-b border-slate-100">
+      <span data-i18n="lang_select_label" class="text-xs text-slate-400 font-semibold uppercase block mb-2">Язык / Тіл / Language:</span>
+      <div class="flex items-center gap-2">
+        <button data-set-lang="kz" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇰🇿 ҚАЗ</button>
+        <button data-set-lang="ru" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">🇷🇺 РУС</button>
+        <button data-set-lang="en" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇬🇧 ENG</button>
+      </div>
+    </div>
+    <nav class="flex flex-col gap-4 py-6 flex-1">
+      <a href="index.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="home" class="w-5 h-5"></i><span data-i18n="nav_home">Главная</span>
+      </a>
+      <a href="destinations.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="image" class="w-5 h-5"></i><span data-i18n="nav_album">Фотоальбом</span>
+      </a>
+      <a href="about.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="users" class="w-5 h-5"></i><span data-i18n="nav_about">О нас & Отзывы 2ГИС</span>
+      </a>
+      <a href="contact.html" class="flex items-center gap-3 text-emerald-700 font-semibold px-3 py-2 rounded-xl bg-emerald-50">
+        <i data-lucide="mail" class="w-5 h-5"></i><span data-i18n="nav_contact">Контакты</span>
+      </a>
+    </nav>
+    <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+      <a href="https://wa.me/77472801671" target="_blank" class="w-full bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg text-center flex items-center justify-center gap-2">
+        <i data-lucide="message-square" class="w-5 h-5"></i>
+        <span data-i18n="btn_whatsapp">Написать в WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <section class="py-16 sm:py-20 bg-gradient-to-b from-emerald-50/80 via-[#F9FBF9] to-[#F9FBF9] border-b border-emerald-100/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 text-emerald-700 bg-white border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+        <span data-i18n="contact_page_badge">Связь с K.K. Tour</span>
+      </div>
+      <h1 data-i18n="contact_page_title" class="text-4xl sm:text-6xl font-bold font-serif text-slate-900 tracking-tight">
+        Контакты и бронирование
+      </h1>
+      <p data-i18n="contact_page_subtitle" class="mt-4 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
+        Напишите нам в WhatsApp или приходите в наш офис в Алматы по адресу: Панфилов көшесі, 52.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Contact Content -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+      <!-- Left: Office Info Card -->
+      <div class="flex flex-col gap-6 reveal-on-scroll">
+
+        <div class="interactive-card bg-white rounded-3xl p-8 border border-emerald-100 shadow-lg">
+          <h2 data-i18n="office_title" class="text-2xl font-bold font-serif text-slate-900 mb-6">Офис K.K. Tour в Алматы</h2>
+
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div data-i18n="office_address_label" class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Адрес офиса:</div>
+                <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="office_address" class="font-semibold text-slate-900 hover:text-emerald-700 transition-colors">Панфилов көшесі, 52, Алматы</a>
+                <div data-i18n="office_address_hint" class="text-xs text-slate-500 mt-0.5">(ул. Панфилова, 52 • Вход со стороны улицы)</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div data-i18n="office_hours_label" class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Время работы:</div>
+                <div data-i18n="office_hours" class="font-semibold text-slate-900">Ежедневно: 09:00 – 21:00</div>
+                <div data-i18n="office_hours_sub" class="text-xs text-emerald-600 font-medium mt-0.5">Без выходных и перерывов</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div data-i18n="office_phone_label" class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Телефон менеджера:</div>
+                <a href="tel:+77472801671" class="font-semibold text-slate-900 hover:text-emerald-700 transition-colors">+7 (747) 280-16-71</a>
+                <div class="text-xs text-slate-400 mt-0.5">+7 (707) 280-16-73</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <i data-lucide="credit-card" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div data-i18n="office_pay_label" class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Способ оплаты:</div>
+                <div data-i18n="office_pay_val" class="font-semibold text-slate-900 text-sm leading-relaxed">Kaspi Gold / Kaspi Pay (100% бронь) или наличные в офисе</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/77472801671" target="_blank" class="shimmer-btn flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-5 rounded-2xl shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2 text-sm">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+              <span data-i18n="btn_whatsapp">Написать в WhatsApp</span>
+            </a>
+            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="flex-1 bg-[#00A550] hover:bg-[#008f45] text-white font-semibold py-3.5 px-5 rounded-2xl transition-all flex items-center justify-center gap-2 text-sm shadow-lg">
+              <i data-lucide="map" class="w-4 h-4"></i>
+              <span data-i18n="office_route_btn">Маршрут в 2ГИС</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2GIS Map Embed Placeholder -->
+        <div class="interactive-card rounded-3xl overflow-hidden shadow-xl border border-emerald-100 bg-white h-64 flex items-center justify-center relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 to-teal-50 flex flex-col items-center justify-center gap-3 text-center p-6">
+            <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-14 h-14 rounded-2xl shadow-lg">
+            <div class="font-bold text-slate-800">K.K. Tour на карте 2ГИС</div>
+            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="office_address" class="text-sm text-slate-500 hover:text-emerald-700 transition-colors">Панфилов көшесі, 52, Алматы</a>
+            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="mt-2 inline-flex items-center gap-2 bg-[#00A550] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-md hover:bg-[#008f45] transition-all">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              <span data-i18n="office_route_btn">Маршрут в 2ГИС</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Contact Form / WhatsApp -->
+      <div class="reveal-on-scroll delay-100">
+        <div class="interactive-card bg-white rounded-3xl p-8 border border-emerald-100 shadow-lg">
+          <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+            <span data-i18n="form_badge">Быстрый запрос в K.K. Tour</span>
+          </div>
+          <h2 data-i18n="form_title" class="text-2xl font-bold font-serif text-slate-900 mb-2">Задайте вопрос менеджеру</h2>
+          <p data-i18n="form_subtitle" class="text-slate-500 text-sm mb-6">Работаем от 9:00 до 21:00. Нажмите отправить — и мы сразу свяжемся с вами в WhatsApp.</p>
+
+          <form id="contactPageForm" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label data-i18n="modal_name_label" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Ваше имя</label>
+                <input type="text" name="name" required data-i18n-placeholder="placeholder_name" placeholder="Алихан / Динара" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all">
+              </div>
+              <div>
+                <label data-i18n="modal_phone_label" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">WhatsApp номер</label>
+                <input type="tel" name="phone" required data-i18n-placeholder="placeholder_phone" placeholder="+7 (747) 000-00-00" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all">
+              </div>
+            </div>
+
+            <div>
+              <label data-i18n="form_route_label" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Интересующий маршрут</label>
+              <select class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all">
+                <option data-i18n="tour1_title">2 дня / 6 локаций: Кольсай, Каинды, Чарын</option>
+                <option data-i18n="tour2_title">Плато Асы + Медвежий водопад (Закат)</option>
+                <option data-i18n="tour3_title">Жемчужины Семиречья: 1 день / 6 локаций</option>
+                <option data-i18n="loc_turkestan">Туркестан (Исторический)</option>
+                <option data-i18n="diff_camp">Кемпинг с палатками</option>
+                <option data-i18n="diff_horse">Конный тур на закате</option>
+              </select>
+            </div>
+
+            <div>
+              <label data-i18n="form_msg_label" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Ваш вопрос или дата поездки</label>
+              <textarea rows="4" name="message" data-i18n-placeholder="form_msg_placeholder" placeholder="Например: сколько мест осталось на ближайшую субботу на Кольсай?" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="message-square" class="w-5 h-5"></i>
+              <span data-i18n="form_submit_btn">Написать в WhatsApp менеджеру</span>
+            </button>
+
+            <div class="text-center text-xs text-slate-400 flex items-center justify-center gap-1.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i>
+              <span data-i18n="office_hours">Ежедневно: 09:00 – 21:00</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-white border-t border-emerald-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal-on-scroll">
+        <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+          <span data-i18n="faq_badge">FAQ K.K. Tour</span>
+        </div>
+        <h2 data-i18n="faq_title" class="text-3xl sm:text-4xl font-bold font-serif text-slate-900">Часто задаваемые вопросы перед поездкой</h2>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- FAQ 1: Booking -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq1_q" class="font-bold text-slate-900 text-base pr-4">Как забронировать место в туре?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-2 border-t border-emerald-50 pt-4">
+            <p data-i18n="faq1_a1">Чтобы забронировать место, необходимо внести 100% оплату. Оплату можно произвести двумя способами:</p>
+            <p data-i18n="faq1_a2" class="ml-3">1. Дистанционно: Официальным способом через Kaspi Gold (Kaspi Pay), написав свои данные нам на WhatsApp (+7 747 280 16 71).</p>
+            <p data-i18n="faq1_a3" class="ml-3">2. Наличными: В нашем офисе в г. Алматы по адресу: Панфилов көшесі, 52 с 09:00 до 21:00 (предварительно напишите нам на WhatsApp).</p>
+          </div>
+        </details>
+
+        <!-- FAQ 2: What to bring -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-100">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq2_q" class="font-bold text-slate-900 text-base pr-4">Что нужно взять с собой в поездку?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-1.5 border-t border-emerald-50 pt-4">
+            <p data-i18n="faq2_a1">• Документы: Удостоверение личности или паспорт</p>
+            <p data-i18n="faq2_a2">• Еду и напитки на день для перекуса в дороге</p>
+            <p data-i18n="faq2_a3">• Тёплые вещи (погода в горах переменчива)</p>
+            <p data-i18n="faq2_a4">• Каремат или плед, чтобы расстелить на траве</p>
+            <p data-i18n="faq2_a5">• Деньги на личные расходы (только наличные: в посёлке Саты и на каньоне нет интернета)</p>
+            <p data-i18n="faq2_a6">• Термос с горячим чаем по желанию</p>
+            <p data-i18n="faq2_a7">• Личные лекарства (если есть аллергии или особенности)</p>
+          </div>
+        </details>
+
+        <!-- FAQ 3: What to wear -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-200">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq3_q" class="font-bold text-slate-900 text-base pr-4">Как правильно одеться?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-1.5 border-t border-emerald-50 pt-4">
+            <p data-i18n="faq3_a1">• Тёплая куртка / толстовка (утром и вечером прохладно)</p>
+            <p data-i18n="faq3_a2">• Удобная обувь с нескользящей подошвой (кроссовки или треккинговые ботинки)</p>
+            <p data-i18n="faq3_a3">• Головной убор (кепка от солнца или шапка), солнцезащитные очки</p>
+            <p data-i18n="faq3_a4">• Запасные носки и удобная сменная обувь</p>
+            <p data-i18n="faq3_a5">• Если вы едете в Туркестан: необходима закрытая скромная одежда (длинные рукава, брюки/юбка) и платок для посещения мавзолеев.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="mt-12 text-center bg-gradient-to-r from-emerald-800 to-teal-900 rounded-3xl p-8 text-white shadow-xl">
+        <h3 class="text-xl font-bold font-serif mb-2">💬 Остался вопрос?</h3>
+        <p data-i18n="form_subtitle" class="text-emerald-100 text-sm mb-5">Работаем от 9:00 до 21:00. Нажмите отправить — и мы сразу свяжемся с вами в WhatsApp.</p>
+        <a href="https://wa.me/77472801671" target="_blank" class="inline-flex items-center gap-2 bg-white text-emerald-800 font-bold px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:bg-emerald-50 transition-all">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+          <span data-i18n="btn_whatsapp">Написать в WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-11 h-11 rounded-xl object-cover shadow border border-slate-700">
+            <span class="text-2xl font-bold font-serif text-white">K.K. Tour</span>
+          </div>
+          <p data-i18n="footer_desc" class="text-xs leading-relaxed text-slate-400">
+            K.K. Tour — туроператор по Алматинской области и Казахстану. Адрес: Панфилов көшесі, 52, Алматы. Время работы: 09:00 – 21:00.
+          </p>
+          <div class="flex items-center gap-3 mt-2">
+            <a href="https://instagram.com/k.k.tour/" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-pink-500/50" title="Instagram @k.k.tour">
+              <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-full h-full object-cover rounded-lg">
+            </a>
+            <a href="https://wa.me/77472801671" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-emerald-500/50" title="WhatsApp K.K. Tour">
+              <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover rounded-lg">
+            </a>
+            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-[#00A550]/50" title="2GIS K.K. Tour">
+              <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-full h-full object-cover rounded-lg">
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 data-i18n="footer_nav" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Навигация</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" data-i18n="nav_home" class="hover:text-emerald-400 transition-colors">Главная</a></li>
+            <li><a href="destinations.html" data-i18n="nav_album" class="hover:text-emerald-400 transition-colors">Фотоальбом природы</a></li>
+            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас и отзывы 2ГИС</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты и FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer_eco" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Условия и бронь</h4>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_kaspi">Оплата через Kaspi Pay</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_tickets">Входные билеты в Нацпарки</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52</a></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_offer">Договор публичной оферты</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer_contact" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Связь с K.K. Tour</h4>
+          <div class="space-y-3 text-xs">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
+              <a href="tel:+77472801671" class="hover:text-white">+7 (747) 280-16-71</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-emerald-500"></i>
+              <span data-i18n="office_hours">Ежедневно: 09:00 – 21:00</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500"></i>
+              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="office_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52, Алматы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 text-center text-xs text-slate-500" data-i18n="footer_rights">
+        © 2026 K.K. Tour. Все права защищены. Instagram: @k.k.tour
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal with Google Sheets Tour Details Preview -->
+  <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 opacity-0 transition-opacity duration-300">
+    <div class="modal-card bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300 max-h-[94vh] overflow-hidden flex flex-col">
+      
+      <!-- Top Image & Quick Badges Preview -->
+      <div class="relative h-44 sm:h-52 bg-slate-900 overflow-hidden shrink-0">
+        <img id="modalTourImg" src="assets/images/album_lake.jpg" alt="Тур K.K. Tour" class="w-full h-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+        
+        <!-- Close Button -->
+        <button id="closeBookingModal" class="absolute top-3 right-3 p-2 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-full transition-colors z-10" aria-label="Закрыть">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Floating Badges -->
+        <div class="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 z-10">
+          <span id="modalTourBadge" class="bg-emerald-600/90 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-400/30">ТОП</span>
+          <span id="modalTourRating" class="bg-amber-500/90 backdrop-blur-md text-white text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">★ 4.99</span>
+        </div>
+
+        <!-- Tour Title & Meta Overlay on Image -->
+        <div class="absolute bottom-3 left-4 right-4 text-white">
+          <div class="flex items-center gap-3 text-xs text-emerald-300 font-semibold mb-1">
+            <span id="modalTourDuration" class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 2 дня / 1 ночь</span>
+            <span class="text-white/40">•</span>
+            <span id="modalTourDays" class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Сб – Вс</span>
+          </div>
+          <h3 id="modalTourTitle" class="text-lg sm:text-xl font-bold font-serif leading-tight drop-shadow-md text-white">
+            2 дня / 6 локаций: Кольсай, Каинды, Чарын
+          </h3>
+        </div>
+      </div>
+
+      <!-- Scrollable Form Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4">
+        
+        <!-- Detailed Tour Description -->
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3.5">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">О маршруте:</span>
+          <p id="modalTourDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Хит сезона! Озёра Кольсай и Каинды, Чёрный и Лунный каньоны, река Шарын и урочище Куртогай.
+          </p>
+        </div>
+
+        <form id="bookingForm" class="space-y-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Выбрать другое направление</label>
+            <div class="relative">
+              <select id="bookTourSelect" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3.5 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none appearance-none"></select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3 top-3 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Количество человек</label>
+            <div class="flex items-center gap-3">
+              <button type="button" id="btnMinusGuest" class="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-lg flex items-center justify-center transition-colors">−</button>
+              <input type="number" id="bookGuestsInput" min="1" max="50" value="1" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3 text-center text-base font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <button type="button" id="btnPlusGuest" class="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-lg flex items-center justify-center transition-colors">+</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Ваше имя (необязательно)</label>
+            <input type="text" id="bookNameInput" placeholder="Например: Айгерим" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3.5 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Вопросы или пожелания к поездке</label>
+            <textarea id="bookCommentInput" rows="2" placeholder="Например: Нужен трансфер от Панфилова 52" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2 px-3 text-xs sm:text-sm text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none resize-none"></textarea>
+          </div>
+
+          <!-- Price Box -->
+          <div class="bg-emerald-50/90 border border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-500 block">За 1 человека: <strong id="bookPerPersonPrice" class="text-slate-700">28 500 ₸</strong></span>
+              <span class="text-xs text-slate-500 block mt-0.5">Мест: <strong id="bookGuestsCount" class="text-slate-700">1 чел.</strong></span>
+            </div>
+            <div class="text-right">
+              <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">Итого к оплате:</span>
+              <span id="bookTotalPrice" class="text-xl sm:text-2xl font-black text-emerald-900">28 500 ₸</span>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Забронировать через WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tours-loader.js"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>

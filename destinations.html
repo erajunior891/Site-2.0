@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фотоальбом — K.K. Tour (Алматы, Панфилов көшесі, 52)</title>
+  <meta name="description" content="Фотогалерея лучших локаций Казахстана от K.K. Tour: Кольсай, Каинды, Чарынский каньон, Плато Асы, Туркестан. Офис: Панфилов көшесі, 52.">
+  <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F2FBF6',
+              100: '#E1F7EC',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065F46',
+              900: '#064E3B',
+              dark: '#0B291F'
+            },
+            amber: {
+              500: '#F59E0B',
+              600: '#D97706'
+            },
+            natureBg: '#F9FBF9'
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#F9FBF9] text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300">📸</span>
+    <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="top_bar_dest" class="hover:text-emerald-300 transition-colors underline decoration-emerald-400/40">Офис: Панфилов көшесі, 52, Алматы • Работаем: 09:00 – 21:00</a>
+  </div>
+
+  <!-- Main Navbar -->
+  <header id="mainNavbar" class="sticky top-0 z-40 transition-all duration-300 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform border border-emerald-200/50">
+        <div class="flex flex-col">
+          <span class="text-2xl font-bold font-serif tracking-tight text-emerald-950">K.K. <span class="text-emerald-600">Tour</span></span>
+          <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="brand_sub" class="text-[10px] tracking-widest uppercase font-semibold text-emerald-700/80 hover:text-emerald-600 transition-colors">Алматы • Панфилов көшесі, 52</a>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" data-i18n="nav_home" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Главная</a>
+        <a href="destinations.html" data-i18n="nav_album" class="text-emerald-700 font-semibold text-sm transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-emerald-600">Фотоальбом</a>
+        <a href="about.html" data-i18n="nav_about" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">О нас & Отзывы 2ГИС</a>
+        <a href="contact.html" data-i18n="nav_contact" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Language Switcher & Action Button -->
+      <div class="hidden md:flex items-center gap-4">
+        <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+          <button data-set-lang="kz" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200">🇰🇿 KZ</button>
+          <button data-set-lang="ru" class="px-2.5 py-1 rounded-lg transition-all bg-emerald-600 text-white font-bold">🇷🇺 RU</button>
+          <button data-set-lang="en" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200">🇬🇧 EN</button>
+        </div>
+
+        <a href="https://wa.me/77472801671" target="_blank" class="flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-emerald-600 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200">
+          <i data-lucide="message-square" class="w-4 h-4 text-emerald-600"></i>
+          <span>+7 747 280 16 71</span>
+        </a>
+
+        <button data-open-booking data-tour="kolsay-2days" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span data-i18n="btn_select_tour">Забронировать тур</span>
+        </button>
+      </div>
+
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-emerald-50 focus:outline-none" aria-label="Открыть меню">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileMenuBackdrop" class="fixed inset-0 bg-slate-900/60 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="mobileMenuDrawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-6">
+    <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+      <div class="flex items-center gap-2.5">
+        <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-10 h-10 rounded-xl object-cover shadow">
+        <span class="text-xl font-bold font-serif text-emerald-950">K.K. Tour</span>
+      </div>
+      <button id="closeMobileMenuBtn" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Language Switcher -->
+    <div class="py-4 border-b border-slate-100">
+      <span data-i18n="lang_select_label" class="text-xs text-slate-400 font-semibold uppercase block mb-2">Язык / Тіл / Language:</span>
+      <div class="flex items-center gap-2">
+        <button data-set-lang="kz" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇰🇿 ҚАЗ</button>
+        <button data-set-lang="ru" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">🇷🇺 РУС</button>
+        <button data-set-lang="en" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇬🇧 ENG</button>
+      </div>
+    </div>
+
+    <nav class="flex flex-col gap-4 py-6 flex-1">
+      <a href="index.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span data-i18n="nav_home">Главная</span>
+      </a>
+      <a href="destinations.html" class="flex items-center gap-3 text-emerald-700 font-semibold px-3 py-2 rounded-xl bg-emerald-50">
+        <i data-lucide="image" class="w-5 h-5"></i>
+        <span data-i18n="nav_album">Фотоальбом</span>
+      </a>
+      <a href="about.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span data-i18n="nav_about">О нас & Отзывы 2ГИС</span>
+      </a>
+      <a href="contact.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <span data-i18n="nav_contact">Контакты</span>
+      </a>
+    </nav>
+
+    <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+      <a href="https://wa.me/77472801671" target="_blank" class="w-full bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg shadow-emerald-600/20 text-center flex items-center justify-center gap-2">
+        <i data-lucide="message-square" class="w-5 h-5"></i>
+        <span data-i18n="btn_whatsapp">Написать в WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Page Hero Header -->
+  <section class="py-16 sm:py-20 bg-gradient-to-b from-emerald-50/80 via-[#F9FBF9] to-[#F9FBF9] border-b border-emerald-100/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 text-emerald-700 bg-white border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+        <span data-i18n="album_page_badge">Галерея K.K. Tour</span>
+      </div>
+      <h1 data-i18n="album_page_title" class="text-4xl sm:text-6xl font-bold font-serif text-slate-900 tracking-tight">
+        Фотоальбом лучших локаций Семиречья
+      </h1>
+      <p data-i18n="album_page_subtitle" class="mt-4 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
+        Кольсай, Каинды, Чарынский каньон, Плато Асы, Иссык и Туркестан. Все снимки сделаны нашими туристами и гидами!
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <button class="album-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md bg-emerald-600 text-white" data-filter="all">
+          <span data-i18n="filter_all">Все фотографии</span>
+        </button>
+        <button class="album-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200" data-filter="mountains">
+          <span data-i18n="filter_mountains">🏔️ Плато Асы & Горы</span>
+        </button>
+        <button class="album-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200" data-filter="lakes">
+          <span data-i18n="filter_lakes">🌊 Кольсай & Каинды</span>
+        </button>
+        <button class="album-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200" data-filter="waterfalls">
+          <span data-i18n="filter_waterfalls">🏜️ Чарынский Каньон</span>
+        </button>
+        <button class="album-filter-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200" data-filter="camping">
+          <span data-i18n="filter_camping">🏕️ Палатки & Кемпинг</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Photo Gallery Grid -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="albumGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Photo 1: Kolsay Lake -->
+      <div class="album-item interactive-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 cursor-pointer reveal-on-scroll" 
+           data-category="lakes" 
+           data-lightbox-trigger 
+           data-img="assets/images/album_lake.jpg">
+        <div class="relative h-72 overflow-hidden img-zoom-container">
+          <img src="assets/images/album_lake.jpg" alt="Озеро Кольсай" class="w-full h-full object-cover img-zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+            <span data-i18n="card1_tag" class="text-xs text-emerald-300 font-semibold uppercase tracking-wider mb-1">🌊 Озеро Кольсай</span>
+            <h3 data-i18n="card1_title" class="text-lg font-bold font-serif leading-tight">Бирюзовое зеркало Тянь-Шаня</h3>
+            <p data-i18n="card1_desc" class="text-xs text-slate-300 mt-1">Тур «2 дня 6 локаций» • K.K. Tour</p>
+            <div class="mt-3 flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span data-i18n="btn_fullscreen">Открыть в полном размере</span>
+            </div>
+          </div>
+          <div data-i18n="card1_badge" class="absolute top-4 left-4 bg-emerald-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+            Кольсай
+          </div>
+        </div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <h4 data-i18n="card1_name" class="font-bold text-slate-800 text-sm">Озеро Кольсай-1</h4>
+            <span data-i18n="card1_sub" class="text-xs text-slate-400">Тур 2 дня (Кольсай-Каинды-Чарын)</span>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Photo 2: Assy Plateau -->
+      <div class="album-item interactive-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 cursor-pointer reveal-on-scroll delay-100" 
+           data-category="mountains" 
+           data-lightbox-trigger 
+           data-img="assets/images/album_mountains.jpg">
+        <div class="relative h-72 overflow-hidden img-zoom-container">
+          <img src="assets/images/album_mountains.jpg" alt="Плато Асы" class="w-full h-full object-cover img-zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+            <span data-i18n="card2_tag" class="text-xs text-amber-300 font-semibold uppercase tracking-wider mb-1">🏔️ Плато Асы</span>
+            <h3 data-i18n="card2_title" class="text-lg font-bold font-serif leading-tight">Закат на высоте 2750 метров</h3>
+            <p data-i18n="card2_desc" class="text-xs text-slate-300 mt-1">Тур «Плато Асы + Медвежий водопад»</p>
+            <div class="mt-3 flex items-center gap-1.5 text-xs text-amber-300 font-medium">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span data-i18n="btn_fullscreen">Открыть в полном размере</span>
+            </div>
+          </div>
+          <div data-i18n="card2_badge" class="absolute top-4 left-4 bg-amber-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+            Плато Асы
+          </div>
+        </div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <h4 data-i18n="card2_name" class="font-bold text-slate-800 text-sm">Обсерватория Асы-Тургень</h4>
+            <span data-i18n="card2_sub" class="text-xs text-slate-400">Тур на закате K.K. Tour</span>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Photo 3: Charyn Canyon & Waterfalls -->
+      <div class="album-item interactive-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 cursor-pointer reveal-on-scroll delay-200" 
+           data-category="waterfalls" 
+           data-lightbox-trigger 
+           data-img="assets/images/album_waterfall.jpg">
+        <div class="relative h-72 overflow-hidden img-zoom-container">
+          <img src="assets/images/album_waterfall.jpg" alt="Водопады Казахстана" class="w-full h-full object-cover img-zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+            <span data-i18n="card3_tag" class="text-xs text-emerald-300 font-semibold uppercase tracking-wider mb-1">💧 Тургень</span>
+            <h3 data-i18n="card3_title" class="text-lg font-bold font-serif leading-tight">Медвежий водопад (30 метров)</h3>
+            <p data-i18n="card3_desc" class="text-xs text-slate-300 mt-1">Освежающий горный поток среди скал</p>
+            <div class="mt-3 flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span data-i18n="btn_fullscreen">Открыть в полном размере</span>
+            </div>
+          </div>
+          <div data-i18n="card3_badge" class="absolute top-4 left-4 bg-emerald-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+            Тургенское ущелье
+          </div>
+        </div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <h4 data-i18n="card3_name" class="font-bold text-slate-800 text-sm">Медвежий водопад</h4>
+            <span data-i18n="card3_sub" class="text-xs text-slate-400">Маршрут «Плато Асы & Иссык»</span>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Photo 4: Assy Camping Under Stars -->
+      <div class="album-item interactive-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 cursor-pointer reveal-on-scroll" 
+           data-category="camping" 
+           data-lightbox-trigger 
+           data-img="assets/images/album_camp.jpg">
+        <div class="relative h-72 overflow-hidden img-zoom-container">
+          <img src="assets/images/album_camp.jpg" alt="Кемпинг на Плато Асы" class="w-full h-full object-cover img-zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+            <span data-i18n="card4_tag" class="text-xs text-amber-300 font-semibold uppercase tracking-wider mb-1">🏕️ Ночь в палатках</span>
+            <h3 data-i18n="card4_title" class="text-lg font-bold font-serif leading-tight">Звёздное небо Плато Асы</h3>
+            <p data-i18n="card4_desc" class="text-xs text-slate-300 mt-1">Тур «Ночёвка на Плато Асы + Водопад»</p>
+            <div class="mt-3 flex items-center gap-1.5 text-xs text-amber-300 font-medium">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span data-i18n="btn_fullscreen">Открыть в полном размере</span>
+            </div>
+          </div>
+          <div data-i18n="card4_badge" class="absolute top-4 left-4 bg-amber-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+            Кемпинг
+          </div>
+        </div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <h4 data-i18n="card4_name" class="font-bold text-slate-800 text-sm">Лагерь на Плато Асы</h4>
+            <span data-i18n="card4_sub" class="text-xs text-slate-400">Ночевка с K.K. Tour</span>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Photo 5: Kaindy Lake Submerged Forest -->
+      <div class="album-item interactive-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 cursor-pointer reveal-on-scroll delay-100" 
+           data-category="lakes" 
+           data-lightbox-trigger 
+           data-img="assets/images/hero.jpg">
+        <div class="relative h-72 overflow-hidden img-zoom-container">
+          <img src="assets/images/hero.jpg" alt="Озеро Каинды" class="w-full h-full object-cover img-zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+            <span data-i18n="card5_tag" class="text-xs text-teal-300 font-semibold uppercase tracking-wider mb-1">🌲 Затопленный лес</span>
+            <h3 data-i18n="card5_title" class="text-lg font-bold font-serif leading-tight">Сказка озера Каинды</h3>
+            <p data-i18n="card5_desc" class="text-xs text-slate-300 mt-1">Образовалось в 1911 году после землетрясения</p>
+            <div class="mt-3 flex items-center gap-1.5 text-xs text-teal-300 font-medium">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span data-i18n="btn_fullscreen">Открыть в полном размере</span>
+            </div>
+          </div>
+          <div data-i18n="card5_badge" class="absolute top-4 left-4 bg-teal-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+            Каинды
+          </div>
+        </div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <h4 data-i18n="card5_name" class="font-bold text-slate-800 text-sm">Озеро Каинды</h4>
+            <span data-i18n="card5_sub" class="text-xs text-slate-400">Тур 2 дня (Кольсай, Каинды, Чарын)</span>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Photo 6: Guide On Trail -->
+      <div class="album-item interactive-card group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100 cursor-pointer reveal-on-scroll delay-200" 
+           data-category="mountains" 
+           data-lightbox-trigger 
+           data-img="assets/images/guide.jpg">
+        <div class="relative h-72 overflow-hidden img-zoom-container">
+          <img src="assets/images/guide.jpg" alt="Гид K.K. Tour" class="w-full h-full object-cover img-zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 text-white">
+            <span data-i18n="card6_tag" class="text-xs text-emerald-300 font-semibold uppercase tracking-wider mb-1">🌿 Команда K.K. Tour</span>
+            <h3 data-i18n="card6_title" class="text-lg font-bold font-serif leading-tight">Всегда с улыбкой и заботой</h3>
+            <p data-i18n="card6_desc" class="text-xs text-slate-300 mt-1">Лучшие фотолокации и весёлая компания</p>
+            <div class="mt-3 flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span data-i18n="btn_fullscreen">Открыть в полном размере</span>
+            </div>
+          </div>
+          <div data-i18n="card6_badge" class="absolute top-4 left-4 bg-emerald-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+            Гиды K.K. Tour
+          </div>
+        </div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <h4 data-i18n="card6_name" class="font-bold text-slate-800 text-sm">Тропы Заилийского Алатау</h4>
+            <span data-i18n="card6_sub" class="text-xs text-slate-400">Сопровождение K.K. Tour</span>
+          </div>
+          <button class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Expedition Diary Stories / Notes -->
+    <div class="mt-20 bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-emerald-100">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> <span data-i18n="diary_badge">Дневник K.K. Tour</span>
+        </div>
+        <h2 data-i18n="diary_title" class="text-2xl sm:text-4xl font-bold font-serif text-slate-900">
+          Как проходят наши выходные в горах
+        </h2>
+        <p data-i18n="diary_desc" class="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+          Каждую субботу мы выезжаем из Алматы навстречу приключениям: пьём горячий чай с видом на бирюзовый Кольсай, гуляем среди стволов Каинды и встречаем закат на скалах Чарына. Присоединяйтесь к нам на ближайших выходных!
+        </p>
+        <div class="mt-6 flex items-center gap-4">
+          <button data-open-booking class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg shadow-emerald-600/25 transition-all flex items-center gap-2">
+            <i data-lucide="compass" class="w-4 h-4"></i>
+            <span data-i18n="diary_btn">Поехать с K.K. Tour на выходных</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-lg hidden opacity-0 transition-opacity duration-300 p-4">
+    <div id="lightboxBackdrop" class="absolute inset-0"></div>
+    <div class="relative z-10 max-w-5xl w-full flex flex-col items-center">
+      <button id="closeLightbox" class="absolute -top-12 right-0 sm:top-0 sm:-right-12 text-white/70 hover:text-white p-2 rounded-full bg-white/10 backdrop-blur-md transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 max-h-[75vh] flex items-center justify-center bg-black/40">
+        <img id="lightboxImage" src="" alt="Фото в полном размере" class="max-h-[75vh] w-auto object-contain">
+      </div>
+
+      <div class="mt-4 text-center text-white max-w-2xl px-4">
+        <span id="lightboxTag" class="inline-block text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-1"></span>
+        <h3 id="lightboxCaption" class="text-base sm:text-xl font-bold font-serif"></h3>
+        <div class="mt-3 flex justify-center">
+          <button data-open-booking class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all flex items-center gap-2">
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+            <span data-i18n="btn_book_this_tour">Забронировать этот тур</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-11 h-11 rounded-xl object-cover shadow border border-slate-700">
+            <span class="text-2xl font-bold font-serif text-white">K.K. Tour</span>
+          </div>
+          <p data-i18n="footer_desc" class="text-xs leading-relaxed text-slate-400">
+            K.K. Tour — Панфилов көшесі, 52, Алматы. Время работы: 09:00 – 21:00.
+          </p>
+          <div class="flex items-center gap-3 mt-2">
+            <a href="https://instagram.com/k.k.tour/" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-pink-500/50" title="Instagram @k.k.tour">
+              <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-full h-full object-cover rounded-lg">
+            </a>
+            <a href="https://wa.me/77472801671" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-emerald-500/50" title="WhatsApp K.K. Tour">
+              <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover rounded-lg">
+            </a>
+            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-[#00A550]/50" title="2GIS K.K. Tour">
+              <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-full h-full object-cover rounded-lg">
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 data-i18n="footer_nav" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Навигация</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" data-i18n="nav_home" class="hover:text-emerald-400 transition-colors">Главная</a></li>
+            <li><a href="destinations.html" data-i18n="nav_album" class="hover:text-emerald-400 transition-colors">Фотоальбом природы</a></li>
+            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас и отзывы 2ГИС</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты и FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer_eco" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Условия и бронь</h4>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_kaspi">Оплата через Kaspi Pay</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_tickets">Входные билеты в Нацпарки</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer_contact" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Связь с нами</h4>
+          <div class="space-y-3 text-xs">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
+              <a href="tel:+77472801671" class="hover:text-white">+7 (747) 280-16-71</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-emerald-500"></i>
+              <span data-i18n="office_hours">Ежедневно: 09:00 – 21:00</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500"></i>
+              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="office_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52, Алматы</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 text-center text-xs text-slate-500" data-i18n="footer_rights">
+        © 2026 K.K. Tour. Все права защищены. Instagram: @k.k.tour
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal with Google Sheets Tour Details Preview -->
+  <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 opacity-0 transition-opacity duration-300">
+    <div class="modal-card bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300 max-h-[94vh] overflow-hidden flex flex-col">
+      
+      <!-- Top Image & Quick Badges Preview -->
+      <div class="relative h-44 sm:h-52 bg-slate-900 overflow-hidden shrink-0">
+        <img id="modalTourImg" src="assets/images/album_lake.jpg" alt="Тур K.K. Tour" class="w-full h-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+        
+        <!-- Close Button -->
+        <button id="closeBookingModal" class="absolute top-3 right-3 p-2 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-full transition-colors z-10" aria-label="Закрыть">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Floating Badges -->
+        <div class="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 z-10">
+          <span id="modalTourBadge" class="bg-emerald-600/90 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-400/30">ТОП</span>
+          <span id="modalTourRating" class="bg-amber-500/90 backdrop-blur-md text-white text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">★ 4.99</span>
+        </div>
+
+        <!-- Tour Title & Meta Overlay on Image -->
+        <div class="absolute bottom-3 left-4 right-4 text-white">
+          <div class="flex items-center gap-3 text-xs text-emerald-300 font-semibold mb-1">
+            <span id="modalTourDuration" class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 2 дня / 1 ночь</span>
+            <span class="text-white/40">•</span>
+            <span id="modalTourDays" class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Сб – Вс</span>
+          </div>
+          <h3 id="modalTourTitle" class="text-lg sm:text-xl font-bold font-serif leading-tight drop-shadow-md text-white">
+            2 дня / 6 локаций: Кольсай, Каинды, Чарын
+          </h3>
+        </div>
+      </div>
+
+      <!-- Scrollable Form Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4">
+        
+        <!-- Detailed Tour Description -->
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3.5">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">О маршруте:</span>
+          <p id="modalTourDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Хит сезона! Озёра Кольсай и Каинды, Чёрный и Лунный каньоны, река Шарын и урочище Куртогай.
+          </p>
+        </div>
+
+        <form id="bookingForm" class="space-y-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Выбрать другое направление</label>
+            <div class="relative">
+              <select id="bookTourSelect" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3.5 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none appearance-none"></select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3 top-3 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Количество человек</label>
+            <div class="flex items-center gap-3">
+              <button type="button" id="btnMinusGuest" class="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-lg flex items-center justify-center transition-colors">−</button>
+              <input type="number" id="bookGuestsInput" min="1" max="50" value="1" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3 text-center text-base font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <button type="button" id="btnPlusGuest" class="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-lg flex items-center justify-center transition-colors">+</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Ваше имя (необязательно)</label>
+            <input type="text" id="bookNameInput" placeholder="Например: Айгерим" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3.5 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Вопросы или пожелания к поездке</label>
+            <textarea id="bookCommentInput" rows="2" placeholder="Например: Нужен трансфер от Панфилова 52" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2 px-3 text-xs sm:text-sm text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none resize-none"></textarea>
+          </div>
+
+          <!-- Price Box -->
+          <div class="bg-emerald-50/90 border border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-500 block">За 1 человека: <strong id="bookPerPersonPrice" class="text-slate-700">28 500 ₸</strong></span>
+              <span class="text-xs text-slate-500 block mt-0.5">Мест: <strong id="bookGuestsCount" class="text-slate-700">1 чел.</strong></span>
+            </div>
+            <div class="text-right">
+              <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">Итого к оплате:</span>
+              <span id="bookTotalPrice" class="text-xl sm:text-2xl font-black text-emerald-900">28 500 ₸</span>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Забронировать через WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tours-loader.js"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>

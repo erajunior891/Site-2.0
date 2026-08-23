@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K.K. Tour — Туры из Алматы: Кольсай, Каинды, Чарын, Плато Асы</title>
+  <meta name="description" content="K.K. Tour (Алматы, Панфилов көшесі, 52). Авторские туры выходного дня по Казахстану: Кольсайские озёра, озеро Каинды, Чарынский каньон, Плато Асы, Туркестан. Оплата Kaspi Pay.">
+  <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ── Dynamic tour cards from Google Sheets ── */
+    .tour-card {
+      background: #fff;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      border: 1px solid #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .tour-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.13);
+    }
+    .tour-card__img-wrap {
+      position: relative;
+      height: 16rem;
+      overflow: hidden;
+    }
+    .tour-card__img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+    .tour-card:hover .tour-card__img { transform: scale(1.06); }
+    .tour-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      background: rgba(6,78,59,.82);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: .72rem; font-weight: 700;
+      padding: .25rem .75rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(167,243,208,.3);
+    }
+    .tour-rating-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      color: #1e293b;
+      font-size: .75rem; font-weight: 700;
+      padding: .25rem .65rem;
+      border-radius: 9999px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+      display: flex; align-items: center; gap: .25rem;
+    }
+    .tour-rating-badge .star { color: #f59e0b; }
+    .tour-days-label {
+      position: absolute; bottom: .75rem; left: 1rem;
+      color: #fff;
+      font-size: .72rem; font-weight: 600;
+      background: rgba(0,0,0,.38);
+      backdrop-filter: blur(6px);
+      padding: .25rem .65rem;
+      border-radius: .5rem;
+    }
+    .tour-card__body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tour-duration {
+      display: flex; align-items: center; gap: .25rem;
+      font-size: .7rem; font-weight: 800;
+      color: #047857;
+      text-transform: uppercase; letter-spacing: .05em;
+      margin-bottom: .5rem;
+    }
+    .clock-icon { font-style: normal; }
+    .tour-card__title {
+      font-size: 1.15rem; font-weight: 800;
+      color: #0f172a; line-height: 1.35;
+      margin-bottom: .5rem;
+      transition: color .2s;
+    }
+    .tour-card:hover .tour-card__title { color: #065f46; }
+    .tour-card__desc {
+      color: #475569; font-size: .875rem;
+      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .tour-card__footer {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: .75rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+    }
+    .tour-card__price-label {
+      display: block;
+      font-size: .7rem; color: #94a3b8;
+    }
+    .tour-card__price {
+      font-size: 1.5rem; font-weight: 800;
+      color: #064e3b;
+    }
+    .btn-book-card {
+      background: #059669;
+      color: #fff;
+      font-size: .82rem; font-weight: 700;
+      padding: .6rem 1.2rem;
+      border-radius: .75rem;
+      border: none; cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(5,150,105,.25);
+      transition: background .2s, transform .15s;
+    }
+    .btn-book-card:hover {
+      background: #047857;
+      transform: translateY(-1px);
+    }
+    /* States */
+    .tours-state {
+      grid-column: 1 / -1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 5rem 1rem; gap: 1rem;
+      color: #94a3b8; text-align: center;
+    }
+    .tours-state p { font-size: .9rem; max-width: 26rem; line-height: 1.6; }
+    .tours-spinner {
+      width: 2.5rem; height: 2.5rem;
+      border: 4px solid #d1fae5;
+      border-top-color: #059669;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .tours-state--error p { color: #64748b; }
+    .tours-state--setup h3 {
+      font-size: 1.1rem; font-weight: 700;
+      color: #1e293b; margin-bottom: .25rem;
+    }
+    .tours-state--setup { background: #fefce8; border: 1px solid #fde68a; border-radius: 1.5rem; padding: 3rem; }
+    .tours-state--setup p code {
+      background: #f1f5f9; padding: .1rem .4rem;
+      border-radius: .3rem; font-size: .8rem; font-family: monospace;
+    }
+    .tours-retry-btn {
+      font-size: .8rem; font-weight: 700;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      padding: .5rem 1.1rem;
+      border-radius: .75rem;
+      background: transparent;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .tours-retry-btn:hover { background: #ecfdf5; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F2FBF6',
+              100: '#E1F7EC',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065F46',
+              900: '#064E3B',
+              dark: '#0B291F'
+            },
+            amber: {
+              500: '#F59E0B',
+              600: '#D97706'
+            },
+            natureBg: '#F9FBF9'
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#F9FBF9] text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300">🌿</span>
+    <span data-i18n="announcement">K.K. Tour: Бронируйте туры выходного дня из Алматы через Kaspi Pay со скидкой!</span>
+    <a href="#featured-tours" data-i18n="announcement_cta" class="underline hover:text-emerald-300 ml-2 hidden sm:inline font-semibold">Выбрать тур →</a>
+  </div>
+
+  <!-- Main Navbar -->
+  <header id="mainNavbar" class="sticky top-0 z-40 transition-all duration-300 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform border border-emerald-200/50">
+        <div class="flex flex-col">
+          <span class="text-2xl font-bold font-serif tracking-tight text-emerald-950">K.K. <span class="text-emerald-600">Tour</span></span>
+          <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="brand_sub" class="text-[10px] tracking-widest uppercase font-semibold text-emerald-700/80 hover:text-emerald-600 transition-colors">Алматы • Панфилов көшесі, 52</a>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" data-i18n="nav_home" class="text-emerald-700 font-semibold text-sm transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-emerald-600">Главная</a>
+        <a href="destinations.html" data-i18n="nav_album" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Фотоальбом</a>
+        <a href="about.html" data-i18n="nav_about" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">О нас & Отзывы 2ГИС</a>
+        <a href="contact.html" data-i18n="nav_contact" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Language Switcher & Action Button -->
+      <div class="hidden md:flex items-center gap-4">
+        <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+          <button data-set-lang="kz" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200">🇰🇿 KZ</button>
+          <button data-set-lang="ru" class="px-2.5 py-1 rounded-lg transition-all bg-emerald-600 text-white font-bold">🇷🇺 RU</button>
+          <button data-set-lang="en" class="px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200">🇬🇧 EN</button>
+        </div>
+
+        <a href="https://wa.me/77472801671" target="_blank" class="flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-emerald-600 bg-emerald-50 px-3 py-2 rounded-xl border border-emerald-200">
+          <i data-lucide="message-square" class="w-4 h-4 text-emerald-600"></i>
+          <span>+7 747 280 16 71</span>
+        </a>
+
+        <button data-open-booking data-tour="kolsay-2days" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span data-i18n="btn_select_tour">Забронировать тур</span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-slate-700 hover:bg-emerald-50 focus:outline-none" aria-label="Открыть меню">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex justify-end">
+    <div id="mobileDrawerBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+    <div class="relative w-4/5 max-w-sm bg-white h-full shadow-2xl p-6 flex flex-col justify-between overflow-y-auto z-10">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-10 h-10 rounded-xl object-cover shadow">
+            <span class="text-xl font-bold font-serif text-emerald-950">K.K. Tour</span>
+          </div>
+          <button id="closeMobileMenu" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+        <div class="mt-6 flex bg-slate-100 p-1 rounded-xl text-xs justify-center">
+          <button data-set-lang="kz" class="flex-1 py-1.5 rounded-lg text-slate-600">🇰🇿 Қазақша</button>
+          <button data-set-lang="ru" class="flex-1 py-1.5 rounded-lg bg-emerald-600 text-white font-bold">🇷🇺 Русский</button>
+          <button data-set-lang="en" class="flex-1 py-1.5 rounded-lg text-slate-600">🇬🇧 English</button>
+        </div>
+
+        <nav class="mt-8 flex flex-col gap-4">
+          <a href="index.html" data-i18n="nav_home" class="text-lg font-semibold text-emerald-700">Главная</a>
+          <a href="destinations.html" data-i18n="nav_album" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Фотоальбом</a>
+          <a href="about.html" data-i18n="nav_about" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">О нас & Отзывы 2ГИС</a>
+          <a href="contact.html" data-i18n="nav_contact" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Контакты</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+        <a href="https://wa.me/77472801671" target="_blank" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold py-3 rounded-2xl text-center flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>WhatsApp (+7 747 280 16 71)</span>
+        </a>
+        <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-full bg-[#00A550] text-white font-semibold py-2.5 rounded-xl text-center flex items-center justify-center gap-2 text-xs">
+          <i data-lucide="map-pin" class="w-4 h-4"></i>
+          <span>Алматы, Панфилов көшесі, 52 (2ГИС)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 lg:py-28">
+    <div class="absolute inset-0 z-0">
+      <img src="assets/images/hero_nature.jpg" alt="Природа Казахстана с K.K. Tour" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-emerald-950/70 to-slate-950/80"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-emerald-300 text-xs sm:text-sm font-semibold mb-6 animate-pulse">
+        <i data-lucide="award" class="w-4 h-4"></i>
+        <span data-i18n="hero_badge">Туроператор №1 по Казахстану из Алматы</span>
+      </div>
+
+      <h1 data-i18n="hero_title" class="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif max-w-4xl tracking-tight leading-tight sm:leading-tight">
+        Открой невероятную природу Казахстана с K.K. Tour
+      </h1>
+
+      <p data-i18n="hero_desc" class="mt-6 text-base sm:text-xl text-emerald-100 max-w-2xl font-light leading-relaxed">
+        Незабываемые поездки на Кольсай, Каинды, Чарынский каньон, Плато Асы и в Туркестан. Комфортабельные спринтеры, опытные гиды, классная атмосфера и фотоотчёт в подарок!
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+        <a href="#featured-tours" class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold px-8 py-4 rounded-full shadow-2xl shadow-emerald-500/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+          <span data-i18n="hero_btn_explore">Выбрать направление</span>
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+        <a href="destinations.html" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-semibold px-8 py-4 rounded-full transition-all flex items-center justify-center gap-2">
+          <i data-lucide="camera" class="w-5 h-5 text-emerald-400"></i>
+          <span data-i18n="hero_btn_album">Смотреть фотоальбом</span>
+        </a>
+      </div>
+
+      <!-- Quick Search Widget -->
+      <div class="mt-14 w-full max-w-4xl bg-white/95 backdrop-blur-xl p-4 sm:p-6 rounded-3xl shadow-2xl border border-white/40 text-slate-800">
+        <form id="quickSearchForm" class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+          <div class="text-left">
+            <label data-i18n="search_loc_label" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Локация</label>
+            <div class="relative">
+              <select id="searchLocation" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 px-4 text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none appearance-none">
+                <option value="all" data-i18n="loc_all">Все направления (Алматы)</option>
+                <option value="kolsay" data-i18n="loc_kolsay">Кольсай, Каинды & Чарын</option>
+                <option value="assy" data-i18n="loc_assy">Плато Асы & Водопад</option>
+                <option value="turkestan" data-i18n="loc_turkestan">Туркестан (Исторический)</option>
+                <option value="bao" data-i18n="loc_bao">БАО & Пик Турист</option>
+                <option value="issyk" data-i18n="loc_issyk">Озеро Иссык & Форель</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div class="text-left">
+            <label data-i18n="search_season_label" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Формат выезда</label>
+            <div class="relative">
+              <select id="searchFormat" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 px-4 text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none appearance-none">
+                <option value="all" data-i18n="season_all">Любой формат</option>
+                <option value="weekend" data-i18n="season_weekend">Каждые выходные (Сб-Вс)</option>
+                <option value="daily" data-i18n="season_daily">Однодневные туры</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="search" class="w-4 h-4"></i>
+              <span data-i18n="search_btn">Найти тур</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter Section -->
+  <section class="py-14 bg-white border-y border-emerald-100/60 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="reveal-on-scroll">
+          <div data-i18n="stat_years" class="text-3xl sm:text-4xl font-extrabold text-emerald-800 font-serif">8+ лет</div>
+          <div data-i18n="stat_years_desc" class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Организуем лучшие туры по Казахстану</div>
+        </div>
+        <div class="reveal-on-scroll delay-100">
+          <div data-i18n="stat_travelers" class="text-3xl sm:text-4xl font-extrabold text-emerald-800 font-serif">45 000+</div>
+          <div data-i18n="stat_travelers_desc" class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Довольных туристов с K.K. Tour</div>
+        </div>
+        <div class="reveal-on-scroll delay-200">
+          <div data-i18n="stat_rating" class="text-3xl sm:text-4xl font-extrabold text-amber-500 font-serif">4.9 ★ 2GIS</div>
+          <div data-i18n="stat_rating_desc" class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Высший рейтинг доверия в Алматы</div>
+        </div>
+        <div class="reveal-on-scroll delay-300">
+          <div data-i18n="stat_safety" class="text-3xl sm:text-4xl font-extrabold text-emerald-800 font-serif">100%</div>
+          <div data-i18n="stat_safety_desc" class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Оплата Kaspi Pay и страховка</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tour Packages Section -->
+  <section id="featured-tours" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+      <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+        <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+        <span data-i18n="tours_badge">Хиты продаж K.K. Tour</span>
+      </div>
+      <h2 data-i18n="tours_title" class="text-3xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">
+        Самые популярные маршруты
+      </h2>
+      <p data-i18n="tours_subtitle" class="mt-4 text-slate-600 text-base sm:text-lg">
+        Насыщенные авторские программы со всеми входными билетами в нацпарки, эко-сборами, трансфером и гидом.
+      </p>
+    </div>
+
+    <!-- Карточки туров загружаются динамически из Google Sheets через tours-loader.js -->
+    <div id="tours-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="col-span-full flex flex-col items-center justify-center py-20 gap-4 text-slate-400">
+        <div class="w-10 h-10 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
+        <p class="text-sm font-medium">Загружаем туры...</p>
+      </div>
+    </div>
+
+    <!-- Quick link to photo album -->
+    <div class="mt-12 text-center reveal-on-scroll">
+      <a href="destinations.html" class="inline-flex items-center gap-2 text-emerald-700 hover:text-emerald-800 font-semibold text-base group">
+        <span data-i18n="tours_album_link">Смотреть живые фото туристов из поездок K.K. Tour</span>
+        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Standards Section -->
+  <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+      <div class="inline-flex items-center gap-2 text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+        <span data-i18n="standards_badge">Почему выбирают K.K. Tour</span>
+      </div>
+      <h2 data-i18n="standards_title" class="text-3xl sm:text-5xl font-bold font-serif text-slate-900 tracking-tight">
+        Комфорт, безопасность и лучшие эмоции
+      </h2>
+      <p data-i18n="standards_subtitle" class="mt-4 text-slate-600 text-base sm:text-lg">
+        Мы делаем путешествия доступными, комфортными и незабываемыми для каждого гостя.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="interactive-card bg-white rounded-3xl p-8 border border-emerald-100/60 shadow-sm hover:shadow-xl transition-all duration-300 reveal-on-scroll">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6">
+          <i data-lucide="credit-card" class="w-7 h-7"></i>
+        </div>
+        <h3 data-i18n="feat1_title" class="text-xl font-bold font-serif text-slate-900 mb-3">Официально и надёжно: Kaspi Pay</h3>
+        <p data-i18n="feat1_desc" class="text-slate-600 text-sm leading-relaxed">
+          Оплата онлайн через Kaspi Gold / Kaspi Pay с фискальным чеком или наличными в офисе в Алматы (ул. Панфилова, 52).
+        </p>
+      </div>
+
+      <div class="interactive-card bg-white rounded-3xl p-8 border border-emerald-100/60 shadow-sm hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-100">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6">
+          <i data-lucide="truck" class="w-7 h-7"></i>
+        </div>
+        <h3 data-i18n="feat2_title" class="text-xl font-bold font-serif text-slate-900 mb-3">Комфортабельный транспорт</h3>
+        <p data-i18n="feat2_desc" class="text-slate-600 text-sm leading-relaxed">
+          Современные микроавтобусы Mercedes Sprinter с кондиционером, откидными креслами и опытными водителями с горным стажем.
+        </p>
+      </div>
+
+      <div class="interactive-card bg-white rounded-3xl p-8 border border-emerald-100/60 shadow-sm hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-200">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6">
+          <i data-lucide="smile" class="w-7 h-7"></i>
+        </div>
+        <h3 data-i18n="feat3_title" class="text-xl font-bold font-serif text-slate-900 mb-3">Опытные душевные гиды</h3>
+        <p data-i18n="feat3_desc" class="text-slate-600 text-sm leading-relaxed">
+          Увлекательные истории, фотосессии на лучших видовых точках и забота о каждом туристе от выезда до возвращения.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal with Google Sheets Tour Details Preview -->
+  <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 opacity-0 transition-opacity duration-300">
+    <div class="modal-card bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300 max-h-[94vh] overflow-hidden flex flex-col">
+      
+      <!-- Top Image & Quick Badges Preview -->
+      <div class="relative h-44 sm:h-52 bg-slate-900 overflow-hidden shrink-0">
+        <img id="modalTourImg" src="assets/images/album_lake.jpg" alt="Тур K.K. Tour" class="w-full h-full object-cover opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+        
+        <!-- Close Button -->
+        <button id="closeBookingModal" class="absolute top-3 right-3 p-2 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white rounded-full transition-colors z-10" aria-label="Закрыть">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Floating Badges -->
+        <div class="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 z-10">
+          <span id="modalTourBadge" class="bg-emerald-600/90 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-emerald-400/30">ТОП</span>
+          <span id="modalTourRating" class="bg-amber-500/90 backdrop-blur-md text-white text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">★ 4.99</span>
+        </div>
+
+        <!-- Tour Title & Meta Overlay on Image -->
+        <div class="absolute bottom-3 left-4 right-4 text-white">
+          <div class="flex items-center gap-3 text-xs text-emerald-300 font-semibold mb-1">
+            <span id="modalTourDuration" class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 2 дня / 1 ночь</span>
+            <span class="text-white/40">•</span>
+            <span id="modalTourDays" class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Сб – Вс</span>
+          </div>
+          <h3 id="modalTourTitle" class="text-lg sm:text-xl font-bold font-serif leading-tight drop-shadow-md text-white">
+            2 дня / 6 локаций: Кольсай, Каинды, Чарын
+          </h3>
+        </div>
+      </div>
+
+      <!-- Scrollable Form Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4">
+        
+        <!-- Detailed Tour Description -->
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3.5">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">О маршруте:</span>
+          <p id="modalTourDesc" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Хит сезона! Озёра Кольсай и Каинды, Чёрный и Лунный каньоны, река Шарын и урочище Куртогай.
+          </p>
+        </div>
+
+        <form id="bookingForm" class="space-y-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Выбрать другое направление</label>
+            <div class="relative">
+              <select id="bookTourSelect" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3.5 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none appearance-none"></select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3 top-3 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">Количество человек</label>
+            <div class="flex items-center gap-3">
+              <button type="button" id="btnMinusGuest" class="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-lg flex items-center justify-center transition-colors">−</button>
+              <input type="number" id="bookGuestsInput" min="1" max="50" value="1" class="flex-1 bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3 text-center text-base font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              <button type="button" id="btnPlusGuest" class="w-11 h-11 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-lg flex items-center justify-center transition-colors">+</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Ваше имя (необязательно)</label>
+            <input type="text" id="bookNameInput" placeholder="Например: Айгерим" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2.5 px-3.5 text-xs sm:text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1">Вопросы или пожелания к поездке</label>
+            <textarea id="bookCommentInput" rows="2" placeholder="Например: Нужен трансфер от Панфилова 52" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-2 px-3 text-xs sm:text-sm text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none resize-none"></textarea>
+          </div>
+
+          <!-- Price Box -->
+          <div class="bg-emerald-50/90 border border-emerald-200 rounded-2xl p-3.5 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-500 block">За 1 человека: <strong id="bookPerPersonPrice" class="text-slate-700">28 500 ₸</strong></span>
+              <span class="text-xs text-slate-500 block mt-0.5">Мест: <strong id="bookGuestsCount" class="text-slate-700">1 чел.</strong></span>
+            </div>
+            <div class="text-right">
+              <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">Итого к оплате:</span>
+              <span id="bookTotalPrice" class="text-xl sm:text-2xl font-black text-emerald-900">28 500 ₸</span>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Забронировать через WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover border border-emerald-500/30">
+            <div>
+              <span class="text-2xl font-bold font-serif tracking-tight text-white">K.K. <span class="text-emerald-400">Tour</span></span>
+              <p class="text-xs text-emerald-400/80 font-medium">Туроператор по Казахстану • Алматы</p>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm max-w-md leading-relaxed">
+            Организуем авторские и групповые туры по самым живописным уголкам Казахстана. Комфортный транспорт, опытные гиды, официальная оплата Kaspi Pay.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Навигация</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="index.html" class="hover:text-emerald-400 transition-colors">Главная</a></li>
+            <li><a href="destinations.html" class="hover:text-emerald-400 transition-colors">Фотоальбом</a></li>
+            <li><a href="about.html" class="hover:text-emerald-400 transition-colors">О нас & Отзывы 2ГИС</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition-colors">Контакты</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Контакты</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0"></i>
+              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="hover:text-emerald-400 transition-colors">Алматы, Панфилов көшесі, 52</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <a href="https://wa.me/77472801671" target="_blank" class="hover:text-emerald-400 transition-colors">+7 747 280 16 71</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span>09:00 – 21:00 (Ежедневно)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 K.K. Tour. Все права защищены. Алматы, Панфилов көшесі, 52.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com/k.k.tour/" target="_blank" class="hover:scale-110 transition-transform" title="Instagram @k.k.tour">
+            <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+          <a href="https://wa.me/77472801671" target="_blank" class="hover:scale-110 transition-transform" title="WhatsApp K.K. Tour">
+            <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+          <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="hover:scale-110 transition-transform" title="2GIS K.K. Tour">
+            <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tours-loader.js"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
