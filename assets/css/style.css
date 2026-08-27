@@ -297,6 +297,27 @@ body {
   z-index: 5;
 }
 
+.tour-featured-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .25rem .75rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(217,119,6,.35);
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  z-index: 6;
+}
+
+.tour-badge + .tour-featured-badge {
+  top: 2.8rem;
+}
+
 .tour-rating-badge {
   position: absolute;
   top: 1rem;

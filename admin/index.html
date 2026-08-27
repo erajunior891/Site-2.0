@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Управление турами — K.K. Tour Admin</title>
+  <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F2FBF6',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064E3B',
+              dark: '#0B291F'
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Toast Notification Box -->
+  <div id="adminToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 border border-emerald-500/40 text-white rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-3">
+      <i id="toastIcon" data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+      <span id="toastMessage" class="text-sm font-semibold">Сохранено</span>
+    </div>
+  </div>
+
+  <!-- Admin Navbar -->
+  <header class="bg-slate-900/90 backdrop-blur-xl border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand & Admin Indicator -->
+      <div class="flex items-center gap-4">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <img src="../assets/images/logo.jpg" alt="K.K. Tour" class="w-11 h-11 rounded-2xl object-cover shadow border border-emerald-500/30 group-hover:scale-105 transition-transform">
+          <div>
+            <span class="text-xl font-bold font-serif text-white tracking-tight">K.K. <span class="text-emerald-400">Tour</span></span>
+            <span class="text-[10px] tracking-widest uppercase font-bold text-emerald-400 block -mt-0.5">Admin Console</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- User Profile, Role Badge & Logout -->
+      <div class="flex items-center gap-4">
+        
+        <a href="../destinations.html" target="_blank" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-emerald-400 bg-slate-800/80 px-3.5 py-2 rounded-xl border border-slate-700 transition-colors">
+          <i data-lucide="external-link" class="w-4 h-4"></i>
+          <span>Открыть каталог на сайте</span>
+        </a>
+
+        <div class="flex items-center gap-3 pl-2 border-l border-slate-800">
+          <div class="text-right hidden sm:block">
+            <span id="adminUserEmail" class="text-xs font-bold text-white block">admin@kktour.kz</span>
+            <span id="adminRoleBadge" class="inline-block text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">ADMIN</span>
+          </div>
+          <button id="btnAdminLogout" class="p-2.5 bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 rounded-xl transition-colors border border-slate-700 hover:border-rose-500/30 cursor-pointer" title="Выйти из аккаунта">
+            <i data-lucide="log-out" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- Top Summary Dashboard Cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+      
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-5 sm:p-6 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
+          <i data-lucide="compass" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Всего туров</span>
+          <span id="statTotalTours" class="text-2xl sm:text-3xl font-black text-white">0</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-5 sm:p-6 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+          <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Опубликовано</span>
+          <span id="statPublishedTours" class="text-2xl sm:text-3xl font-black text-emerald-400">0</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-5 sm:p-6 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0">
+          <i data-lucide="file-text" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Черновики</span>
+          <span id="statDraftTours" class="text-2xl sm:text-3xl font-black text-amber-400">0</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-5 sm:p-6 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-amber-600/20 text-amber-400 flex items-center justify-center shrink-0">
+          <i data-lucide="star" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">На главной</span>
+          <span id="statFeaturedTours" class="text-2xl sm:text-3xl font-black text-amber-400">0</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tours Management Section -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+      
+      <!-- Toolbar: Title, Add button, Search, Filter -->
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+        
+        <div>
+          <h2 class="text-xl font-bold text-white flex items-center gap-2.5">
+            <span>Каталог туров</span>
+            <span class="text-xs font-normal text-slate-400">• Управление базой данных</span>
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          
+          <!-- Search input -->
+          <div class="relative min-w-[220px]">
+            <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3.5 top-3 pointer-events-none"></i>
+            <input 
+              type="text" 
+              id="adminSearchInput"
+              placeholder="Поиск по названию/slug..."
+              class="w-full bg-slate-800/80 border border-slate-700 rounded-xl py-2 pl-10 pr-4 text-xs font-semibold text-white placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 transition-colors">
+          </div>
+
+          <!-- Add Tour Button -->
+          <a href="tour-edit.html?id=new" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/20 transition-all flex items-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Добавить тур</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="pt-5 pb-6 flex flex-wrap items-center gap-2" id="adminStatusFilter">
+        <button class="status-tab active px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white transition-colors" data-status="all">Все туры</button>
+        <button class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors" data-status="published">Опубликованные</button>
+        <button class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors" data-status="draft">Черновики</button>
+        <button class="status-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors" data-status="archived">В архиве</button>
+      </div>
+
+      <!-- Tours Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-800/60 text-slate-400 font-bold uppercase tracking-wider text-[11px] border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4 rounded-l-xl">Тур</th>
+              <th class="py-3 px-3">Категория</th>
+              <th class="py-3 px-3">Цена</th>
+              <th class="py-3 px-3">Дней</th>
+              <th class="py-3 px-3 text-center">⭐ Главная</th>
+              <th class="py-3 px-3">Статус</th>
+              <th class="py-3 px-4 rounded-r-xl text-right">Действия</th>
+            </tr>
+          </thead>
+          <tbody id="adminToursTableBody" class="divide-y divide-slate-800/60 font-medium">
+            <tr>
+              <td colspan="7" class="py-12 text-center text-slate-500">
+                <div class="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                <span>Загружаем список туров из базы Supabase...</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Delete Confirmation Modal (Admin Only) -->
+  <div id="deleteConfirmModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 transition-opacity duration-200">
+    <div class="bg-slate-900 border border-rose-500/30 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl">
+      <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center mb-4">
+        <i data-lucide="trash-2" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-lg font-bold text-white mb-2">Удалить тур безвозвратно?</h3>
+      <p class="text-xs sm:text-sm text-slate-400 mb-6 leading-relaxed">
+        Вы собираетесь удалить тур <strong id="deleteTourName" class="text-white"></strong>. Это действие удалит все переводы и пункты включённых услуг без возможности восстановления.
+      </p>
+      <div class="flex items-center justify-end gap-3">
+        <button id="btnCancelDelete" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-colors">Отмена</button>
+        <button id="btnConfirmDelete" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition-colors shadow-lg shadow-rose-600/30">Да, удалить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="../assets/js/admin-api.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

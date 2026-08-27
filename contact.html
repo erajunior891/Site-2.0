@@ -53,7 +53,7 @@
 
       <nav class="hidden md:flex items-center gap-8">
         <a href="index.html" data-i18n="nav_home" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Главная</a>
-        <a href="destinations.html" data-i18n="nav_album" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Фотоальбом</a>
+        <a href="destinations.html" data-i18n="nav_tours" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Туры</a>
         <a href="about.html" data-i18n="nav_about" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">О нас & Отзывы 2ГИС</a>
         <a href="contact.html" data-i18n="nav_contact" class="text-emerald-700 font-semibold text-sm transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-emerald-600">Контакты</a>
       </nav>
@@ -106,7 +106,7 @@
         <i data-lucide="home" class="w-5 h-5"></i><span data-i18n="nav_home">Главная</span>
       </a>
       <a href="destinations.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
-        <i data-lucide="image" class="w-5 h-5"></i><span data-i18n="nav_album">Фотоальбом</span>
+        <i data-lucide="compass" class="w-5 h-5"></i><span data-i18n="nav_tours">Туры</span>
       </a>
       <a href="about.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
         <i data-lucide="users" class="w-5 h-5"></i><span data-i18n="nav_about">О нас & Отзывы 2ГИС</span>
@@ -378,7 +378,7 @@
           <h4 data-i18n="footer_nav" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Навигация</h4>
           <ul class="space-y-2 text-xs">
             <li><a href="index.html" data-i18n="nav_home" class="hover:text-emerald-400 transition-colors">Главная</a></li>
-            <li><a href="destinations.html" data-i18n="nav_album" class="hover:text-emerald-400 transition-colors">Фотоальбом природы</a></li>
+            <li><a href="destinations.html" data-i18n="nav_tours" class="hover:text-emerald-400 transition-colors">Туры</a></li>
             <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас и отзывы 2ГИС</a></li>
             <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты и FAQ</a></li>
           </ul>
@@ -523,6 +523,10 @@
     </div>
   </div>
 
+  <!-- Supabase CDN & Core Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/tours-api.js"></script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/tours-loader.js"></script>

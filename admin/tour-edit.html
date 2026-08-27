@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактирование тура — K.K. Tour Admin</title>
+  <link rel="icon" type="image/jpeg" href="../assets/images/favicon.jpg">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F2FBF6',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064E3B',
+              dark: '#0B291F'
+            }
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-white">
+
+  <!-- Toast Notification Box -->
+  <div id="adminToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 border border-emerald-500/40 text-white rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-3">
+      <i id="toastIcon" data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+      <span id="toastMessage" class="text-sm font-semibold">Сохранено</span>
+    </div>
+  </div>
+
+  <!-- Admin Header -->
+  <header class="bg-slate-900/90 backdrop-blur-xl border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition-colors" title="Назад к списку">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        </a>
+        <div>
+          <h1 id="pageTitle" class="text-lg sm:text-xl font-bold font-serif text-white leading-tight">Добавление тура</h1>
+          <span id="pageSubTitle" class="text-[11px] font-medium text-slate-400">Заполните поля и переводы для всех языков</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-colors">Отмена</a>
+        <button id="btnSaveDraft" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 font-bold text-xs transition-colors cursor-pointer">Сохранить черновик</button>
+        <button id="btnPublishTour" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-lg shadow-emerald-600/30 flex items-center gap-2 cursor-pointer">
+          <i data-lucide="check" class="w-4 h-4"></i>
+          <span>Опубликовать тур</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Edit Form Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <form id="tourEditForm" class="space-y-8">
+      
+      <!-- Top Grid: General Parameters & Photo -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Main Core Details (2 columns) -->
+        <div class="lg:col-span-2 bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <h3 class="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="settings" class="w-4 h-4 text-emerald-400"></i>
+            <span>Базовые параметры тура</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Slug (URL-идентификатор) *</label>
+              <input 
+                type="text" 
+                id="tourSlug" 
+                required 
+                placeholder="kolsay-2days"
+                class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-mono font-semibold text-white focus:outline-none focus:border-emerald-500">
+              <span class="text-[11px] text-slate-500 mt-1 block">Уникальный slug без пробелов (только латиница, цифры и дефис)</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Категория тура *</label>
+              <select id="tourCategory" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500 appearance-none">
+                <option value="lakes">🌊 Озёра (Кольсай, Каинды, Иссык, БАО)</option>
+                <option value="canyons">🏜️ Каньоны (Чарын, Чёрный, Лунный)</option>
+                <option value="mountains">🏔️ Горы и плато (Асы, Чункурчак)</option>
+                <option value="history">🕌 История (Туркестан, Отырар)</option>
+                <option value="jeep">🚙 Джип-туры</option>
+                <option value="custom">✨ Индивидуальный / VIP</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Стоимость за 1 чел. (₸) *</label>
+              <input 
+                type="number" 
+                id="tourPrice" 
+                required 
+                min="0"
+                step="500"
+                placeholder="28500"
+                class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-bold text-emerald-400 focus:outline-none focus:border-emerald-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Рейтинг (от 1.00 до 5.00)</label>
+              <input 
+                type="number" 
+                id="tourRating" 
+                min="1.0" 
+                max="5.0" 
+                step="0.01" 
+                value="4.99"
+                class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-bold text-amber-400 focus:outline-none focus:border-emerald-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Длительность в днях (число) *</label>
+              <input 
+                type="number" 
+                id="tourDurationDays" 
+                required 
+                min="1" 
+                max="30" 
+                value="2"
+                class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Статус публикации *</label>
+              <select id="tourStatus" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500 appearance-none">
+                <option value="published">🟢 Опубликован (виден на сайте)</option>
+                <option value="draft">🟡 Черновик (скрыт от посетителей)</option>
+                <option value="archived">⚪ В архиве</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Featured Switcher & Order -->
+          <div class="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="tourFeatured" class="w-5 h-5 rounded-lg text-emerald-600 bg-slate-800 border-slate-700 focus:ring-emerald-500 focus:ring-offset-slate-900">
+              <div>
+                <span class="text-sm font-bold text-white block">⭐ Показывать на главной странице (Featured)</span>
+                <span class="text-xs text-slate-400">Тур попадёт в блок «Самые популярные маршруты» на index.html</span>
+              </div>
+            </label>
+
+            <div class="flex items-center gap-2">
+              <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Порядок:</label>
+              <input 
+                type="number" 
+                id="tourFeaturedOrder" 
+                min="1" 
+                max="99" 
+                value="1" 
+                class="w-16 bg-slate-800 border border-slate-700 rounded-xl py-2 px-2.5 text-center text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Photo Uploader & Preview (1 column) -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-5 shadow-xl flex flex-col">
+          <h3 class="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <i data-lucide="image" class="w-4 h-4 text-emerald-400"></i>
+            <span>Главная фотография тура</span>
+          </h3>
+
+          <!-- Image Preview Container -->
+          <div class="relative h-48 bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 flex items-center justify-center group">
+            <img id="photoPreview" src="../assets/images/album_lake.jpg" alt="Preview" class="w-full h-full object-cover">
+            <div id="photoPlaceholder" class="hidden flex flex-col items-center text-slate-500 gap-2">
+              <i data-lucide="image" class="w-8 h-8"></i>
+              <span class="text-xs">Нет фотографии</span>
+            </div>
+          </div>
+
+          <!-- File Upload Button to Supabase Storage -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Загрузить в Supabase Storage</label>
+            <input 
+              type="file" 
+              id="photoFileInput" 
+              accept="image/*" 
+              class="block w-full text-xs text-slate-400 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-600 file:text-white hover:file:bg-emerald-500 cursor-pointer">
+            <span id="uploadStatusText" class="text-[11px] text-emerald-400 font-semibold mt-1.5 hidden block"></span>
+          </div>
+
+          <!-- Or direct URL -->
+          <div>
+            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Либо прямая ссылка (URL)</label>
+            <input 
+              type="text" 
+              id="tourPhotoUrl" 
+              placeholder="assets/images/album_lake.jpg"
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl py-2 px-3 text-xs font-semibold text-white focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Multilingual Section (Tabs for RU, KZ, EN) -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+        
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div>
+            <h3 class="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="globe" class="w-4 h-4 text-emerald-400"></i>
+              <span>Тексты и переводы тура</span>
+            </h3>
+            <span class="text-xs text-slate-400">Заполните поля для каждого языка (переключайтесь по вкладкам)</span>
+          </div>
+
+          <!-- Language Tabs -->
+          <div class="flex items-center gap-2 bg-slate-800 p-1 rounded-2xl border border-slate-700">
+            <button type="button" class="lang-tab active px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white transition-all cursor-pointer" data-lang="ru">🇷🇺 Русский</button>
+            <button type="button" class="lang-tab px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition-all cursor-pointer" data-lang="kz">🇰🇿 Қазақша</button>
+            <button type="button" class="lang-tab px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition-all cursor-pointer" data-lang="en">🇬🇧 English</button>
+          </div>
+        </div>
+
+        <!-- Tab 1: Russian (RU) -->
+        <div id="tab-ru" class="lang-tab-content pt-6 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="md:col-span-2">
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Название тура (RU) *</label>
+              <input type="text" id="name_ru" required placeholder="2 дня / 6 локаций: Кольсай, Каинды, Чарын" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Бейдж на карточке (RU)</label>
+              <input type="text" id="badge_ru" placeholder="ТОП Выбор" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Лейбл длительности (RU)</label>
+              <input type="text" id="duration_ru" placeholder="2 дня / 1 ночь" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Дни выезда (RU)</label>
+              <input type="text" id="days_ru" placeholder="Суббота – Воскресенье" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Краткое описание для карточки каталога (RU) *</label>
+            <textarea id="desc_ru" rows="2" placeholder="Хит сезона! Озёра Кольсай и Каинды, Чёрный и Лунный каньоны..." class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Полное описание маршрута для модального окна (RU) *</label>
+            <textarea id="fulldesc_ru" rows="4" placeholder="Самый популярный тур выходного дня из Алматы! За 2 насыщенных дня вы посетите 6 легендарных локаций..." class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm text-slate-200 focus:outline-none focus:border-emerald-500"></textarea>
+          </div>
+        </div>
+
+        <!-- Tab 2: Kazakh (KZ) -->
+        <div id="tab-kz" class="lang-tab-content pt-6 space-y-6 hidden">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="md:col-span-2">
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Тур атауы (KZ)</label>
+              <input type="text" id="name_kz" placeholder="2 күн / 6 локация: Көлсай, Қайыңды, Шарын" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Бейдж (KZ)</label>
+              <input type="text" id="badge_kz" placeholder="ҮЗДІК ТАҢДАУ" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Ұзақтығы (KZ)</label>
+              <input type="text" id="duration_kz" placeholder="2 күн / 1 түн" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Шығу күндері (KZ)</label>
+              <input type="text" id="days_kz" placeholder="Сенбі – Жексенбі" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Қысқаша сипаттама (KZ)</label>
+            <textarea id="desc_kz" rows="2" placeholder="Жыл хиті! Көлсай көлдері, сырлы Қайыңды, Қара және Ай шатқалдары..." class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Маршрут туралы толық сипаттама (KZ)</label>
+            <textarea id="fulldesc_kz" rows="4" placeholder="Алматыдан демалыс күндеріне арналған ең танымал тур..." class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm text-slate-200 focus:outline-none focus:border-emerald-500"></textarea>
+          </div>
+        </div>
+
+        <!-- Tab 3: English (EN) -->
+        <div id="tab-en" class="lang-tab-content pt-6 space-y-6 hidden">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="md:col-span-2">
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Tour Title (EN)</label>
+              <input type="text" id="name_en" placeholder="2 Days / 6 Locations: Kolsay, Kaindy, Charyn" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Badge (EN)</label>
+              <input type="text" id="badge_en" placeholder="TOP CHOICE" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Duration Label (EN)</label>
+              <input type="text" id="duration_en" placeholder="2 days / 1 night" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Departure Days (EN)</label>
+              <input type="text" id="days_en" placeholder="Saturday – Sunday" class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm font-semibold text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Short Description (EN)</label>
+            <textarea id="desc_en" rows="2" placeholder="Top hit! Kolsay & Kaindy lakes with submerged forest, Black & Moon Canyons..." class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Full Route Description for Modal (EN)</label>
+            <textarea id="fulldesc_en" rows="4" placeholder="The most popular weekend tour from Almaty! In 2 eventful days you will explore 6 legendary locations..." class="w-full bg-slate-800 border border-slate-700 rounded-2xl py-3 px-4 text-sm text-slate-200 focus:outline-none focus:border-emerald-500"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- What's Included Builder -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <div>
+            <h3 class="text-base font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              <span>Что включено в стоимость</span>
+            </h3>
+            <span class="text-xs text-slate-400">Пункты отображаются в блоке модального окна бронирования</span>
+          </div>
+
+          <button type="button" id="btnAddIncludeRow" class="px-3.5 py-2 rounded-xl bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Добавить пункт</span>
+          </button>
+        </div>
+
+        <div id="includesRowsContainer" class="space-y-3">
+          <!-- Dynamic Include Rows injected via admin.js -->
+        </div>
+
+      </div>
+
+      <!-- Bottom Save Action Bar -->
+      <div class="flex items-center justify-end gap-4 pt-4">
+        <a href="index.html" class="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-sm transition-colors">Отмена</a>
+        <button type="button" id="btnSaveDraftBottom" class="px-6 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 font-bold text-sm transition-colors cursor-pointer">Сохранить черновик</button>
+        <button type="submit" class="px-8 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-colors shadow-lg shadow-emerald-600/30 flex items-center gap-2 cursor-pointer">
+          <i data-lucide="check" class="w-5 h-5"></i>
+          <span>Опубликовать тур</span>
+        </button>
+      </div>
+
+    </form>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase-client.js"></script>
+  <script src="../assets/js/admin-api.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

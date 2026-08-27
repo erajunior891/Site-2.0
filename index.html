@@ -228,7 +228,7 @@
       <!-- Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-8">
         <a href="index.html" data-i18n="nav_home" class="text-emerald-700 font-semibold text-sm transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-emerald-600">Главная</a>
-        <a href="destinations.html" data-i18n="nav_album" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Фотоальбом</a>
+        <a href="destinations.html" data-i18n="nav_tours" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Туры</a>
         <a href="about.html" data-i18n="nav_about" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">О нас & Отзывы 2ГИС</a>
         <a href="contact.html" data-i18n="nav_contact" class="text-slate-600 hover:text-emerald-700 font-medium text-sm transition-colors">Контакты</a>
       </nav>
@@ -282,7 +282,7 @@
 
         <nav class="mt-8 flex flex-col gap-4">
           <a href="index.html" data-i18n="nav_home" class="text-lg font-semibold text-emerald-700">Главная</a>
-          <a href="destinations.html" data-i18n="nav_album" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Фотоальбом</a>
+          <a href="destinations.html" data-i18n="nav_tours" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Туры</a>
           <a href="about.html" data-i18n="nav_about" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">О нас & Отзывы 2ГИС</a>
           <a href="contact.html" data-i18n="nav_contact" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Контакты</a>
         </nav>
@@ -649,12 +649,18 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Supabase CDN & Core Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-client.js"></script>
+  <script src="assets/js/tours-api.js"></script>
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/tours-loader.js"></script>
   <script>
-    if (window.lucide) lucide.createIcons();
+    document.addEventListener('DOMContentLoaded', () => {
+      window.loadTours({ featuredOnly: true });
+      if (window.lucide) lucide.createIcons();
+    });
   </script>
 </body>
 </html>
