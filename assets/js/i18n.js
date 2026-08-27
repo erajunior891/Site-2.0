@@ -1,6 +1,6 @@
 /**
- * K.K. Tour — Comprehensive i18n Translations (RU, KZ, EN)
- * Complete 100% localization for all pages, modals, reviews, FAQ, and forms.
+ * K.K. Tour — Comprehensive i18n Translations Engine (RU, KZ, EN)
+ * Complete 100% localization for all pages, dynamic tours catalog, booking modal, toasts, and forms.
  */
 
 const translations = {
@@ -60,33 +60,157 @@ const translations = {
     stat_rating: "4.9 ★ 2GIS",
     stat_rating_desc: "Рейтинг на основе 480+ отзывов в 2GIS",
 
-    // Featured Tours
+    // Featured Tours Section
     tours_badge: "Хиты продаж K.K. Tour",
     tours_title: "Самые популярные маршруты",
     tours_subtitle: "Насыщенные авторские программы со всеми входными билетами в нацпарки, эко-сборами, трансфером и гидом.",
-    
-    tour1_title: "2 дня / 6 локаций: Кольсай, Каинды, Чарын",
-    tour1_desc: "Хит года! Кольсайские озёра, загадочное озеро Каинды с затопленным лесом, Черный и Лунный каньоны, река Шарын и урочище Куртогай.",
-    tour1_badge: "ТОП Выбор",
-    tour1_type: "2 дня / 1 ночь (Гостевые дома)",
-    tour1_days: "Суббота – Воскресенье",
-    tour1_price: "28 500 ₸",
-
-    tour2_title: "Плато Асы + Медвежий водопад (Закат)",
-    tour2_desc: "Космические панорамы высокогорного плато Асы, древняя астрофизическая обсерватория, чистейший воздух и живописный Медвежий водопад.",
-    tour2_badge: "Эко-тур",
-    tour2_type: "1 день (Джип-тур / Спринтер)",
-    tour2_days: "Каждую субботу и воскресенье",
-    tour2_price: "16 500 ₸",
-
-    tour3_title: "Жемчужины Семиречья: 1 день / 6 локаций",
-    tour3_desc: "Максимум впечатлений за один день: озеро Кольсай, величественный Чарынский каньон Долина Замков, Черный каньон и панорамные точки.",
-    tour3_badge: "Экспресс",
-    tour3_type: "1 день (Интенсив)",
-    tour3_days: "Выезды каждую неделю",
-    tour3_price: "14 000 ₸",
-
     tours_album_link: "Смотреть живые фото туристов из поездок K.K. Tour",
+
+    // Tour Card Labels
+    tour_price_label: "Стоимость:",
+    tour_price_from: "от",
+    btn_book_card: "Забронировать",
+    tour_currency: "₸",
+    loading_tours: "Загружаем актуальные туры...",
+    error_loading_tours: "Не удалось загрузить данные из таблицы, показываем каталог по умолчанию.",
+
+    // Fallback & Dynamic Tours (RU)
+    "tour_kolsay-2days_name": "2 дня / 6 локаций: Кольсай, Каинды, Чарын",
+    "tour_kolsay-2days_desc": "Хит сезона! Озёра Кольсай и Каинды с затонувшим лесом, Чёрный и Лунный каньоны, река Шарын и урочище Куртогай.",
+    "tour_kolsay-2days_full_desc": "Самый популярный тур выходного дня из Алматы! За 2 насыщенных дня вы посетите 6 легендарных природных локаций: жемчужину Тянь-Шаня озеро Кольсай, мистическое озеро Каинды с затопленным еловым лесом, грандиозный Чарынский каньон (Долина Замков), Чёрный и Лунный каньоны, а также смотровую площадку урочища Куртогай. Ночёвка в уютных гостевых домах посёлка Саты с вкуснейшим домашним питанием.",
+    "tour_kolsay-2days_duration": "2 дня / 1 ночь",
+    "tour_kolsay-2days_days": "Суббота – Воскресенье",
+    "tour_kolsay-2days_badge": "ТОП Выбор",
+    "tour_kolsay-2days_includes": [
+      "Комфортабельный трансфер (Mercedes Sprinter)",
+      "Проживание в гостевых домах в пос. Саты",
+      "Вкусное домашнее питание (ужин, завтрак, обед)",
+      "Все входные билеты и эко-сборы во все нацпарки",
+      "Услуги опытного гида-экскурсовода",
+      "Яркий фотоотчёт в высоком качестве"
+    ],
+
+    "tour_assy-sunset_name": "Плато Асы + Медвежий водопад (Закат)",
+    "tour_assy-sunset_desc": "Панорамы высокогорного плато Асы, древняя астрофизическая обсерватория, чистейший воздух и живописный Медвежий водопад.",
+    "tour_assy-sunset_full_desc": "Погрузитесь в марсианские и космические пейзажи высокогорного плато Асы на высоте 2750 метров! Мы посетим знаменитую астрофизическую обсерваторию Асы-Тургень, живописный Медвежий водопад (высота 30 м) в Тургенском ущелье, сделаем шикарные снимки на закате солнца над горными хребтами и устроим высокогорный пикник.",
+    "tour_assy-sunset_duration": "1 день (Джип-тур / Спринтер)",
+    "tour_assy-sunset_days": "Каждую субботу и воскресенье",
+    "tour_assy-sunset_badge": "Эко-тур",
+    "tour_assy-sunset_includes": [
+      "Комфортабельный транспорт (Алматы — Асы — Алматы)",
+      "Входные билеты в Иле-Алатауский нацпарк",
+      "Прогулка к Медвежьему водопаду",
+      "Экскурсия к обсерватории Асы-Тургень",
+      "Сопровождение позитивного гида",
+      "Фото и видеоотчёт от гида"
+    ],
+
+    "tour_kolsay-1day_name": "Жемчужины Семиречья: 1 день / 6 локаций",
+    "tour_kolsay-1day_desc": "Озеро Кольсай, величественный Чарынский каньон (Долина Замков), Чёрный каньон и панорамные точки.",
+    "tour_kolsay-1day_full_desc": "Экспресс-маршрут для тех, кто хочет увидеть главные красоты Казахстана за один насыщенный день! Вы увидите кристально чистое озеро Кольсай-1, пройдётесь по дну Чарынского каньона (Долина Замков) к реке Шарын, увидите панораму Чёрного и Лунного каньонов и урочище Куртогай.",
+    "tour_kolsay-1day_duration": "1 день (Экспресс)",
+    "tour_kolsay-1day_days": "Выезды каждую неделю",
+    "tour_kolsay-1day_badge": "Экспресс",
+    "tour_kolsay-1day_includes": [
+      "Трансфер на микроавтобусе туда и обратно",
+      "Все эко-сборы в Нацпарки Кольсай и Шарын",
+      "Сопровождение гида-экскурсовода",
+      "Экскурсия по Чарынскому каньону и Кольсаю",
+      "Фотоотчет от гида"
+    ],
+
+    "tour_turkestan-2days_name": "Исторический Юг: Туркестан и Отырар",
+    "tour_turkestan-2days_desc": "Мавзолей Ходжи Ахмеда Ясави, городище Отырар, древний Сауран и комплекс Керуен-Сарай.",
+    "tour_turkestan-2days_full_desc": "Глубокое погружение в историю Великого Шёлкового Пути. Величественный мавзолей Ходжи Ахмеда Ясави (ЮНЕСКО), археологические раскопки древнего Отырара, мавзолей Арыстан-Баб, крепость Сауран и вечернее светомузыкальное шоу в туристическом комплексе «Керуен-Сарай».",
+    "tour_turkestan-2days_duration": "2 дня / 1 ночь",
+    "tour_turkestan-2days_days": "По графику",
+    "tour_turkestan-2days_badge": "История",
+    "tour_turkestan-2days_includes": [
+      "Трансфер на комфортабельном автобусе / поезде",
+      "Проживание в гостинице в Туркестане",
+      "Все входные билеты в музеи и мавзолеи",
+      "Услуги сертифицированного историка-гида",
+      "Посещение комплекса Керуен-Сарай"
+    ],
+
+    "tour_issyk-lake_name": "Озеро Иссык + Форелевое хозяйство",
+    "tour_issyk-lake_desc": "Изумрудное озеро Иссык, музей Золотого Человека, водопад и свежая форель на гриле.",
+    "tour_issyk-lake_full_desc": "Легкий и живописный семейный маршрут всего в 1.5 часах езды от Алматы. Бирюзовое озеро Иссык среди тянь-шаньских елей, историко-культурный музей «Иссык» с курганами Золотого Человека, прогулка к водопаду и обед со свежевыловленной форелью на гриле.",
+    "tour_issyk-lake_duration": "1 день",
+    "tour_issyk-lake_days": "Каждую субботу",
+    "tour_issyk-lake_badge": "Семейный",
+    "tour_issyk-lake_includes": [
+      "Транспортное обслуживание из Алматы и обратно",
+      "Входные билеты на озеро Иссык и музей",
+      "Экскурсионное сопровождение",
+      "Фотоотчет от гида"
+    ],
+
+    "tour_bao-trek_name": "БАО (Большое Алматинское Озеро)",
+    "tour_bao-trek_desc": "Бирюзовое высокогорное зеркало в окружении пиков Заилийского Алатау и ущелье Алма-Арасан.",
+    "tour_bao-trek_full_desc": "Посетите визитную карточку Алматы — Большое Алматинское Озеро на высоте 2500 метров над уровнем моря. Кристально чистая бирюзовая вода, панорама пиков Советы, Озёрный и Турист, а также прогулка по живописному ущелью Алма-Арасан с целебными источниками.",
+    "tour_bao-trek_duration": "1 день",
+    "tour_bao-trek_days": "Вторник, Четверг, Суббота",
+    "tour_bao-trek_badge": "Хит",
+    "tour_bao-trek_includes": [
+      "Эко-трансфер из Алматы",
+      "Экологический сбор в Иле-Алатауский нацпарк",
+      "Сопровождение гида",
+      "Смотровые площадки и фотоотчёт"
+    ],
+
+    "tour_assy-camping_name": "Кемпинг на Плато Асы (Ночь под звёздами)",
+    "tour_assy-camping_desc": "Ночевка в палатках на высоте 2750м, Млечный Путь, костёр, барбекю и Медвежий водопад.",
+    "tour_assy-camping_full_desc": "Незабываемый кемпинг-тур с палатками на высокогорном плато Асы. Ужин у горного костра, наблюдение за звёздным небом и Млечным Путем в телескоп, встреча рассвета на вершине и посещение Медвежьего водопада.",
+    "tour_assy-camping_duration": "2 дня / 1 ночь (Палатки)",
+    "tour_assy-camping_days": "Суббота – Воскресенье",
+    "tour_assy-camping_badge": "Кемпинг",
+    "tour_assy-camping_includes": [
+      "Транспорт 4x4 / Спринтер",
+      "Кемпинговое снаряжение (палатки, спальники, карематы)",
+      "Питание на костре (ужин, завтрак)",
+      "Эко-сборы нацпарка",
+      "Гид и инструктор лагеря"
+    ],
+
+    "tour_horse-tour_name": "Конный тур на закате в горах",
+    "tour_horse-tour_desc": "Обучение верховой езде, живописные тропы Заилийского Алатау и чай у костра.",
+    "tour_horse-tour_full_desc": "Конная прогулка для начинающих и опытных всадников по живописным хребтам и яблоневым садам Заилийского Алатау. Инструктаж, спокойные обученные лошади, панорамные виды на закат и чай на горных травах.",
+    "tour_horse-tour_duration": "1 день (4-5 часов)",
+    "tour_horse-tour_days": "Ежедневно",
+    "tour_horse-tour_badge": "Актив",
+    "tour_horse-tour_includes": [
+      "Трансфер из Алматы",
+      "Аренда экипированных лошадей",
+      "Услуги опытного инструктора-конника",
+      "Горный чай и угощения"
+    ],
+
+    "tour_kyrgyzstan_name": "Кыргызстан: Ущелье Чункурчак & Бишкек",
+    "tour_kyrgyzstan_desc": "Подвесной мост, альпийские луга Чункурчака, колоритный Бишкек и национальная кухня.",
+    "tour_kyrgyzstan_full_desc": "Увлекательный тур в соседний солнечный Кыргызстан! Прогулка по захватывающему подвесному мосту над пропастью в ущелье Чункурчак, панорамы Тянь-Шаня, обзорная экскурсия по центру Бишкека и знакомство с традиционной кухней.",
+    "tour_kyrgyzstan_duration": "2 дня / 1 ночь",
+    "tour_kyrgyzstan_days": "По графику",
+    "tour_kyrgyzstan_badge": "Тур за рубеж",
+    "tour_kyrgyzstan_includes": [
+      "Международный трансфер на микроавтобусе",
+      "Гостиница в Бишкеке",
+      "Все входные билеты и проход на подвесной мост",
+      "Сопровождение гида"
+    ],
+
+    "tour_custom_name": "Индивидуальный / Корпоративный тур",
+    "tour_custom_desc": "Разработаем эксклюзивный маршрут по вашим датам и пожеланиям по всему Казахстану.",
+    "tour_custom_full_desc": "Организуем индивидуальный тур для вашей семьи, компании друзей или корпоративный тимбилдинг под ключ: выберите любые даты, локации, транспорт от VIP-внедорожников до больших автобусов, кейтеринг и развлекательную программу.",
+    "tour_custom_duration": "По запросу",
+    "tour_custom_days": "В любой день",
+    "tour_custom_badge": "VIP / Custom",
+    "tour_custom_includes": [
+      "Индивидуальный транспорт с водителем",
+      "Персональный гид",
+      "Гибкая программа маршрута",
+      "Кейтеринг и бронь лучших локаций"
+    ],
 
     // Adventure Matcher Quiz
     quiz_badge: "Онлайн-подбор тура",
@@ -280,23 +404,36 @@ const translations = {
     faq3_a4: "• Запасные носки и удобная сменная обувь",
     faq3_a5: "• Если вы едете в Туркестан: необходима закрытая скромная одежда (длинные рукава, брюки/юбка) и платок для посещения мавзолеев.",
 
-    // Booking Modal
+    // Enhanced Booking Modal (RU)
     modal_title: "Бронирование тура в K.K. Tour",
     modal_subtitle: "Быстрое оформление через WhatsApp и Kaspi Pay",
-    modal_tour_label: "Выберите тур",
-    modal_guests_label: "Количество туристов",
-    modal_month_label: "Ближайшая дата",
-    modal_name_label: "Ваше имя",
-    modal_phone_label: "WhatsApp номер",
-    modal_price_label: "Итого к оплате:",
-    modal_prepay: "Kaspi Pay / Наличные",
-    modal_submit: "Забронировать через WhatsApp",
-    date_opt1: "Ближайшая суббота",
-    date_opt2: "Ближайшее воскресенье",
-    date_opt3: "Следующие выходные",
-    date_opt4: "Будний день (Индивидуально)",
-    placeholder_name: "Алихан / Динара",
-    placeholder_phone: "+7 (747) 000-00-00",
+    modal_route_title: "О маршруте:",
+    modal_includes_title: "Что включено в стоимость:",
+    modal_select_tour_label: "Выбрать другое направление",
+    modal_guests_label: "Количество человек",
+    modal_name_label: "Ваше имя (необязательно)",
+    modal_name_placeholder: "Например: Айгерим",
+    modal_comment_label: "Вопросы или пожелания к поездке",
+    modal_comment_placeholder: "Например: Нужен трансфер от Панфилова 52",
+    modal_per_person: "За 1 человека:",
+    modal_guests_count_label: "Мест:",
+    modal_total_price_label: "Итого к оплате:",
+    modal_btn_whatsapp: "Забронировать через WhatsApp",
+    modal_close_aria: "Закрыть окно",
+    guests_unit: "чел.",
+    toast_wa_redirect: "Спасибо! Открываем WhatsApp K.K. Tour с вашей заявкой...",
+    toast_form_success: "Заявка успешно сформирована!",
+
+    // WhatsApp Message Strings (RU)
+    wa_greeting: "Здравствуйте, K.K. Tour!",
+    wa_heading: "Хочу забронировать тур:",
+    wa_tour: "Тур:",
+    wa_duration: "Длительность:",
+    wa_days: "Выезд:",
+    wa_guests: "Количество человек:",
+    wa_total: "Итоговая стоимость:",
+    wa_name: "Имя:",
+    wa_comment: "Вопросы / пожелания:",
 
     // Footer
     footer_desc: "K.K. Tour — туроператор по Алматинской области и Казахстану. Адрес: Панфилов көшесі, 52, Алматы. Время работы: 09:00 – 21:00.",
@@ -366,33 +503,157 @@ const translations = {
     stat_rating: "4.9 ★ 2GIS",
     stat_rating_desc: "2GIS-тегі 480+ пікір негізінде",
 
-    // Featured Tours
+    // Featured Tours Section
     tours_badge: "K.K. Tour хиттері",
     tours_title: "Ең танымал маршруттар",
     tours_subtitle: "Ұлттық парктердің барлық кіру билеттері, эко-алымдар, трансфер және кәсіби гид қызметі қамтылған бай бағдарламалар.",
-    
-    tour1_title: "2 күн / 6 локация: Көлсай, Қайыңды, Шарын",
-    tour1_desc: "Жыл хиті! Көлсай көлдері, су астындағы қарағайлары бар сырлы Қайыңды, Қара және Ай шатқалдары, Шарын өзені және Құртоғай.",
-    tour1_badge: "ҮЗДІК ТАҢДАУ",
-    tour1_type: "2 күн / 1 түн (Саты қонақ үйлері)",
-    tour1_days: "Сенбі – Жексенбі",
-    tour1_price: "28 500 ₸",
-
-    tour2_title: "Асы үстірті + Аюлы сарқырама (Күн батуы)",
-    tour2_desc: "Биік таулы Асы үстіртінің ғарыштық панорамасы, көне астрофизикалық обсерватория және көрікті Аюлы сарқырамасы.",
-    tour2_badge: "Эко-тур",
-    tour2_type: "1 күн (Джип-тур / Спринтер)",
-    tour2_days: "Әр сенбі және жексенбі",
-    tour2_price: "16 500 ₸",
-
-    tour3_title: "Жетісу жауһарлары: 1 күн / 6 локация",
-    tour3_desc: "Бір күнде максималды әсер: Көлсай көлі, керемет Шарын шатқалы Қамалдар аңғары, Қара шатқал және панорамалық нүктелер.",
-    tour3_badge: "Экспресс",
-    tour3_type: "1 күн (Қарқынды тур)",
-    tour3_days: "Әр апта сайын",
-    tour3_price: "14 000 ₸",
-
     tours_album_link: "K.K. Tour саяхатшыларының шынайы суреттерін көру",
+
+    // Tour Card Labels
+    tour_price_label: "Бағасы:",
+    tour_price_from: "бастап",
+    btn_book_card: "Тапсырыс беру",
+    tour_currency: "₸",
+    loading_tours: "Өзекті турлар жүктелуде...",
+    error_loading_tours: "Кестеден деректерді жүктеу сәтсіз аяқталды, негізгі каталог көрсетілуде.",
+
+    // Fallback & Dynamic Tours (KZ)
+    "tour_kolsay-2days_name": "2 күн / 6 локация: Көлсай, Қайыңды, Шарын",
+    "tour_kolsay-2days_desc": "Жыл хиті! Көлсай көлдері, су астындағы қарағайлары бар сырлы Қайыңды, Қара және Ай шатқалдары, Шарын өзені және Құртоғай.",
+    "tour_kolsay-2days_full_desc": "Алматыдан демалыс күндеріне арналған ең танымал тур! 2 күн ішінде сіз 6 аты аңызға айналған табиғи мекенді көресіз: Тянь-Шань жауһары Көлсай көлі, су астындағы қарағайлы қайталанбас Қайыңды көлі, Шарын шатқалы (Қамалдар аңғары), Қара және Ай шатқалдары, сондай-ақ Құртоғай панорамасы. Саты ауылындағы жайлы қонақ үйлерде қону және дәмді ұлттық тағамдар.",
+    "tour_kolsay-2days_duration": "2 күн / 1 түн",
+    "tour_kolsay-2days_days": "Сенбі – Жексенбі",
+    "tour_kolsay-2days_badge": "ҮЗДІК ТАҢДАУ",
+    "tour_kolsay-2days_includes": [
+      "Mercedes Sprinter-мен екі жаққа трансфер",
+      "Саты ауылындағы жайлы қонақ үйлерде тұру",
+      "Толыққанды тамақтану (кешкі ас, таңғы ас, түскі ас)",
+      "Барлық ұлттық парктердің эко-алымдары",
+      "Кәсіби гид-экскурсовод қызметі",
+      "Жоғары сападағы тегін фотоесеп"
+    ],
+
+    "tour_assy-sunset_name": "Асы үстірті + Аюлы сарқырама (Күн батуы)",
+    "tour_assy-sunset_desc": "Биік таулы Асы үстіртінің ғарыштық панорамасы, көне астрофизикалық обсерватория және көрікті Аюлы сарқырамасы.",
+    "tour_assy-sunset_full_desc": "2750 метр биіктіктегі Асы үстіртінің ғарыштық табиғатын тамашалаңыз! Түрген шатқалындағы 30 метрлік Аюлы сарқырамасын көріп, Асы-Түрген астрофизикалық обсерваториясына барамыз, күннің батуында керемет суреттерге түсіп, таза тау ауасында демаламыз.",
+    "tour_assy-sunset_duration": "1 күн (Джип-тур / Спринтер)",
+    "tour_assy-sunset_days": "Әр сенбі және жексенбі",
+    "tour_assy-sunset_badge": "Эко-тур",
+    "tour_assy-sunset_includes": [
+      "Ыңғайлы көлік (Алматы — Асы — Алматы)",
+      "Іле-Алатау ұлттық паркіне кіру билеттері",
+      "Аюлы сарқырамасына жаяу серуен",
+      "Асы-Түрген обсерваториясына экскурсия",
+      "Тәжірибелі гид сүйемелдеуі",
+      "Гидтен тегін фото және видеоесеп"
+    ],
+
+    "tour_kolsay-1day_name": "Жетісу жауһарлары: 1 күн / 6 локация",
+    "tour_kolsay-1day_desc": "Бір күнде максималды әсер: Көлсай көлі, керемет Шарын шатқалы Қамалдар аңғары, Қара шатқал және панорамалық нүктелер.",
+    "tour_kolsay-1day_full_desc": "Қазақстанның басты көрікті жерлерін 1 күн ішінде көруге арналған экспресс-бағдарлама! Көлсай-1 көлінің сұлулығы, Шарын өзеніне дейінгі Қамалдар аңғары, Қара және Ай шатқалдарының панорамалық нүктелері.",
+    "tour_kolsay-1day_duration": "1 күн (Экспресс)",
+    "tour_kolsay-1day_days": "Әр апта сайын",
+    "tour_kolsay-1day_badge": "Экспресс",
+    "tour_kolsay-1day_includes": [
+      "Микроавтобуспен екі жаққа трансфер",
+      "Көлсай және Шарын нацпарктерінің эко-алымдары",
+      "Кәсіби гид-экскурсовод қызметі",
+      "Шарын шатқалы мен Көлсайдағы серуен",
+      "Саяхаттан сапалы фотоесеп"
+    ],
+
+    "tour_turkestan-2days_name": "Тарихи Оңтүстік: Түркістан және Отырар",
+    "tour_turkestan-2days_desc": "Қожа Ахмет Ясауи кесенесі, көне Отырар қалашығы, Сауран бекінісі және Керуен-Сарай кешені.",
+    "tour_turkestan-2days_full_desc": "Ұлы Жібек Жолының тарихына терең саяхат. ЮНЕСКО мұрасы Қожа Ахмет Ясауи кесенесі, көне Отырар қалашығы, Арыстан-Баб кесенесі, Сауран қамалы және заманауи «Керуен-Сарай» туристік кешеніндегі кешкі шоу.",
+    "tour_turkestan-2days_duration": "2 күн / 1 түн",
+    "tour_turkestan-2days_days": "Кесте бойынша",
+    "tour_turkestan-2days_badge": "Тарих",
+    "tour_turkestan-2days_includes": [
+      "Ыңғайлы көлік / пойыз трансфері",
+      "Түркістандағы қонақ үйде тұру",
+      "Мұражайлар мен кесенелердің барлық кіру билеттері",
+      "Сертификатталған тарихшы-гид қызметі",
+      "Керуен-Сарай кешеніне бару"
+    ],
+
+    "tour_issyk-lake_name": "Есік көлі + Бақтақ шаруашылығы",
+    "tour_issyk-lake_desc": "Зүбәржат Есік көлі, Алтын Адам мұражайы, сарқырама және грильде піскен балғын бақтақ.",
+    "tour_issyk-lake_full_desc": "Алматыдан 1.5 сағаттық жердегі жеңіл әрі әсем отбасылық саяхат. Тянь-Шань шыршалары қоршаған зүбәржат Есік көлі, Алтын Адам табылған тарихи мұражай, тау сарқырамасы және бақтақ балығынан дәмді түскі ас.",
+    "tour_issyk-lake_duration": "1 күн",
+    "tour_issyk-lake_days": "Әр сенбі",
+    "tour_issyk-lake_badge": "Отбасылық",
+    "tour_issyk-lake_includes": [
+      "Алматыдан және кері көлік қызметі",
+      "Есік көлі мен мұражайдың кіру билеттері",
+      "Экскурсиялық гид қызметі",
+      "Гидтен сапалы фотоесеп"
+    ],
+
+    "tour_bao-trek_name": "ҮАҮ (Үлкен Алматы Көлі)",
+    "tour_bao-trek_desc": "Іле Алатауының шыңдары қоршаған биік таулы көгілдір көл және Алма-Арасан шатқалы.",
+    "tour_bao-trek_full_desc": "Алматының басты інжу-маржаны — теңіз деңгейінен 2500 метр биіктіктегі Үлкен Алматы Көліне саяхат. Мөлдір көгілдір су, Советов, Озерный шыңдарының көрінісі және Алма-Арасан шатқалының сауықтыру бұлақтары.",
+    "tour_bao-trek_duration": "1 күн",
+    "tour_bao-trek_days": "Сейсенбі, Бейсенбі, Сенбі",
+    "tour_bao-trek_badge": "Хит",
+    "tour_bao-trek_includes": [
+      "Алматыдан эко-трансфер",
+      "Іле-Алатау нацпаркінің эко-алымы",
+      "Гид сүйемелдеуі",
+      "Шолу алаңдары мен фотоесеп"
+    ],
+
+    "tour_assy-camping_name": "Асы үстіртіндегі кемпинг (Жұлдызды түн)",
+    "tour_assy-camping_desc": "2750м биіктікте шатырда түнеу, Құс жолы, от жағу, барбекю және Аюлы сарқырамасы.",
+    "tour_assy-camping_full_desc": "Биік таулы Асы үстіртінде шатырмен түнейтін ұмытылмас кемпинг-тур. Тау оты жанындағы кешкі ас, телескоппен жұлдызды аспанды бақылау, таң шапағын қарсы алу және сарқырамаға бару.",
+    "tour_assy-camping_duration": "2 күн / 1 түн (Шатырлар)",
+    "tour_assy-camping_days": "Сенбі – Жексенбі",
+    "tour_assy-camping_badge": "Кемпинг",
+    "tour_assy-camping_includes": [
+      "4x4 / Спринтер көлігі",
+      "Кемпинг жабдықтары (шатыр, ұйықтау қабы, каремат)",
+      "Алауда піскен тамақ (кешкі және таңғы ас)",
+      "Нацпарк эко-алымдары",
+      "Гид және лагерь нұсқаушысы"
+    ],
+
+    "tour_horse-tour_name": "Таудағы күн батуындағы атпен серуен",
+    "tour_horse-tour_desc": "Атқа мінуді үйрену, Іле Алатауының әсем соқпақтары және тау шайы.",
+    "tour_horse-tour_full_desc": "Іле Алатауының көркем қыраттары мен бақтары бойынша атпен серуен. Тыныш үйретілген жылқылар, нұсқаулық, күн батуы көрінісі және емдік тау шайы.",
+    "tour_horse-tour_duration": "1 күн (4-5 сағат)",
+    "tour_horse-tour_days": "Күн сайын",
+    "tour_horse-tour_badge": "Белсенді",
+    "tour_horse-tour_includes": [
+      "Алматыдан трансфер",
+      "Жабдықталған жылқыларды жалға алу",
+      "Тәжірибелі нұсқаушы қызметі",
+      "Тау шайы мен тәттілер"
+    ],
+
+    "tour_kyrgyzstan_name": "Қырғызстан: Шүңқыршақ шатқалы & Бішкек",
+    "tour_kyrgyzstan_desc": "Аспалы көпір, Шүңқыршақтың альпі шалғындары, Бішкек қаласы және ұлттық тағамдар.",
+    "tour_kyrgyzstan_full_desc": "Көршілес шуақты Қырғызстанға қызықты саяхат! Шүңқыршақ шатқалындағы аспалы көпірмен жүру, Тянь-Шань панорамасы, Бішкек қаласының орталығын аралау және дәмді ұлттық тағамдар.",
+    "tour_kyrgyzstan_duration": "2 күн / 1 түн",
+    "tour_kyrgyzstan_days": "Кесте бойынша",
+    "tour_kyrgyzstan_badge": "Шетелдік тур",
+    "tour_kyrgyzstan_includes": [
+      "Халықаралық микроавтобус трансфері",
+      "Бішкектегі қонақ үй",
+      "Барлық кіру билеттері мен аспалы көпірге өту",
+      "Гид сүйемелдеуі"
+    ],
+
+    "tour_custom_name": "Жеке / Корпоративтік тур",
+    "tour_custom_desc": "Қазақстан бойынша сіздің қалауыңыз бен күндеріңізге сәйкес жеке бағыт құрастырамыз.",
+    "tour_custom_full_desc": "Отбасыңызға, достарыңызға немесе ұжымыңызға арналған жеке тур: кез келген датаны, бағытты, VIP көліктерді, дәмді кейтеринг пен арнайы бағдарламаны таңдаңыз.",
+    "tour_custom_duration": "Сұраныс бойынша",
+    "tour_custom_days": "Кез келген күні",
+    "tour_custom_badge": "VIP / Жеке",
+    "tour_custom_includes": [
+      "Жүргізушісі бар жеке көлік",
+      "Жеке гид",
+      "Икемді саяхат бағдарламасы",
+      "Кейтеринг және үздік орындарды брондау"
+    ],
 
     // Adventure Matcher Quiz
     quiz_badge: "Турды онлайн таңдау",
@@ -586,23 +847,36 @@ const translations = {
     faq3_a4: "• Қосалқы шұлық пен ауыстыратын ыңғайлы аяқ киім",
     faq3_a5: "• Егер Түркістанға баратын болсаңыз: жабық киім (ұзын жең, шалбар/ұзын белдемше) және кесенелерге кіруге орамал қажет.",
 
-    // Booking Modal
+    // Enhanced Booking Modal (KZ)
     modal_title: "K.K. Tour-да турды брондау",
     modal_subtitle: "WhatsApp және Kaspi Pay арқылы жылдам ресімдеу",
-    modal_tour_label: "Турды таңдаңыз",
-    modal_guests_label: "Туристер саны",
-    modal_month_label: "Жақын күн",
-    modal_name_label: "Сіздің атыңыз",
-    modal_phone_label: "WhatsApp нөміріңіз",
-    modal_price_label: "Төленетін жалпы сома:",
-    modal_prepay: "Kaspi Pay / Қолма-қол",
-    modal_submit: "WhatsApp арқылы брондау",
-    date_opt1: "Алдағы сенбі",
-    date_opt2: "Алдағы жексенбі",
-    date_opt3: "Келесі демалыс күндері",
-    date_opt4: "Жұмыс күні (Жеке тур)",
-    placeholder_name: "Алихан / Динара",
-    placeholder_phone: "+7 (747) 000-00-00",
+    modal_route_title: "Бағыт туралы:",
+    modal_includes_title: "Бағаға не кіреді:",
+    modal_select_tour_label: "Басқа бағытты таңдау",
+    modal_guests_label: "Адамдар саны",
+    modal_name_label: "Сіздің есіміңіз (міндетті емес)",
+    modal_name_placeholder: "Мысалы: Айгерім",
+    modal_comment_label: "Сұрақтар немесе ұсыныстар",
+    modal_comment_placeholder: "Мысалы: Панфилов 52-ден трансфер қажет",
+    modal_per_person: "1 адамға:",
+    modal_guests_count_label: "Орын:",
+    modal_total_price_label: "Барлығы төлеуге:",
+    modal_btn_whatsapp: "WhatsApp арқылы тапсырыс беру",
+    modal_close_aria: "Терезені жабу",
+    guests_unit: "адам",
+    toast_wa_redirect: "Рақмет! K.K. Tour WhatsApp-қа бағытталудасыз...",
+    toast_form_success: "Өтінім сәтті қабылданды!",
+
+    // WhatsApp Message Strings (KZ)
+    wa_greeting: "Сәлеметсіз бе, K.K. Tour!",
+    wa_heading: "Турға тапсырыс бергім келеді:",
+    wa_tour: "Тур:",
+    wa_duration: "Ұзақтығы:",
+    wa_days: "Шығу:",
+    wa_guests: "Адам саны:",
+    wa_total: "Жалпы бағасы:",
+    wa_name: "Аты:",
+    wa_comment: "Сұрақтар / тілектер:",
 
     // Footer
     footer_desc: "K.K. Tour — Алматы облысы және Қазақстан бойынша туроператор. Мекенжай: Панфилов көшесі, 52, Алматы. Жұмыс уақыты: 09:00 – 21:00.",
@@ -672,33 +946,156 @@ const translations = {
     stat_rating: "4.9 ★ 2GIS",
     stat_rating_desc: "Based on 480+ 2GIS Reviews",
 
-    // Featured Tours
+    // Featured Tours Section
     tours_badge: "K.K. Tour Bestsellers",
     tours_title: "Most Popular Expeditions",
     tours_subtitle: "Rich programs including all national park entrance fees, eco-permits, comfortable round-trip transfers, and local guides.",
-    
-    tour1_title: "2 Days / 6 Locations: Kolsay, Kaindy, Charyn Canyon",
-    tour1_desc: "Our #1 best-seller! Pristine Kolsay Lakes, mythical Kaindy Lake with its submerged forest, Black & Moon Canyons, Charyn River, and Kurty Gorge.",
-    tour1_badge: "BESTSELLER",
-    tour1_type: "2 Days / 1 Night (Saty Guesthouse)",
-    tour1_days: "Saturday – Sunday",
-    tour1_price: "28 500 ₸",
-
-    tour2_title: "Assy Plateau + Bear Waterfall (Sunset)",
-    tour2_desc: "Panoramic cosmic vistas of high-altitude Assy Plateau, the ancient Astrophysical Observatory, and refreshing Bear Waterfall.",
-    tour2_badge: "Scenic Eco-Tour",
-    tour2_type: "1 Day (Sprinter / 4x4)",
-    tour2_days: "Every Saturday & Sunday",
-    tour2_price: "16 500 ₸",
-
-    tour3_title: "Jewels of Semirechye: 1 Day / 6 Locations",
-    tour3_desc: "Maximum scenery in one single day: Lake Kolsay, breathtaking Charyn Canyon Valley of Castles, Black Canyon, and panoramic lookouts.",
-    tour3_badge: "Express",
-    tour3_type: "1 Day (Full-Day Intensive)",
-    tour3_days: "Departures Every Week",
-    tour3_price: "14 000 ₸",
-
     tours_album_link: "See authentic traveler photos from K.K. Tour expeditions",
+
+    // Tour Card Labels
+    tour_price_label: "Price:",
+    tour_price_from: "from",
+    btn_book_card: "Book Now",
+    tour_currency: "₸",
+    loading_tours: "Loading available tours...",
+    error_loading_tours: "Could not load data from sheet, showing default catalog.",
+
+    // Fallback & Dynamic Tours (EN)
+    "tour_kolsay-2days_name": "2 Days / 6 Locations: Kolsay, Kaindy, Charyn Canyon",
+    "tour_kolsay-2days_desc": "Our #1 best-seller! Pristine Kolsay Lakes, mythical Kaindy Lake with its submerged forest, Black & Moon Canyons, Charyn River, and Kurty Gorge.",
+    "tour_kolsay-2days_full_desc": "Our top-rated 2-day weekend adventure from Almaty! Explore 6 breathtaking landmarks: emerald Lake Kolsay, the mystical submerged forest of Lake Kaindy, Charyn Canyon Valley of Castles, Black and Moon Canyons, and scenic Kurty Gorge lookouts. Comfortable overnight stay in Saty village guesthouses with delicious homemade meals.",
+    "tour_kolsay-2days_duration": "2 Days / 1 Night",
+    "tour_kolsay-2days_days": "Saturday – Sunday",
+    "tour_kolsay-2days_badge": "BESTSELLER",
+    "tour_kolsay-2days_includes": [
+      "Round-trip transport (Mercedes Sprinter)",
+      "Cozy guesthouse accommodation in Saty",
+      "Full board meals (dinner, breakfast, lunch)",
+      "All national park entry tickets & eco-fees",
+      "Professional English-speaking guide",
+      "High-resolution photo report as a gift"
+    ],
+
+    "tour_assy-sunset_name": "Assy Plateau + Bear Waterfall (Sunset)",
+    "tour_assy-sunset_desc": "Panoramic cosmic vistas of high-altitude Assy Plateau, the ancient Astrophysical Observatory, and refreshing Bear Waterfall.",
+    "tour_assy-sunset_full_desc": "Immerse yourself in cosmic alpine landscapes at 2,750m altitude! Discover the iconic Assy-Turgen Astrophysical Observatory, hike to the roaring 30m Bear Waterfall in Turgen Gorge, capture golden sunset light over mountain ridges, and enjoy high-altitude fresh air.",
+    "tour_assy-sunset_duration": "1 Day (Sprinter / 4x4)",
+    "tour_assy-sunset_days": "Every Saturday & Sunday",
+    "tour_assy-sunset_badge": "Eco-Tour",
+    "tour_assy-sunset_includes": [
+      "Comfortable round-trip transport from Almaty",
+      "Ile-Alatau National Park entry permits",
+      "Guided hike to Bear Waterfall",
+      "Excursion to Assy-Turgen Observatory",
+      "Certified mountain guide",
+      "High-res photo report"
+    ],
+
+    "tour_kolsay-1day_name": "Jewels of Semirechye: 1 Day / 6 Locations",
+    "tour_kolsay-1day_desc": "Maximum scenery in one single day: Lake Kolsay, breathtaking Charyn Canyon Valley of Castles, Black Canyon, and panoramic lookouts.",
+    "tour_kolsay-1day_full_desc": "Intensive 1-day express tour to witness the crowning jewels of Kazakhstan in a single day: Lake Kolsay-1, Charyn Canyon's Valley of Castles hike down to Charyn river, Moon & Black Canyons, and Kurty Gorge viewpoint.",
+    "tour_kolsay-1day_duration": "1 Day (Express)",
+    "tour_kolsay-1day_days": "Departures Every Week",
+    "tour_kolsay-1day_badge": "Express",
+    "tour_kolsay-1day_includes": [
+      "Round-trip Sprinter transportation",
+      "All eco-fees for Kolsay & Charyn National Parks",
+      "Professional tour leader",
+      "Guided canyon & lake hiking routes",
+      "Photo report"
+    ],
+
+    "tour_turkestan-2days_name": "Historic South: Turkestan & Otrar",
+    "tour_turkestan-2days_desc": "Mausoleum of Khoja Ahmed Yasawi, ancient Otrar, Sauran fortress & Keruen-Saray complex.",
+    "tour_turkestan-2days_full_desc": "An enriching historical pilgrimage along the Great Silk Road: UNESCO-listed Khoja Ahmed Yasawi Mausoleum, ancient ruins of Otrar, Arystan-Bab, Sauran ancient citadel, and the vibrant evening floating show at Keruen-Saray.",
+    "tour_turkestan-2days_duration": "2 Days / 1 Night",
+    "tour_turkestan-2days_days": "On Schedule",
+    "tour_turkestan-2days_badge": "History",
+    "tour_turkestan-2days_includes": [
+      "Comfortable transportation",
+      "Hotel accommodation in Turkestan",
+      "All museum & mausoleum admissions",
+      "Certified heritage guide",
+      "Visit to Keruen-Saray show"
+    ],
+
+    "tour_issyk-lake_name": "Lake Issyk + Trout Farm",
+    "tour_issyk-lake_desc": "Emerald Lake Issyk, Golden Man archaeological museum, waterfall & fresh grilled trout.",
+    "tour_issyk-lake_full_desc": "Delightful family-friendly day tour just 1.5 hours from Almaty: turquoise Lake Issyk nestled in alpine spruce forests, the Golden Man archaeological reserve, a short waterfall walk, and fresh grilled local trout.",
+    "tour_issyk-lake_duration": "1 Day",
+    "tour_issyk-lake_days": "Every Saturday",
+    "tour_issyk-lake_badge": "Family",
+    "tour_issyk-lake_includes": [
+      "Round-trip transport from Almaty",
+      "Lake Issyk & Museum entry tickets",
+      "Tour guide assistance",
+      "Photo memories"
+    ],
+
+    "tour_bao-trek_name": "Big Almaty Lake (BAO)",
+    "tour_bao-trek_desc": "High-altitude turquoise alpine mirror surrounded by Tien Shan peaks & Alma-Arasan gorge.",
+    "tour_bao-trek_full_desc": "Explore the quintessential icon of Almaty — Big Almaty Lake at 2,500m above sea level. Crystalline azure waters, dramatic rocky Tien Shan summits, and scenic walks in the Alma-Arasan gorge.",
+    "tour_bao-trek_duration": "1 Day",
+    "tour_bao-trek_days": "Tue, Thu, Sat",
+    "tour_bao-trek_badge": "Popular",
+    "tour_bao-trek_includes": [
+      "Eco-transfer from Almaty",
+      "National park entry permit",
+      "English-speaking escort guide",
+      "Scenic viewpoints & photos"
+    ],
+
+    "tour_assy-camping_name": "Assy Plateau Tent Camping (Night Under Stars)",
+    "tour_assy-camping_desc": "Tent camping at 2,750m, Milky Way stargazing, campfire, BBQ & Bear Waterfall.",
+    "tour_assy-camping_full_desc": "Wild tent camping expedition on the high-altitude plateau of Assy. Evening campfire BBQ, telescope stargazing under crystal dark skies, alpine sunrise, and Turgen waterfall hike.",
+    "tour_assy-camping_duration": "2 Days / 1 Night (Tents)",
+    "tour_assy-camping_days": "Saturday – Sunday",
+    "tour_assy-camping_badge": "Camping",
+    "tour_assy-camping_includes": [
+      "4x4 / Sprinter transportation",
+      "Full camping gear (tents, sleeping bags, mats)",
+      "Campfire meals (dinner & breakfast)",
+      "Park permits & guide"
+    ],
+
+    "tour_horse-tour_name": "Sunset Horseback Riding in Mountains",
+    "tour_horse-tour_desc": "Horse riding lesson, scenic Tien Shan mountain trails & hot herbal tea.",
+    "tour_horse-tour_full_desc": "Scenic horseback riding excursion across picturesque mountain trails and apple orchards of Zailiyskiy Alatau. Calm trained horses, safety briefing, sunset vistas, and herbal tea.",
+    "tour_horse-tour_duration": "1 Day (4-5 hours)",
+    "tour_horse-tour_days": "Daily",
+    "tour_horse-tour_badge": "Active",
+    "tour_horse-tour_includes": [
+      "Transfer from Almaty",
+      "Equipped horse rental",
+      "Experienced riding instructor",
+      "Mountain herbal tea"
+    ],
+
+    "tour_kyrgyzstan_name": "Kyrgyzstan: Chunkurchak Gorge & Bishkek",
+    "tour_kyrgyzstan_desc": "Suspension bridge, alpine Chunkurchak gorge, lively Bishkek & local cuisine.",
+    "tour_kyrgyzstan_full_desc": "Exhilarating cross-border trip to sunny Kyrgyzstan: walk the thrilling suspension bridge over Chunkurchak gorge, enjoy Tien Shan alpine panoramas, discover central Bishkek, and savor authentic cuisine.",
+    "tour_kyrgyzstan_duration": "2 Days / 1 Night",
+    "tour_kyrgyzstan_days": "On Schedule",
+    "tour_kyrgyzstan_badge": "Cross-Border",
+    "tour_kyrgyzstan_includes": [
+      "International Sprinter transfer",
+      "Hotel in Bishkek",
+      "All admissions & suspension bridge ticket",
+      "Tour leader"
+    ],
+
+    "tour_custom_name": "Custom / Corporate Tour",
+    "tour_custom_desc": "Tailor-made customized itineraries and corporate retreats anywhere in Kazakhstan.",
+    "tour_custom_full_desc": "Bespoke tour arrangements for families, friends, or corporate retreats: customized dates, tailored destinations, transport from luxury 4x4s to executive coaches, catering, and event planning.",
+    "tour_custom_duration": "On Request",
+    "tour_custom_days": "Any Day",
+    "tour_custom_badge": "VIP / Custom",
+    "tour_custom_includes": [
+      "Dedicated private vehicle & driver",
+      "Personal private guide",
+      "Flexible itinerary",
+      "Catering & reservations"
+    ],
 
     // Adventure Matcher Quiz
     quiz_badge: "Tour Matcher",
@@ -781,7 +1178,7 @@ const translations = {
     btn_book_this_tour: "Book this Tour",
 
     // Album Cards
-    card1_tag: "🌊 Kolsay Lake",
+    card1_tag: "🌊 Lake Kolsay",
     card1_badge: "Kolsay",
     card1_title: "Turquoise Mirror of Tien Shan",
     card1_desc: "«2 Days 6 Locations» Tour • K.K. Tour",
@@ -892,23 +1289,36 @@ const translations = {
     faq3_a4: "• Extra socks and comfortable spare shoes",
     faq3_a5: "• For Turkestan trips: Modest clothing with covered shoulders/legs and a headscarf for visiting mausoleums.",
 
-    // Booking Modal
+    // Enhanced Booking Modal (EN)
     modal_title: "Book with K.K. Tour",
     modal_subtitle: "Fast booking via WhatsApp & Kaspi Pay",
-    modal_tour_label: "Select Tour",
-    modal_guests_label: "Number of Travelers",
-    modal_month_label: "Nearest Date",
-    modal_name_label: "Your Name",
-    modal_phone_label: "WhatsApp Number",
-    modal_price_label: "Total Amount:",
-    modal_prepay: "Kaspi Pay / Cash",
-    modal_submit: "Book via WhatsApp",
-    date_opt1: "Nearest Saturday",
-    date_opt2: "Nearest Sunday",
-    date_opt3: "Next Weekend",
-    date_opt4: "Weekday (Private Tour)",
-    placeholder_name: "Alikhan / Dinara",
-    placeholder_phone: "+7 (747) 000-00-00",
+    modal_route_title: "About the route:",
+    modal_includes_title: "What's included in price:",
+    modal_select_tour_label: "Select another destination",
+    modal_guests_label: "Number of guests",
+    modal_name_label: "Your name (optional)",
+    modal_name_placeholder: "e.g. Aisulu / Alex",
+    modal_comment_label: "Questions or special requests",
+    modal_comment_placeholder: "e.g. Need hotel pickup near 52 Panfilov St",
+    modal_per_person: "Per 1 person:",
+    modal_guests_count_label: "Seats:",
+    modal_total_price_label: "Total amount:",
+    modal_btn_whatsapp: "Book via WhatsApp",
+    modal_close_aria: "Close modal",
+    guests_unit: "guests",
+    toast_wa_redirect: "Thank you! Opening K.K. Tour WhatsApp with your request...",
+    toast_form_success: "Request created successfully!",
+
+    // WhatsApp Message Strings (EN)
+    wa_greeting: "Hello K.K. Tour!",
+    wa_heading: "I would like to book a tour:",
+    wa_tour: "Tour:",
+    wa_duration: "Duration:",
+    wa_days: "Departure:",
+    wa_guests: "Number of guests:",
+    wa_total: "Total price:",
+    wa_name: "Name:",
+    wa_comment: "Questions / wishes:",
 
     // Footer
     footer_desc: "K.K. Tour — Tour operator for Almaty region & Kazakhstan. Address: 52 Panfilov St, Almaty. Working hours: 09:00 – 21:00.",
@@ -922,3 +1332,100 @@ const translations = {
     footer_rights: "© 2026 K.K. Tour. All rights reserved. Instagram: @k.k.tour"
   }
 };
+
+/**
+ * Returns active language (ru, kz, en)
+ */
+function getCurrentLang() {
+  return localStorage.getItem('kktour_lang') || 'ru';
+}
+
+/**
+ * Returns translated static string with fallback hierarchy: lang -> ru -> fallback -> key
+ */
+function t(key, fallback) {
+  const lang = getCurrentLang();
+  if (translations[lang] && translations[lang][key] !== undefined) {
+    return translations[lang][key];
+  }
+  if (translations['ru'] && translations['ru'][key] !== undefined) {
+    return translations['ru'][key];
+  }
+  return fallback !== undefined ? fallback : key;
+}
+
+/**
+ * Localizes any tour field based on strict priority:
+ * 1. translations[lang]["tour_<id>_<field>"]
+ * 2. tour[field + '_' + lang] (from Google Sheets e.g., name_kz, name_en, etc.)
+ * 3. translations["ru"]["tour_<id>_<field>"]
+ * 4. tour[field] (base fallback RU)
+ */
+function getTourField(tour, field, lang) {
+  if (!tour) return '';
+  const currentLanguage = lang || getCurrentLang();
+  const tourId = tour.id;
+
+  // 1. Translations dictionary key: tour_<id>_<field>
+  if (tourId && translations[currentLanguage]) {
+    const dictKey = `tour_${tourId}_${field}`;
+    if (translations[currentLanguage][dictKey] !== undefined) {
+      return translations[currentLanguage][dictKey];
+    }
+    // Alias checks for desc / description / full_desc
+    if ((field === 'desc' || field === 'description') && translations[currentLanguage][`tour_${tourId}_desc`] !== undefined) {
+      return translations[currentLanguage][`tour_${tourId}_desc`];
+    }
+    if ((field === 'full_desc' || field === 'full_description') && translations[currentLanguage][`tour_${tourId}_full_desc`] !== undefined) {
+      return translations[currentLanguage][`tour_${tourId}_full_desc`];
+    }
+  }
+
+  // 2. Google Sheets columns with lang suffixes: name_kz, name_en, description_kz, etc.
+  if (currentLanguage === 'kz') {
+    const val = tour[field + '_kz'] || tour[field + '_kk'];
+    if (val !== undefined && val !== '') return val;
+    if (field === 'description' && tour['desc_kz']) return tour['desc_kz'];
+    if (field === 'full_description' && tour['full_desc_kz']) return tour['full_desc_kz'];
+  } else if (currentLanguage === 'en') {
+    const val = tour[field + '_en'];
+    if (val !== undefined && val !== '') return val;
+    if (field === 'description' && tour['desc_en']) return tour['desc_en'];
+    if (field === 'full_description' && tour['full_desc_en']) return tour['full_desc_en'];
+  } else if (currentLanguage === 'ru') {
+    const val = tour[field + '_ru'];
+    if (val !== undefined && val !== '') return val;
+  }
+
+  // 3. Fallback in RU translation dictionary if current language was not RU
+  if (currentLanguage !== 'ru' && tourId && translations['ru']) {
+    const dictKeyRu = `tour_${tourId}_${field}`;
+    if (translations['ru'][dictKeyRu] !== undefined) {
+      return translations['ru'][dictKeyRu];
+    }
+    if ((field === 'desc' || field === 'description') && translations['ru'][`tour_${tourId}_desc`] !== undefined) {
+      return translations['ru'][`tour_${tourId}_desc`];
+    }
+    if ((field === 'full_desc' || field === 'full_description') && translations['ru'][`tour_${tourId}_full_desc`] !== undefined) {
+      return translations['ru'][`tour_${tourId}_full_desc`];
+    }
+  }
+
+  // 4. Base tour field property
+  if (tour[field] !== undefined && tour[field] !== '') {
+    return tour[field];
+  }
+
+  // Fallback for full_description to regular description
+  if (field === 'full_description' || field === 'full_desc') {
+    return getTourField(tour, 'description', currentLanguage);
+  }
+
+  return '';
+}
+
+// Make functions globally available
+window.translations = translations;
+window.getCurrentLang = getCurrentLang;
+window.t = t;
+window.getTourField = getTourField;

@@ -3,7 +3,7 @@
  * 100% Comprehensive Multilingual Engine + Interactive Motion & 3D Physics
  */
 
-let currentLang = localStorage.getItem('kktour_lang') || 'ru';
+let currentLang = (typeof window.getCurrentLang === 'function') ? window.getCurrentLang() : (localStorage.getItem('kktour_lang') || 'ru');
 
 // Actual K.K. Tour Pricing Map in Kazakhstan Tenge (₸)
 window.tourPrices = window.tourPrices || {
@@ -50,11 +50,11 @@ function initLanguage() {
 }
 
 function setLanguage(lang) {
-  if (!translations[lang]) lang = 'ru';
+  if (!translations || !translations[lang]) lang = 'ru';
   currentLang = lang;
   localStorage.setItem('kktour_lang', lang);
 
-  const dict = translations[lang];
+  const dict = translations[lang] || translations['ru'];
 
   // Update text content for data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -80,11 +80,19 @@ function setLanguage(lang) {
     }
   });
 
-  // Update image alt or title attributes
+  // Update image alt attributes
   document.querySelectorAll('[data-i18n-alt]').forEach(el => {
     const key = el.getAttribute('data-i18n-alt');
     if (dict[key] !== undefined) {
       el.alt = dict[key];
+    }
+  });
+
+  // Update aria-labels
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    if (dict[key] !== undefined) {
+      el.setAttribute('aria-label', dict[key]);
     }
   });
 
@@ -100,8 +108,13 @@ function setLanguage(lang) {
     }
   });
 
-  if (typeof updateBookingPrice === 'function') {
-    updateBookingPrice();
+  // Refresh dynamic tour cards and booking modal
+  if (typeof window.refreshTourCardsLanguage === 'function') {
+    window.refreshTourCardsLanguage();
+  }
+
+  if (typeof window.updateBookingPrice === 'function') {
+    window.updateBookingPrice();
   }
 }
 
@@ -152,18 +165,24 @@ function initMobileMenu() {
 
   function openMenu() {
     mobileMenu.classList.remove('translate-x-full');
-    backdrop.classList.remove('hidden');
-    setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+    if (backdrop) {
+      backdrop.classList.remove('hidden');
+      setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+    }
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     mobileMenu.classList.add('translate-x-full');
-    backdrop.classList.add('opacity-0');
-    setTimeout(() => {
-      backdrop.classList.add('hidden');
+    if (backdrop) {
+      backdrop.classList.add('opacity-0');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    } else {
       document.body.style.overflow = '';
-    }, 300);
+    }
   }
 
   menuBtn.addEventListener('click', openMenu);
@@ -195,26 +214,83 @@ function initBookingModal() {
   const modalDays = document.getElementById('modalTourDays');
   const modalRating = document.getElementById('modalTourRating');
   const modalBadge = document.getElementById('modalTourBadge');
+  const modalIncludesWrap = document.getElementById('modalTourIncludesWrap');
+  const modalIncludesList = document.getElementById('modalTourIncludesList');
 
   if (!modal) return;
 
   // --- Update modal content from selected tour data ---
   function updateModalTourDetails(tourId) {
-    const tour = window.toursCatalog[tourId] || {};
+    const tour = window.toursCatalog[tourId] || { id: tourId };
+    const getField = window.getTourField || ((t, f) => t[f] || '');
+    const translate = window.t || ((k, f) => f || k);
+
+    const localizedTitle = getField(tour, 'name') || tour.name || 'Тур по Казахстану';
+    const localizedDesc = getField(tour, 'full_description') || getField(tour, 'description') || tour.description || 'Комфортабельный тур с опытным гидом, трансфером и всеми эко-сборами.';
+    const localizedDuration = getField(tour, 'duration') || tour.duration || '';
+    const localizedDays = getField(tour, 'days') || tour.days || '';
+    const localizedBadge = getField(tour, 'badge') || tour.badge || '';
+    const ratingVal = tour.rating || '4.98';
+    const photo = tour.photo || 'assets/images/album_lake.jpg';
+
+    if (modalTitle) modalTitle.textContent = localizedTitle;
+    if (modalDesc) modalDesc.textContent = localizedDesc;
+    if (modalImg) {
+      modalImg.src = photo;
+      modalImg.alt = localizedTitle;
+    }
     
-    if (modalTitle && tour.name) modalTitle.textContent = tour.name;
-    if (modalDesc) modalDesc.textContent = tour.description || 'Комфортабельный тур с опытным гидом, трансфером и всеми эко-сборами.';
-    if (modalImg && tour.photo) modalImg.src = tour.photo;
-    if (modalDuration) modalDuration.textContent = tour.duration || 'Тур выходного дня';
-    if (modalDays) modalDays.textContent = tour.days || 'По графику';
-    if (modalRating) modalRating.textContent = (tour.rating ? tour.rating + ' ★' : '5.0 ★');
+    if (modalDuration) {
+      modalDuration.innerHTML = `<i data-lucide="clock" class="w-3.5 h-3.5"></i> ${localizedDuration || translate('diff_1day', '1 день')}`;
+    }
+    if (modalDays) {
+      modalDays.innerHTML = `<i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${localizedDays || translate('season_weekend', 'По графику')}`;
+    }
+    if (modalRating) {
+      modalRating.innerHTML = `★ ${ratingVal}`;
+    }
     if (modalBadge) {
-      if (tour.badge) {
-        modalBadge.textContent = tour.badge;
+      if (localizedBadge) {
+        modalBadge.textContent = localizedBadge;
         modalBadge.classList.remove('hidden');
       } else {
         modalBadge.classList.add('hidden');
       }
+    }
+
+    // Render "What's included" section if available
+    let includes = getField(tour, 'includes');
+    if (!includes && tour.includes) includes = tour.includes;
+
+    if (modalIncludesWrap && modalIncludesList) {
+      if (Array.isArray(includes) && includes.length > 0) {
+        modalIncludesList.innerHTML = includes.map(item => `
+          <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+            <span>${item}</span>
+          </div>
+        `).join('');
+        modalIncludesWrap.classList.remove('hidden');
+      } else if (typeof includes === 'string' && includes.trim().length > 0) {
+        const items = includes.split(/[;\n•]/).map(s => s.trim()).filter(s => s.length > 0);
+        if (items.length > 0) {
+          modalIncludesList.innerHTML = items.map(item => `
+            <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+              <span>${item}</span>
+            </div>
+          `).join('');
+          modalIncludesWrap.classList.remove('hidden');
+        } else {
+          modalIncludesWrap.classList.add('hidden');
+        }
+      } else {
+        modalIncludesWrap.classList.add('hidden');
+      }
+    }
+
+    if (window.lucide) {
+      try { lucide.createIcons(); } catch (e) {}
     }
   }
 
@@ -225,16 +301,20 @@ function initBookingModal() {
     const tourId = tourSelect.value || 'kolsay-2days';
     updateModalTourDetails(tourId);
 
+    const translate = window.t || ((k, f) => f || k);
+    const currency = translate('currency_symbol', '₸');
+    const guestsUnit = translate('guests_unit', 'чел.');
+
     const guests = Math.max(1, parseInt(guestsInput.value, 10) || 1);
     const basePrice = window.tourPrices[tourId] || (window.toursCatalog[tourId]?.price) || 28500;
     const total = basePrice * guests;
 
     // Per-person price
-    if (perPersonEl) perPersonEl.textContent = basePrice.toLocaleString('ru-RU') + ' ₸';
+    if (perPersonEl) perPersonEl.textContent = `${basePrice.toLocaleString('ru-RU')} ${currency}`;
     // Guests count
-    if (guestsCountEl) guestsCountEl.textContent = guests + ' чел.';
+    if (guestsCountEl) guestsCountEl.textContent = `${guests} ${guestsUnit}`;
     // Total
-    totalPriceEl.textContent = total.toLocaleString('ru-RU') + ' ₸';
+    totalPriceEl.textContent = `${total.toLocaleString('ru-RU')} ${currency}`;
   };
 
   // Tour select & guests input events
@@ -257,7 +337,11 @@ function initBookingModal() {
 
   // --- Open modal ---
   window.openBookingModal = function(preferredTour) {
-    if (preferredTour && tourSelect) tourSelect.value = preferredTour;
+    if (preferredTour && tourSelect) {
+      if (tourSelect.querySelector(`option[value="${preferredTour}"]`)) {
+        tourSelect.value = preferredTour;
+      }
+    }
     if (guestsInput) guestsInput.value = 1;
     window.updateBookingPrice();
     modal.classList.remove('hidden');
@@ -289,49 +373,70 @@ function initBookingModal() {
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
+  // Escape key handler for booking modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
   // --- Form submit → WhatsApp ---
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      const getField = window.getTourField || ((t, f) => t[f] || '');
+      const translate = window.t || ((k, f) => f || k);
+
       const name    = document.getElementById('bookNameInput')?.value.trim() || '';
       const comment = document.getElementById('bookCommentInput')?.value.trim() || '';
-      const tourId  = tourSelect?.value || '';
-      const tourObj = window.toursCatalog[tourId] || {};
-      const tourName = tourObj.name || tourSelect?.options[tourSelect.selectedIndex]?.text?.replace(/\s*\(.*\)$/, '').trim() || 'Тур по Казахстану';
+      const tourId  = tourSelect?.value || 'kolsay-2days';
+      const tourObj = window.toursCatalog[tourId] || { id: tourId };
+
+      const localizedTourName = getField(tourObj, 'name') || tourObj.name || tourSelect?.options[tourSelect.selectedIndex]?.text?.replace(/\s*\(.*\)$/, '').trim() || 'Тур по Казахстану';
+      const localizedDuration = getField(tourObj, 'duration') || tourObj.duration || '';
+      const localizedDays = getField(tourObj, 'days') || tourObj.days || '';
+
       const guests   = guestsInput?.value || '1';
       const basePrice = window.tourPrices[tourId] || tourObj.price || 28500;
-      const total    = (basePrice * parseInt(guests)).toLocaleString('ru-RU') + ' ₸';
+      const total    = (basePrice * parseInt(guests)).toLocaleString('ru-RU') + ' ' + translate('currency_symbol', '₸');
 
-      // Build WhatsApp message — plain clean format
+      // Build localized WhatsApp message
+      const greeting = translate('wa_greeting', 'Здравствуйте, K.K. Tour!');
+      const heading  = translate('wa_heading', 'Хочу забронировать тур:');
+      const lblTour  = translate('wa_tour', 'Тур:');
+      const lblDur   = translate('wa_duration', 'Длительность:');
+      const lblDays  = translate('wa_days', 'Выезд:');
+      const lblGuests= translate('wa_guests', 'Количество человек:');
+      const lblTotal = translate('wa_total', 'Итоговая стоимость:');
+      const lblName  = translate('wa_name', 'Имя:');
+      const lblComm  = translate('wa_comment', 'Вопросы / пожелания:');
+
       let lines = [
-        'Здравствуйте, K.K. Tour!',
-        'Хочу забронировать тур:',
+        greeting,
+        heading,
         '',
-        'Тур: ' + tourName,
+        `${lblTour} ${localizedTourName}`
       ];
 
-      if (tourObj.duration) lines.push('Длительность: ' + tourObj.duration);
-      if (tourObj.days)     lines.push('Выезд: ' + tourObj.days);
+      if (localizedDuration) lines.push(`${lblDur} ${localizedDuration}`);
+      if (localizedDays)     lines.push(`${lblDays} ${localizedDays}`);
 
-      lines.push('Количество человек: ' + guests);
-      lines.push('Итоговая стоимость: ' + total);
+      lines.push(`${lblGuests} ${guests}`);
+      lines.push(`${lblTotal} ${total}`);
 
-      if (name)    lines.push('Имя: ' + name);
-      if (comment) lines.push('Вопросы / комментарии: ' + comment);
+      if (name)    lines.push(`${lblName} ${name}`);
+      if (comment) lines.push(`${lblComm} ${comment}`);
 
       const msgText = lines.join('\n');
       const waUrl = `https://wa.me/77472801671?text=${encodeURIComponent(msgText)}`;
 
       closeModal();
 
-      let toastMsg = 'Спасибо! Открываем WhatsApp K.K. Tour с вашей заявкой...';
-      if (currentLang === 'kz') toastMsg = 'Рақмет! K.K. Tour WhatsApp-қа бағытталудасыз...';
-      if (currentLang === 'en') toastMsg = 'Thank you! Opening K.K. Tour WhatsApp with your request...';
-
+      const toastMsg = translate('toast_wa_redirect', 'Спасибо! Открываем WhatsApp K.K. Tour с вашей заявкой...');
       showToast(toastMsg, 'success');
 
-      setTimeout(() => { window.open(waUrl, '_blank'); }, 900);
+      setTimeout(() => { window.open(waUrl, '_blank'); }, 850);
 
       form.reset();
       if (guestsInput) guestsInput.value = 1;
@@ -448,82 +553,28 @@ function initAdventureQuiz() {
     e.preventDefault();
     const terrain = quizForm.querySelector('input[name="terrain"]:checked')?.value || 'kolsay';
     const duration = quizForm.querySelector('input[name="duration"]:checked')?.value || '2days';
+    const translate = window.t || ((k, f) => f || k);
+    const getField = window.getTourField || ((t, f) => t[f] || '');
 
-    let tour = {
-      id: 'kolsay-2days',
-      price: '28 500 ₸',
-      ru: {
-        title: '2 дня / 6 локаций: Кольсай, Каинды, Чарынский Каньон',
-        desc: 'Главный хит K.K. Tour! Ночёвка в гостевых домах в Саты, Черный и Лунный каньоны, река Шарын и урочище Куртогай.'
-      },
-      kz: {
-        title: '2 күн / 6 локация: Көлсай, Қайыңды, Шарын Шатқалы',
-        desc: 'K.K. Tour-дың басты хиті! Саты ауылындағы қонақ үйлер, Қара және Ай шатқалдары, Шарын өзені және Құртоғай.'
-      },
-      en: {
-        title: '2 Days / 6 Locations: Kolsay, Kaindy, Charyn Canyon',
-        desc: 'Our #1 signature tour! Saty guesthouse overnight, Black & Moon Canyons, Charyn River, and Kurty Gorge.'
-      }
-    };
-
+    let chosenId = 'kolsay-2days';
     if (duration === '1day' && terrain === 'kolsay') {
-      tour = {
-        id: 'kolsay-1day',
-        price: '14 000 ₸',
-        ru: {
-          title: 'Жемчужины Семиречья: 1 день / 6 локаций',
-          desc: 'Экспресс-тур на озеро Кольсай, Чарынский каньон Долина Замков и видовые площадки.'
-        },
-        kz: {
-          title: 'Жетісу жауһарлары: 1 күн / 6 локация',
-          desc: 'Көлсай көлі, Шарын шатқалы Қамалдар аңғары және панорамалық нүктелерге 1 күндік тур.'
-        },
-        en: {
-          title: 'Jewels of Semirechye: 1 Day / 6 Locations',
-          desc: 'Full-day express trip to Lake Kolsay, Charyn Canyon, and breathtaking viewpoints.'
-        }
-      };
+      chosenId = 'kolsay-1day';
     } else if (terrain === 'assy') {
-      tour = {
-        id: 'assy-sunset',
-        price: '16 500 ₸',
-        ru: {
-          title: 'Плато Асы + Медвежий Водопад (Закат в горах)',
-          desc: 'Высокогорное плато Асы, древняя астрономическая обсерватория и свежесть водопада.'
-        },
-        kz: {
-          title: 'Асы үстірті + Аюлы Сарқырамасы (Күн батуы)',
-          desc: 'Биік таулы Асы үстірті, астрономиялық обсерватория және көрікті сарқырама.'
-        },
-        en: {
-          title: 'Assy Plateau + Bear Waterfall (Sunset)',
-          desc: 'Alpine plateau vistas, astronomical observatory, and crisp mountain waterfall.'
-        }
-      };
+      chosenId = 'assy-sunset';
     } else if (terrain === 'turkestan') {
-      tour = {
-        id: 'turkestan-2days',
-        price: '38 000 ₸',
-        ru: {
-          title: 'Исторический юг: Туркестан (2 дня)',
-          desc: 'Мавзолей Ходжа Ахмеда Ясави, древний Отырар, Арыстан Баб и вечерний комплекс Керуен-Сарай.'
-        },
-        kz: {
-          title: 'Тарихи оңтүстік: Түркістан (2 күн)',
-          desc: 'Қожа Ахмет Ясауи кесенесі, көне Отырар, Арыстан Баб және Керуен-Сарай кешені.'
-        },
-        en: {
-          title: 'Historic South: Turkestan (2 Days)',
-          desc: 'Khoja Ahmed Yasawi Mausoleum, ancient Otrar, Arystan Bab, and magical Karavan Saray.'
-        }
-      };
+      chosenId = 'turkestan-2days';
     }
 
-    const tContent = tour[currentLang] || tour.ru;
-    resultTourTitle.textContent = tContent.title;
-    resultTourDesc.textContent = tContent.desc;
-    resultTourPrice.textContent = tour.price;
-    resultTourBookBtn.setAttribute('data-tour', tour.id);
+    const tourObj = window.toursCatalog[chosenId] || { id: chosenId };
+    const locTitle = getField(tourObj, 'name');
+    const locDesc = getField(tourObj, 'description');
+    const price = window.tourPrices[chosenId] || 28500;
+    const currency = translate('currency_symbol', '₸');
+
+    if (resultTourTitle) resultTourTitle.textContent = locTitle;
+    if (resultTourDesc) resultTourDesc.textContent = locDesc;
+    if (resultTourPrice) resultTourPrice.textContent = `${price.toLocaleString('ru-RU')} ${currency}`;
+    if (resultTourBookBtn) resultTourBookBtn.setAttribute('data-tour', chosenId);
 
     resultCard.classList.remove('hidden');
     resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -625,7 +676,6 @@ function initStatsCounter() {
         function updateCounter(currentTime) {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          // Ease out expo
           const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
           const currentVal = start + (target - start) * easeOut;
 
