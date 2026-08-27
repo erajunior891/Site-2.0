@@ -10,7 +10,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* ── Dynamic tour cards from Google Sheets ── */
+    /* ── Dynamic tour cards from Supabase ── */
     .tour-card {
       background: #fff;
       border-radius: 1.5rem;
@@ -413,7 +413,7 @@
       </p>
     </div>
 
-    <!-- Карточки туров загружаются динамически из Google Sheets через tours-loader.js -->
+    <!-- Карточки туров загружаются динамически из Supabase через tours-loader.js -->
     <div id="tours-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="col-span-full flex flex-col items-center justify-center py-20 gap-4 text-slate-400">
         <div class="w-10 h-10 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
@@ -478,7 +478,7 @@
     </div>
   </section>
 
-  <!-- Enhanced Booking Modal with Google Sheets Tour Details & Includes -->
+  <!-- Enhanced Booking Modal with Supabase Tour Details & Includes -->
   <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 md:p-6 opacity-0 transition-opacity duration-300">
     <div class="modal-card bg-white rounded-3xl max-w-2xl sm:max-w-3xl w-full shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300 max-h-[92vh] overflow-hidden flex flex-col">
       

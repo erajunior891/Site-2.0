@@ -190,7 +190,7 @@ function initMobileMenu() {
   if (backdrop) backdrop.addEventListener('click', closeMenu);
 }
 
-// 5. Booking Modal with Dynamic Google Sheets Info, Live Pricing & WhatsApp Integration
+// 5. Booking Modal with Dynamic Supabase Tour Info, Live Pricing & WhatsApp Integration
 window.toursCatalog = window.toursCatalog || {};
 
 function initBookingModal() {

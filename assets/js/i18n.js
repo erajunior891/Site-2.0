@@ -1385,7 +1385,7 @@ function t(key, fallback) {
 /**
  * Localizes any tour field based on strict priority:
  * 1. translations[lang]["tour_<id>_<field>"]
- * 2. tour[field + '_' + lang] (from Google Sheets e.g., name_kz, name_en, etc.)
+ * 2. tour[field + '_' + lang] (legacy column suffixes e.g., name_kz, name_en, etc.)
  * 3. translations["ru"]["tour_<id>_<field>"]
  * 4. tour[field] (base fallback RU)
  */
@@ -1409,7 +1409,7 @@ function getTourField(tour, field, lang) {
     }
   }
 
-  // 2. Google Sheets columns with lang suffixes: name_kz, name_en, description_kz, etc.
+  // 2. Legacy columns with lang suffixes: name_kz, name_en, description_kz, etc.
   if (currentLanguage === 'kz') {
     const val = tour[field + '_kz'] || tour[field + '_kk'];
     if (val !== undefined && val !== '') return val;
