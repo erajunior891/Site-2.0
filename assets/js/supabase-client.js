@@ -7,15 +7,15 @@
 (function () {
   // Public Configuration
   // In production, these can be overridden via window.SUPABASE_CONFIG or an env-injected object.
-  const DEFAULT_SUPABASE_URL = 'https://YOUR_SUPABASE_PROJECT_ID.supabase.co';
-  const DEFAULT_SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+  const DEFAULT_SUPABASE_URL = 'https://vkuppzmlnoqzuwujtiqq.supabase.co';
+  const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_86YUyokdt9cl_6Zv1LFgaQ_iouwFELl';
 
   const config = (window.SUPABASE_CONFIG && typeof window.SUPABASE_CONFIG === 'object')
     ? window.SUPABASE_CONFIG
     : {
-        url: localStorage.getItem('kktour_supabase_url') || DEFAULT_SUPABASE_URL,
-        anonKey: localStorage.getItem('kktour_supabase_anon_key') || DEFAULT_SUPABASE_ANON_KEY
-      };
+      url: localStorage.getItem('kktour_supabase_url') || DEFAULT_SUPABASE_URL,
+      anonKey: localStorage.getItem('kktour_supabase_anon_key') || DEFAULT_SUPABASE_ANON_KEY
+    };
 
   let client = null;
 
