@@ -1392,7 +1392,7 @@ function t(key, fallback) {
 function getTourField(tour, field, lang) {
   if (!tour) return '';
   const currentLanguage = lang || getCurrentLang();
-  const tourId = tour.id;
+  const tourId = tour.slug || tour.id;
 
   // 1. Translations dictionary key: tour_<id>_<field>
   if (tourId && translations[currentLanguage]) {

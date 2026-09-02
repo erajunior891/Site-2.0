@@ -40,13 +40,13 @@
     .tour-card:hover .tour-card__img { transform: scale(1.06); }
     .tour-badge {
       position: absolute; top: 1rem; left: 1rem;
-      background: rgba(6,78,59,.82);
+      background: rgba(15, 65, 69, .85);
       backdrop-filter: blur(8px);
       color: #fff;
       font-size: .72rem; font-weight: 700;
       padding: .25rem .75rem;
       border-radius: 9999px;
-      border: 1px solid rgba(167,243,208,.3);
+      border: 1px solid rgba(164, 219, 223, .3);
     }
     .tour-rating-badge {
       position: absolute; top: 1rem; right: 1rem;
@@ -79,7 +79,7 @@
     .tour-duration {
       display: flex; align-items: center; gap: .25rem;
       font-size: .7rem; font-weight: 800;
-      color: #047857;
+      color: #1F8087;
       text-transform: uppercase; letter-spacing: .05em;
       margin-bottom: .5rem;
     }
@@ -90,7 +90,7 @@
       margin-bottom: .5rem;
       transition: color .2s;
     }
-    .tour-card:hover .tour-card__title { color: #065f46; }
+    .tour-card:hover .tour-card__title { color: #166267; }
     .tour-card__desc {
       color: #475569; font-size: .875rem;
       line-height: 1.65;
@@ -112,21 +112,21 @@
     }
     .tour-card__price {
       font-size: 1.5rem; font-weight: 800;
-      color: #064e3b;
+      color: #0F4145;
     }
     .btn-book-card {
-      background: #059669;
+      background: #1F8087;
       color: #fff;
       font-size: .82rem; font-weight: 700;
       padding: .6rem 1.2rem;
       border-radius: .75rem;
       border: none; cursor: pointer;
       white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(5,150,105,.25);
+      box-shadow: 0 4px 14px rgba(31, 128, 135, .25);
       transition: background .2s, transform .15s;
     }
     .btn-book-card:hover {
-      background: #047857;
+      background: #166267;
       transform: translateY(-1px);
     }
     /* States */
@@ -140,8 +140,8 @@
     .tours-state p { font-size: .9rem; max-width: 26rem; line-height: 1.6; }
     .tours-spinner {
       width: 2.5rem; height: 2.5rem;
-      border: 4px solid #d1fae5;
-      border-top-color: #059669;
+      border: 4px solid #D5EFF1;
+      border-top-color: #1F8087;
       border-radius: 50%;
       animation: spin .8s linear infinite;
     }
@@ -158,15 +158,15 @@
     }
     .tours-retry-btn {
       font-size: .8rem; font-weight: 700;
-      color: #059669;
-      border: 1px solid #a7f3d0;
+      color: #1F8087;
+      border: 1px solid #A4DBDF;
       padding: .5rem 1.1rem;
       border-radius: .75rem;
       background: transparent;
       cursor: pointer;
       transition: background .2s;
     }
-    .tours-retry-btn:hover { background: #ecfdf5; }
+    .tours-retry-btn:hover { background: #F0F9F9; }
   </style>
   <script>
     tailwind.config = {
@@ -174,20 +174,49 @@
         extend: {
           colors: {
             brand: {
-              50: '#F2FBF6',
-              100: '#E1F7EC',
-              500: '#10B981',
-              600: '#059669',
-              700: '#047857',
-              800: '#065F46',
-              900: '#064E3B',
-              dark: '#0B291F'
+              50: '#F0F9F9',
+              100: '#D5EFF1',
+              200: '#A4DBDF',
+              300: '#74C7CD',
+              400: '#43B3BB',
+              500: '#1F8087',
+              600: '#1A6D73',
+              700: '#15575C',
+              800: '#104246',
+              900: '#0B2C2F',
+              dark: '#0B2C2F'
+            },
+            emerald: {
+              50: '#F0F9F9',
+              100: '#D5EFF1',
+              200: '#A4DBDF',
+              300: '#74C7CD',
+              400: '#43B3BB',
+              500: '#1F8087',
+              600: '#1F8087',
+              700: '#166267',
+              800: '#104549',
+              900: '#0B2F32',
+              950: '#06191B'
+            },
+            green: {
+              50: '#F0F9F9',
+              100: '#D5EFF1',
+              200: '#A4DBDF',
+              300: '#74C7CD',
+              400: '#43B3BB',
+              500: '#1F8087',
+              600: '#1F8087',
+              700: '#166267',
+              800: '#104549',
+              900: '#0B2F32',
+              950: '#06191B'
             },
             amber: {
               500: '#F59E0B',
               600: '#D97706'
             },
-            natureBg: '#F9FBF9'
+            natureBg: '#F9FBFB'
           },
           fontFamily: {
             sans: ['Outfit', 'sans-serif'],
@@ -260,44 +289,56 @@
   </header>
 
   <!-- Mobile Drawer Menu -->
-  <div id="mobileDrawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex justify-end">
-    <div id="mobileDrawerBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
-    <div class="relative w-4/5 max-w-sm bg-white h-full shadow-2xl p-6 flex flex-col justify-between overflow-y-auto z-10">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-slate-100">
-          <div class="flex items-center gap-2">
-            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-10 h-10 rounded-xl object-cover shadow">
-            <span class="text-xl font-bold font-serif text-emerald-950">K.K. Tour</span>
-          </div>
-          <button id="closeMobileMenu" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100">
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-
-        <div class="mt-6 flex bg-slate-100 p-1 rounded-xl text-xs justify-center">
-          <button data-set-lang="kz" class="flex-1 py-1.5 rounded-lg text-slate-600">🇰🇿 Қазақша</button>
-          <button data-set-lang="ru" class="flex-1 py-1.5 rounded-lg bg-emerald-600 text-white font-bold">🇷🇺 Русский</button>
-          <button data-set-lang="en" class="flex-1 py-1.5 rounded-lg text-slate-600">🇬🇧 English</button>
-        </div>
-
-        <nav class="mt-8 flex flex-col gap-4">
-          <a href="index.html" data-i18n="nav_home" class="text-lg font-semibold text-emerald-700">Главная</a>
-          <a href="destinations.html" data-i18n="nav_tours" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Туры</a>
-          <a href="about.html" data-i18n="nav_about" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">О нас & Отзывы 2ГИС</a>
-          <a href="contact.html" data-i18n="nav_contact" class="text-lg font-semibold text-slate-700 hover:text-emerald-700">Контакты</a>
-        </nav>
+  <div id="mobileMenuBackdrop" class="fixed inset-0 bg-slate-900/60 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="mobileMenuDrawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col p-6">
+    <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+      <div class="flex items-center gap-2.5">
+        <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-10 h-10 rounded-xl object-cover shadow">
+        <span class="text-xl font-bold font-serif text-emerald-950">K.K. Tour</span>
       </div>
+      <button id="closeMobileMenuBtn" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg" aria-label="Закрыть меню">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
 
-      <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
-        <a href="https://wa.me/77472801671" target="_blank" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold py-3 rounded-2xl text-center flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
-          <i data-lucide="message-circle" class="w-5 h-5"></i>
-          <span>WhatsApp (+7 747 280 16 71)</span>
-        </a>
-        <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-full bg-[#00A550] text-white font-semibold py-2.5 rounded-xl text-center flex items-center justify-center gap-2 text-xs">
-          <i data-lucide="map-pin" class="w-4 h-4"></i>
-          <span>Алматы, Панфилов көшесі, 52 (2ГИС)</span>
-        </a>
+    <!-- Mobile Language Switcher -->
+    <div class="py-4 border-b border-slate-100">
+      <span data-i18n="lang_select_label" class="text-xs text-slate-400 font-semibold uppercase block mb-2">Язык / Тіл / Language:</span>
+      <div class="flex items-center gap-2">
+        <button data-set-lang="kz" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇰🇿 ҚАЗ</button>
+        <button data-set-lang="ru" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">🇷🇺 РУС</button>
+        <button data-set-lang="en" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇬🇧 ENG</button>
       </div>
+    </div>
+
+    <nav class="flex flex-col gap-4 py-6 flex-1">
+      <a href="index.html" class="flex items-center gap-3 text-emerald-700 font-semibold px-3 py-2 rounded-xl bg-emerald-50">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span data-i18n="nav_home">Главная</span>
+      </a>
+      <a href="destinations.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="compass" class="w-5 h-5"></i>
+        <span data-i18n="nav_tours">Туры</span>
+      </a>
+      <a href="about.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span data-i18n="nav_about">О нас & Отзывы 2ГИС</span>
+      </a>
+      <a href="contact.html" class="flex items-center gap-3 text-slate-700 hover:text-emerald-700 font-medium px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        <span data-i18n="nav_contact">Контакты</span>
+      </a>
+    </nav>
+
+    <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+      <a href="https://wa.me/77472801671" target="_blank" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold py-3 rounded-2xl text-center flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span>WhatsApp (+7 747 280 16 71)</span>
+      </a>
+      <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-full bg-[#00A550] text-white font-semibold py-2.5 rounded-xl text-center flex items-center justify-center gap-2 text-xs">
+        <i data-lucide="map-pin" class="w-4 h-4"></i>
+        <span>Алматы, Панфилов көшесі, 52 (2ГИС)</span>
+      </a>
     </div>
   </div>
 

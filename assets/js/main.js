@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTourFilters();
   initStatsCounter();
   initCard3DTilt();
+  initQuickSearch();
 });
 
 // 1. Full Language Switcher (RU, KZ, EN)
@@ -157,9 +158,9 @@ function initNavbarScroll() {
 // 4. Mobile Hamburger Menu
 function initMobileMenu() {
   const menuBtn = document.getElementById('mobileMenuBtn');
-  const closeBtn = document.getElementById('closeMobileMenuBtn');
-  const mobileMenu = document.getElementById('mobileMenuDrawer');
-  const backdrop = document.getElementById('mobileMenuBackdrop');
+  const closeBtn = document.getElementById('closeMobileMenuBtn') || document.getElementById('closeMobileMenu');
+  const mobileMenu = document.getElementById('mobileMenuDrawer') || document.getElementById('mobileDrawer');
+  const backdrop = document.getElementById('mobileMenuBackdrop') || document.getElementById('mobileDrawerBackdrop');
 
   if (!menuBtn || !mobileMenu) return;
 
@@ -188,6 +189,18 @@ function initMobileMenu() {
   menuBtn.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
   if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+  // Close drawer on clicking internal navigation links
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+      closeMenu();
+    }
+  });
 }
 
 // 5. Booking Modal with Dynamic Supabase Tour Info, Live Pricing & WhatsApp Integration
@@ -218,6 +231,34 @@ function initBookingModal() {
   const modalIncludesList = document.getElementById('modalTourIncludesList');
 
   if (!modal) return;
+
+  const DEFAULT_TOURS = [
+    { slug: 'kolsay-2days', id: 'kolsay-2days', name: '2 дня / 6 локаций: Кольсай, Каинды, Чарын', price: 28500, duration: '2 дня', days: 'Сб – Вс', badge: 'ТОП Выбор', photo: 'assets/images/album_lake.jpg' },
+    { slug: 'assy-sunset', id: 'assy-sunset', name: 'Плато Асы + Медвежий водопад (Закат)', price: 16500, duration: '1 день', days: 'Сб, Вс', badge: 'Эко-тур', photo: 'assets/images/album_mountains.jpg' },
+    { slug: 'kolsay-1day', id: 'kolsay-1day', name: 'Жемчужины Семиречья: Кольсай, Каинды, Чарын (1 день)', price: 14000, duration: '1 день', days: 'Сб, Вс', badge: 'Хит', photo: 'assets/images/album_waterfall.jpg' },
+    { slug: 'turkestan-2days', id: 'turkestan-2days', name: 'Исторический юг: Туркестан (2 дня)', price: 38000, duration: '2 дня', days: 'По графику', badge: 'Культура', photo: 'assets/images/album_camp.jpg' },
+    { slug: 'issyk-lake', id: 'issyk-lake', name: 'Озеро Иссык + Форель', price: 12500, duration: '1 день', days: 'Сб, Вс', badge: 'Релакс', photo: 'assets/images/album_lake.jpg' },
+    { slug: 'bao-trek', id: 'bao-trek', name: 'БАО & Пик Турист', price: 10500, duration: '1 день', days: 'Сб, Вс', badge: 'Треккинг', photo: 'assets/images/album_mountains.jpg' }
+  ];
+
+  // Populate fallback catalog if empty
+  DEFAULT_TOURS.forEach(t => {
+    if (!window.toursCatalog[t.slug]) window.toursCatalog[t.slug] = t;
+    if (!window.toursCatalog[t.id]) window.toursCatalog[t.id] = t;
+  });
+
+  // Populate select options if empty (e.g. on about.html, contact.html or before Supabase loads)
+  if (tourSelect && tourSelect.options.length === 0) {
+    const translate = window.t || ((k, f) => f || k);
+    const currencySymbol = translate('currency_symbol', '₸');
+    DEFAULT_TOURS.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.slug;
+      const p = t.price || 0;
+      opt.textContent = `${t.name} (${p.toLocaleString('ru-RU')} ${currencySymbol})`;
+      tourSelect.appendChild(opt);
+    });
+  }
 
   // --- Update modal content from selected tour data ---
   function updateModalTourDetails(tourId) {
@@ -368,6 +409,16 @@ function initBookingModal() {
       const tour = btn.getAttribute('data-tour') || 'kolsay-2days';
       window.openBookingModal(tour);
     });
+  });
+
+  // Global delegation for dynamic cards
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-open-booking]');
+    if (btn) {
+      e.preventDefault();
+      const tour = btn.getAttribute('data-tour') || 'kolsay-2days';
+      window.openBookingModal(tour);
+    }
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -595,6 +646,7 @@ function initContactForm() {
     e.preventDefault();
     const name = form.querySelector('[name="name"]')?.value || 'Гость';
     const phone = form.querySelector('[name="phone"]')?.value || '';
+    const route = form.querySelector('select[name="route"], select')?.value || '';
     const question = form.querySelector('textarea')?.value || 'Консультация по турам K.K. Tour';
     
     let toastMsg = `Спасибо, ${name}! Открываем диалог с менеджером K.K. Tour в WhatsApp...`;
@@ -604,11 +656,38 @@ function initContactForm() {
     showToast(toastMsg, 'success');
     
     setTimeout(() => {
-      const waMsg = `Здравствуйте, K.K. Tour! Меня зовут ${encodeURIComponent(name)} (${phone}). Вопрос: ${encodeURIComponent(question)}`;
-      window.open(`https://wa.me/77472801671?text=${waMsg}`, '_blank');
+      let waMsg = `Здравствуйте, K.K. Tour! Меня зовут ${name} (${phone}).`;
+      if (route) waMsg += `\nМаршрут: ${route}`;
+      waMsg += `\nВопрос / дата: ${question}`;
+      window.open(`https://wa.me/77472801671?text=${encodeURIComponent(waMsg)}`, '_blank');
     }, 1000);
 
     form.reset();
+  });
+}
+
+// 9.1 Quick Search Widget on Homepage
+function initQuickSearch() {
+  const form = document.getElementById('quickSearchForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const loc = document.getElementById('searchLocation')?.value || 'all';
+    const fmt = document.getElementById('searchFormat')?.value || 'all';
+
+    const params = new URLSearchParams();
+    if (loc && loc !== 'all') {
+      params.set('search', loc);
+    }
+    if (fmt === 'daily') {
+      params.set('filter', '1day');
+    } else if (fmt === 'weekend') {
+      params.set('filter', '2day');
+    }
+
+    const queryStr = params.toString();
+    window.location.href = `destinations.html${queryStr ? '?' + queryStr : ''}`;
   });
 }
 
