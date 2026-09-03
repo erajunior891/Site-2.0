@@ -442,3 +442,13 @@ body {
   transform: translateY(-1px);
 }
 
+/* =========================================================
+   Scrollbar Hide Utility & Certificates Carousel
+   ========================================================= */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

@@ -97,15 +97,23 @@ function setLanguage(lang) {
     }
   });
 
-  // Update active state in switcher UI
+  // Update active state in switcher UI (both desktop and mobile)
   document.querySelectorAll('[data-set-lang]').forEach(btn => {
     const bLang = btn.getAttribute('data-set-lang');
+    const isMobile = btn.closest('#mobileMenuDrawer') || btn.classList.contains('flex-1');
+
     if (bLang === lang) {
-      btn.classList.add('bg-emerald-600', 'text-white', 'font-bold');
-      btn.classList.remove('text-slate-600', 'hover:bg-slate-200');
+      if (isMobile) {
+        btn.className = 'flex-1 py-2.5 rounded-xl transition-all bg-emerald-600 text-white font-bold shadow-sm text-center cursor-pointer';
+      } else {
+        btn.className = 'px-2.5 py-1 rounded-lg transition-all bg-emerald-600 text-white font-bold text-center cursor-pointer';
+      }
     } else {
-      btn.classList.remove('bg-emerald-600', 'text-white', 'font-bold');
-      btn.classList.add('text-slate-600', 'hover:bg-slate-200');
+      if (isMobile) {
+        btn.className = 'flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer';
+      } else {
+        btn.className = 'px-2.5 py-1 rounded-lg transition-all text-slate-600 hover:bg-slate-200 text-center cursor-pointer';
+      }
     }
   });
 

@@ -304,10 +304,10 @@
     <!-- Mobile Language Switcher -->
     <div class="py-4 border-b border-slate-100">
       <span data-i18n="lang_select_label" class="text-xs text-slate-400 font-semibold uppercase block mb-2">Язык / Тіл / Language:</span>
-      <div class="flex items-center gap-2">
-        <button data-set-lang="kz" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇰🇿 ҚАЗ</button>
-        <button data-set-lang="ru" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">🇷🇺 РУС</button>
-        <button data-set-lang="en" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇬🇧 ENG</button>
+      <div class="flex items-center bg-slate-100 p-1 rounded-2xl border border-slate-200 text-xs">
+        <button data-set-lang="kz" class="flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer">🇰🇿 ҚАЗ</button>
+        <button data-set-lang="ru" class="flex-1 py-2.5 rounded-xl transition-all bg-emerald-600 text-white font-bold shadow-sm text-center cursor-pointer">🇷🇺 РУС</button>
+        <button data-set-lang="en" class="flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer">🇬🇧 ENG</button>
       </div>
     </div>
 
@@ -345,7 +345,19 @@
   <!-- Hero Section -->
   <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 lg:py-28">
     <div class="absolute inset-0 z-0">
-      <img src="assets/images/hero_nature.jpg" alt="Природа Казахстана с K.K. Tour" class="w-full h-full object-cover">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        class="w-full h-full object-cover"
+        poster="assets/images/hero.jpg"
+      >
+        <source src="assets/images/Img 5180.webm" type="video/webm">
+        <!-- Fallback for browsers that don't support webm -->
+        <img src="assets/images/hero.jpg" alt="Природа Казахстана с K.K. Tour" class="w-full h-full object-cover">
+      </video>
       <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-emerald-950/70 to-slate-950/80"></div>
     </div>
 
@@ -636,30 +648,30 @@
             <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover border border-emerald-500/30">
             <div>
               <span class="text-2xl font-bold font-serif tracking-tight text-white">K.K. <span class="text-emerald-400">Tour</span></span>
-              <p class="text-xs text-emerald-400/80 font-medium">Туроператор по Казахстану • Алматы</p>
+              <p data-i18n="footer_brand_sub" class="text-xs text-emerald-400/80 font-medium">Туроператор по Казахстану • Алматы</p>
             </div>
           </div>
-          <p class="text-slate-400 text-sm max-w-md leading-relaxed">
+          <p data-i18n="footer_desc" class="text-slate-400 text-sm max-w-md leading-relaxed">
             Организуем авторские и групповые туры по самым живописным уголкам Казахстана. Комфортный транспорт, опытные гиды, официальная оплата Kaspi Pay.
           </p>
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Навигация</h4>
+          <h4 data-i18n="footer_nav" class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Навигация</h4>
           <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="index.html" class="hover:text-emerald-400 transition-colors">Главная</a></li>
-            <li><a href="destinations.html" class="hover:text-emerald-400 transition-colors">Фотоальбом</a></li>
-            <li><a href="about.html" class="hover:text-emerald-400 transition-colors">О нас & Отзывы 2ГИС</a></li>
-            <li><a href="contact.html" class="hover:text-emerald-400 transition-colors">Контакты</a></li>
+            <li><a href="index.html" data-i18n="nav_home" class="hover:text-emerald-400 transition-colors">Главная</a></li>
+            <li><a href="destinations.html" data-i18n="nav_tours" class="hover:text-emerald-400 transition-colors">Туры</a></li>
+            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас & Отзывы 2ГИС</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Контакты</h4>
+          <h4 data-i18n="footer_contact" class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Контакты</h4>
           <ul class="space-y-2.5 text-sm text-slate-400">
             <li class="flex items-start gap-2">
               <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0"></i>
-              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="hover:text-emerald-400 transition-colors">Алматы, Панфилов көшесі, 52</a>
+              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Алматы, Панфилов көшесі, 52</a>
             </li>
             <li class="flex items-center gap-2">
               <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
@@ -667,14 +679,14 @@
             </li>
             <li class="flex items-center gap-2">
               <i data-lucide="clock" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-              <span>09:00 – 21:00 (Ежедневно)</span>
+              <span data-i18n="footer_hours">09:00 – 21:00 (Ежедневно)</span>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <p>© 2026 K.K. Tour. Все права защищены. Алматы, Панфилов көшесі, 52.</p>
+        <p data-i18n="footer_rights">© 2026 K.K. Tour. Все права защищены. Алматы, Панфилов көшесі, 52.</p>
         <div class="flex items-center gap-4">
           <a href="https://instagram.com/k.k.tour/" target="_blank" class="hover:scale-110 transition-transform" title="Instagram @k.k.tour">
             <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-7 h-7 rounded-lg object-cover">

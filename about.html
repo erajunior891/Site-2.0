@@ -146,10 +146,10 @@
     <!-- Mobile Language Switcher -->
     <div class="py-4 border-b border-slate-100">
       <span data-i18n="lang_select_label" class="text-xs text-slate-400 font-semibold uppercase block mb-2">Язык / Тіл / Language:</span>
-      <div class="flex items-center gap-2">
-        <button data-set-lang="kz" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇰🇿 ҚАЗ</button>
-        <button data-set-lang="ru" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">🇷🇺 РУС</button>
-        <button data-set-lang="en" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇬🇧 ENG</button>
+      <div class="flex items-center bg-slate-100 p-1 rounded-2xl border border-slate-200 text-xs">
+        <button data-set-lang="kz" class="flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer">🇰🇿 ҚАЗ</button>
+        <button data-set-lang="ru" class="flex-1 py-2.5 rounded-xl transition-all bg-emerald-600 text-white font-bold shadow-sm text-center cursor-pointer">🇷🇺 РУС</button>
+        <button data-set-lang="en" class="flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer">🇬🇧 ENG</button>
       </div>
     </div>
 
@@ -386,6 +386,78 @@
     </div>
   </section>
 
+  <!-- Licenses & Accreditations Section (Reference Design) -->
+  <section id="licenses" class="py-16 sm:py-20 lg:py-24 bg-[#F3F4F8] border-y border-slate-200/70 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Column: Title, Description, Action Button -->
+        <div class="lg:col-span-4 flex flex-col items-start text-left reveal-on-scroll">
+          <h2 data-i18n="licenses_title" class="text-3xl sm:text-4xl lg:text-[40px] font-bold font-sans text-slate-900 leading-tight tracking-tight mb-4">
+            Лицензии и документы
+          </h2>
+          <p data-i18n="licenses_desc" class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-md mb-8">
+            K.K. Tour — официально лицензированная туристическая компания. Работаем легально, принимаем оплату через Kaspi Pay с фискальным чеком и полностью соответствуем требованиям законодательства РК.
+          </p>
+          <button id="btnLicensesMore" data-i18n="licenses_btn" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#1b7a5a] hover:bg-[#166267] active:scale-95 text-white font-bold text-xs sm:text-sm tracking-wider uppercase shadow-lg shadow-[#1b7a5a]/25 hover:shadow-[#1b7a5a]/40 hover:-translate-y-0.5 transition-all cursor-pointer">
+            ПОДРОБНЕЕ
+          </button>
+        </div>
+
+        <!-- Right Column: Interactive Carousel / Slider with Left/Right Circular Buttons -->
+        <div class="lg:col-span-8 flex items-center gap-3 sm:gap-4 relative reveal-on-scroll delay-100">
+          
+          <!-- Previous Button -->
+          <button id="prevCertBtn" aria-label="Предыдущий сертификат" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1b7a5a] hover:bg-[#166267] text-white flex items-center justify-center shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0 cursor-pointer z-10">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <!-- Slider Viewport & Track -->
+          <div id="certsTrackWrap" class="overflow-x-auto scrollbar-none scroll-smooth flex-1 py-4 -my-4">
+            <div id="certsTrack" class="flex items-center gap-5 sm:gap-6 md:gap-7">
+              
+              <!-- Certificate 1 -->
+              <div class="cert-card flex-shrink-0 w-[200px] sm:w-[220px] md:w-[240px] bg-white rounded-2xl p-3 shadow-md hover:shadow-2xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group" data-cert-idx="0" data-cert-img="assets/images/license-1.jpg" data-cert-title="Лицензия на туроператорскую деятельность" data-cert-sub="Министерство туризма и спорта Республики Казахстан">
+                <div class="relative overflow-hidden rounded-xl bg-slate-50 border border-slate-100 aspect-[1/1.4] flex items-center justify-center">
+                  <img src="assets/images/license-1.jpg" alt="Лицензия туроператора K.K. Tour" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+                  <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2 text-white text-xs font-semibold backdrop-blur-[2px]">
+                    <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                    <span data-i18n="licenses_view_full">Увеличить</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Certificate 2 -->
+              <div class="cert-card flex-shrink-0 w-[200px] sm:w-[220px] md:w-[240px] bg-white rounded-2xl p-3 shadow-md hover:shadow-2xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group" data-cert-idx="1" data-cert-img="assets/images/license-2.jpg" data-cert-title="Свидетельство о государственной регистрации" data-cert-sub="Министерство юстиции Республики Казахстан">
+                <div class="relative overflow-hidden rounded-xl bg-slate-50 border border-slate-100 aspect-[1/1.4] flex items-center justify-center">
+                  <img src="assets/images/license-2.jpg" alt="Свидетельство о регистрации K.K. Tour" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03]" loading="lazy">
+                  <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2 text-white text-xs font-semibold backdrop-blur-[2px]">
+                    <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                    <span data-i18n="licenses_view_full">Увеличить</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Next Button -->
+          <button id="nextCertBtn" aria-label="Следующий сертификат" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1b7a5a] hover:bg-[#166267] text-white flex items-center justify-center shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0 cursor-pointer z-10">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA Box -->
   <section class="py-16 bg-white border-t border-emerald-100">
     <div class="max-w-4xl mx-auto px-4 text-center">
@@ -405,66 +477,65 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+  <footer class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-3">
-            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-11 h-11 rounded-xl object-cover shadow border border-slate-700">
-            <span class="text-2xl font-bold font-serif text-white">K.K. Tour</span>
+        
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover border border-emerald-500/30">
+            <div>
+              <span class="text-2xl font-bold font-serif tracking-tight text-white">K.K. <span class="text-emerald-400">Tour</span></span>
+              <p data-i18n="footer_brand_sub" class="text-xs text-emerald-400/80 font-medium">Туроператор по Казахстану • Алматы</p>
+            </div>
           </div>
-          <p data-i18n="footer_desc" class="text-xs leading-relaxed text-slate-400">
-            K.K. Tour — Панфилов көшесі, 52, Алматы. Время работы: 09:00 – 21:00.
+          <p data-i18n="footer_desc" class="text-slate-400 text-sm max-w-md leading-relaxed">
+            Организуем авторские и групповые туры по самым живописным уголкам Казахстана. Комфортный транспорт, опытные гиды, официальная оплата Kaspi Pay.
           </p>
-          <div class="flex items-center gap-3 mt-2">
-            <a href="https://instagram.com/k.k.tour/" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-pink-500/50" title="Instagram @k.k.tour">
-              <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-full h-full object-cover rounded-lg">
-            </a>
-            <a href="https://wa.me/77472801671" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-emerald-500/50" title="WhatsApp K.K. Tour">
-              <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover rounded-lg">
-            </a>
-            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-[#00A550]/50" title="2GIS K.K. Tour">
-              <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-full h-full object-cover rounded-lg">
-            </a>
-          </div>
         </div>
+
         <div>
-          <h4 data-i18n="footer_nav" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Навигация</h4>
-          <ul class="space-y-2 text-xs">
+          <h4 data-i18n="footer_nav" class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Навигация</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
             <li><a href="index.html" data-i18n="nav_home" class="hover:text-emerald-400 transition-colors">Главная</a></li>
-            <li><a href="destinations.html" data-i18n="nav_tours" class="hover:text-emerald-400 transition-colors">Туры по Казахстану</a></li>
-            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас и отзывы 2ГИС</a></li>
-            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты и FAQ</a></li>
+            <li><a href="destinations.html" data-i18n="nav_tours" class="hover:text-emerald-400 transition-colors">Туры</a></li>
+            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас & Отзывы 2ГИС</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 data-i18n="footer_eco" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Условия и бронь</h4>
-          <ul class="space-y-2 text-xs">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_kaspi">Оплата через Kaspi Pay</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_tickets">Входные билеты в Нацпарки</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52</a></li>
+          <h4 data-i18n="footer_contact" class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Контакты</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0"></i>
+              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Алматы, Панфилов көшесі, 52</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <a href="https://wa.me/77472801671" target="_blank" class="hover:text-emerald-400 transition-colors">+7 747 280 16 71</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span data-i18n="footer_hours">09:00 – 21:00 (Ежедневно)</span>
+            </li>
           </ul>
-        </div>
-        <div>
-          <h4 data-i18n="footer_contact" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Связь с нами</h4>
-          <div class="space-y-3 text-xs">
-            <div class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
-              <a href="tel:+77472801671" class="hover:text-white">+7 (747) 280-16-71</a>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="clock" class="w-4 h-4 text-emerald-500"></i>
-              <span data-i18n="office_hours">Ежедневно: 09:00 – 21:00</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500"></i>
-              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="office_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52, Алматы</a>
-            </div>
-          </div>
         </div>
       </div>
-      <div class="pt-8 text-center text-xs text-slate-500" data-i18n="footer_rights">
-        © 2026 K.K. Tour. Все права защищены. Instagram: @k.k.tour
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p data-i18n="footer_rights">© 2026 K.K. Tour. Все права защищены. Алматы, Панфилов көшесі, 52.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com/k.k.tour/" target="_blank" class="hover:scale-110 transition-transform" title="Instagram @k.k.tour">
+            <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+          <a href="https://wa.me/77472801671" target="_blank" class="hover:scale-110 transition-transform" title="WhatsApp K.K. Tour">
+            <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+          <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="hover:scale-110 transition-transform" title="2GIS K.K. Tour">
+            <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -576,6 +647,50 @@
     </div>
   </div>
 
+  <!-- Certificate Lightbox Modal -->
+  <div id="certModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
+    <div class="relative bg-white rounded-3xl max-w-xl w-full p-5 sm:p-7 shadow-2xl border border-slate-100 transform scale-95 transition-transform duration-300 flex flex-col items-center max-h-[92vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button id="closeCertModal" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full flex items-center justify-center transition-colors z-20 cursor-pointer shadow-sm" aria-label="Закрыть">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="text-center max-w-md mx-auto mb-4 pr-8 pl-2">
+        <span class="inline-block text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-0.5 rounded-full uppercase tracking-wider mb-1" data-i18n="licenses_modal_title">
+          Официальный документ
+        </span>
+        <h3 id="certModalTitle" class="text-base sm:text-lg font-bold text-slate-900">
+          Аккредитация программы FIBAA
+        </h3>
+        <p id="certModalSub" class="text-xs text-slate-500 mt-0.5">
+          Foundation for International Business Administration Accreditation
+        </p>
+      </div>
+
+      <!-- High-res Image Wrapper -->
+      <div class="relative w-full max-w-lg bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/80 p-2 sm:p-4 flex items-center justify-center min-h-[380px] sm:min-h-[460px]">
+        <img id="certModalImg" src="assets/images/license-1.jpg" alt="Сертификат" class="max-h-[60vh] sm:max-h-[65vh] w-auto object-contain rounded-xl shadow-sm transition-all duration-300">
+        
+        <!-- Navigation inside modal -->
+        <button id="modalPrevCert" aria-label="Предыдущий документ" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-lg border border-slate-200 flex items-center justify-center transition-all active:scale-95 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="modalNextCert" aria-label="Следующий документ" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white text-slate-800 shadow-lg border border-slate-200 flex items-center justify-center transition-all active:scale-95 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Indicator Dots -->
+      <div class="flex items-center gap-2 mt-4" id="certModalDots">
+        <button class="w-6 h-2.5 rounded-full bg-[#1b7a5a] transition-all" data-dot="0"></button>
+        <button class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all" data-dot="1"></button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Supabase CDN & Core Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase-client.js"></script>
@@ -585,6 +700,160 @@
   <script src="assets/js/tours-loader.js"></script>
   <script>
     if (window.lucide) lucide.createIcons();
+  </script>
+
+  <!-- Certificates Carousel & Lightbox Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const certs = [
+        {
+          img: 'assets/images/license-1.jpg',
+          titleKey: 'licenses_cert1_title',
+          subKey: 'licenses_cert1_sub',
+          defaultTitle: 'Аккредитация программы FIBAA',
+          defaultSub: 'Foundation for International Business Administration Accreditation'
+        },
+        {
+          img: 'assets/images/license-2.jpg',
+          titleKey: 'licenses_cert2_title',
+          subKey: 'licenses_cert2_sub',
+          defaultTitle: 'Свидетельство о государственной регистрации',
+          defaultSub: 'Министерство юстиции Республики Казахстан'
+        }
+      ];
+
+      let currentCertIdx = 0;
+
+      // Track carousel scrolling
+      const trackWrap = document.getElementById('certsTrackWrap');
+      const prevBtn = document.getElementById('prevCertBtn');
+      const nextBtn = document.getElementById('nextCertBtn');
+      const btnMore = document.getElementById('btnLicensesMore');
+
+      if (prevBtn && trackWrap) {
+        prevBtn.addEventListener('click', () => {
+          const scrollAmount = trackWrap.clientWidth * 0.75 || 250;
+          trackWrap.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+      }
+
+      if (nextBtn && trackWrap) {
+        nextBtn.addEventListener('click', () => {
+          const scrollAmount = trackWrap.clientWidth * 0.75 || 250;
+          trackWrap.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      }
+
+      // Modal elements
+      const modal = document.getElementById('certModal');
+      const modalImg = document.getElementById('certModalImg');
+      const modalTitle = document.getElementById('certModalTitle');
+      const modalSub = document.getElementById('certModalSub');
+      const closeBtn = document.getElementById('closeCertModal');
+      const modalPrev = document.getElementById('modalPrevCert');
+      const modalNext = document.getElementById('modalNextCert');
+      const dotsContainer = document.getElementById('certModalDots');
+
+      function updateModalCert(idx) {
+        currentCertIdx = (idx + certs.length) % certs.length;
+        const cert = certs[currentCertIdx];
+        if (!cert) return;
+
+        const lang = (typeof window.getCurrentLang === 'function') ? window.getCurrentLang() : (localStorage.getItem('kktour_lang') || 'ru');
+        const dict = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : {};
+
+        modalImg.src = cert.img;
+        modalTitle.textContent = dict[cert.titleKey] || cert.defaultTitle;
+        modalSub.textContent = dict[cert.subKey] || cert.defaultSub;
+
+        // Update dots
+        if (dotsContainer) {
+          const dots = dotsContainer.querySelectorAll('button');
+          dots.forEach((dot, i) => {
+            if (i === currentCertIdx) {
+              dot.className = 'w-6 h-2.5 rounded-full bg-[#1b7a5a] transition-all';
+            } else {
+              dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all';
+            }
+          });
+        }
+      }
+
+      function openCertModal(idx = 0) {
+        updateModalCert(idx);
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modal.querySelector('.transform')?.classList.remove('scale-95');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeCertModal() {
+        modal.classList.add('opacity-0');
+        modal.querySelector('.transform')?.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 250);
+      }
+
+      // Attach click to cert cards
+      document.querySelectorAll('.cert-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const idx = parseInt(card.getAttribute('data-cert-idx') || '0', 10);
+          openCertModal(idx);
+        });
+      });
+
+      // "ПОДРОБНЕЕ" button opens modal
+      if (btnMore) {
+        btnMore.addEventListener('click', (e) => {
+          e.preventDefault();
+          openCertModal(0);
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeCertModal);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeCertModal();
+        });
+      }
+
+      if (modalPrev) {
+        modalPrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateModalCert(currentCertIdx - 1);
+        });
+      }
+
+      if (modalNext) {
+        modalNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateModalCert(currentCertIdx + 1);
+        });
+      }
+
+      if (dotsContainer) {
+        dotsContainer.querySelectorAll('button').forEach((dot, i) => {
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateModalCert(i);
+          });
+        });
+      }
+
+      // Keyboard controls for modal
+      document.addEventListener('keydown', (e) => {
+        if (!modal || modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeCertModal();
+        if (e.key === 'ArrowLeft') updateModalCert(currentCertIdx - 1);
+        if (e.key === 'ArrowRight') updateModalCert(currentCertIdx + 1);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    });
   </script>
 
   <!-- myreviews.dev Floating Widget Init -->

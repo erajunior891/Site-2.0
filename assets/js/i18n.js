@@ -38,11 +38,13 @@ const translations = {
     search_season_label: "Формат выезда",
     search_diff_label: "Длительность",
     search_btn: "Найти тур",
+    loc_all: "Все направления (Алматы)",
     loc_kolsay: "Кольсай, Каинды & Чарын",
     loc_assy: "Плато Асы & Водопад",
     loc_turkestan: "Туркестан (Исторический)",
     loc_bao: "БАО & Пик Турист",
     loc_issyk: "Озеро Иссык & Форель",
+    season_all: "Любой формат",
     season_weekend: "Каждые выходные (Сб-Вс)",
     season_daily: "Однодневные туры",
     season_night: "Вечерний выезд",
@@ -271,6 +273,19 @@ const translations = {
     gis_rev3_author: "Диана Мусаева",
     gis_rev3_date: "28 июля 2026",
 
+    // Licenses and Documents Section
+    licenses_title: "Лицензии и документы",
+    licenses_desc: "K.K. Tour — официально лицензированная туристическая компания. Работаем легально, принимаем оплату через Kaspi Pay с фискальным чеком и полностью соответствуем требованиям законодательства РК.",
+    licenses_btn: "ПОДРОБНЕЕ",
+    licenses_cert1_title: "Лицензия на туроператорскую деятельность",
+    licenses_cert1_sub: "Министерство туризма и спорта Республики Казахстан",
+    licenses_cert2_title: "Свидетельство о государственной регистрации",
+    licenses_cert2_sub: "Министерство юстиции Республики Казахстан",
+    licenses_cert3_title: "Сертификат качества туристических услуг",
+    licenses_cert3_sub: "Ассоциация туристических организаций Казахстана",
+    licenses_view_full: "Увеличить",
+    licenses_modal_title: "Официальный документ",
+
     // Newsletter
     newsletter_title: "Получите расписание туров K.K. Tour на месяц",
     newsletter_desc: "Оставьте свой e-mail или напишите нам в WhatsApp, чтобы первыми бронировать места на топовые даты.",
@@ -388,27 +403,46 @@ const translations = {
 
     // FAQ Section
     faq_badge: "FAQ K.K. Tour",
-    faq_title: "Часто задаваемые вопросы перед поездкой",
-    faq1_q: "Как забронировать место в туре?",
-    faq1_a1: "Чтобы забронировать место, необходимо внести 100% оплату. Оплату можно произвести двумя способами:",
-    faq1_a2: "1. Дистанционно: Официальным способом через Kaspi Gold (Kaspi Pay), написав свои данные нам на WhatsApp (+7 747 280 16 71).",
-    faq1_a3: "2. Наличными: В нашем офисе в г. Алматы по адресу: Панфилов көшесі, 52 с 09:00 до 21:00 (предварительно напишите нам на WhatsApp).",
+    faq_title: "Часто задаваемые вопросы",
+    faq_subtitle: "Не нашли нужную информацию? Вы можете задать вопрос нашим менеджерам, нажав кнопку «Консультация».",
+    faq_btn_consult: "Консультация",
 
-    faq2_q: "Что нужно взять с собой в поездку?",
-    faq2_a1: "• Документы: Удостоверение личности или паспорт",
-    faq2_a2: "• Еду и напитки на день для перекуса в дороге",
-    faq2_a3: "• Тёплые вещи (погода в горах переменчива)",
-    faq2_a4: "• Каремат или плед, чтобы расстелить на траве",
-    faq2_a5: "• Деньги на личные расходы (только наличные: в посёлке Саты и на каньоне нет интернета)",
-    faq2_a6: "• Термос с горячим чаем по желанию",
-    faq2_a7: "• Личные лекарства (если есть аллергии или особенности)",
+    faq1_q: "Как забронировать тур?",
+    faq1_a: "Выберите подходящий тур и дату, оставьте заявку через наш сайт или напишите нам в WhatsApp. Наш менеджер подтвердит наличие свободных мест и поможет оформить бронь. Для подтверждения бронирования обычно требуется внести предоплату.",
 
-    faq3_q: "Как правильно одеться?",
-    faq3_a1: "• Тёплая куртка / толстовка (утром и вечером прохладно)",
-    faq3_a2: "• Удобная обувь с нескользящей подошвой (кроссовки или треккинговые ботинки)",
-    faq3_a3: "• Головной убор (кепка от солнца или шапка), солнцезащитные очки",
-    faq3_a4: "• Запасные носки и удобная сменная обувь",
-    faq3_a5: "• Если вы едете в Туркестан: необходима закрытая скромная одежда (длинные рукава, брюки/юбка) и платок для посещения мавзолеев.",
+    faq2_q: "Какие направления предлагает K.K.TOUR?",
+    faq2_a: "Мы организуем туры по самым красивым местам Алматы и Алматинской области, а также путешествия по Казахстану, Кыргызстану и Узбекистану. В числе наших направлений: Кольсайские озера, озеро Каинды, Чарынский каньон, плато Асы, Тургень, Шымбулак и множество других интересных локаций.",
+
+    faq3_q: "На каком транспорте осуществляются туры?",
+    faq3_a: "Тип транспорта зависит от количества туристов и выбранного маршрута. Мы используем легковые автомобили, комфортабельные внедорожники, минивэны, микроавтобусы и просторные туристические автобусы.",
+
+    faq4_q: "Можно ли заказать индивидуальный тур?",
+    faq4_a: "Да! Мы организуем индивидуальные туры для пар, семей, компании друзей и больших групп. Вы можете выбрать удобную дату, маршрут, тип транспорта и желаемый формат путешествия.",
+
+    faq5_q: "Как связаться с K.K.TOUR?",
+    faq5_a: "Вы можете оставить заявку на сайте или написать нам любым удобным способом связи. Наши менеджеры помогут вам выбрать маршрут, определить подходящую дату и с радостью ответят на все ваши вопросы.",
+
+    faq6_q: "Предусмотрено ли питание во время тура?",
+    faq6_a: "Это зависит от выбранной программы тура. В некоторых турах питание уже включено в стоимость, а на других маршрутах предусмотрены остановки в проверенных кафе или возможность взять еду с собой. Вся подробная информация указана в описании каждого тура.",
+
+    faq7_q: "Можно ли отправиться в тур одному?",
+    faq7_a: "Конечно! Многие наши путешественники отправляются в тур в одиночку. Вы можете присоединиться к сборной группе и познакомиться с новыми людьми во время поездки.",
+
+    faq8_q: "Что нужно взять с собой в поездку?",
+    faq8_a1: "• Документы: Удостоверение личности или паспорт",
+    faq8_a2: "• Еду и напитки на день для перекуса в дороге",
+    faq8_a3: "• Тёплые вещи (погода в горах переменчива)",
+    faq8_a4: "• Каремат или плед, чтобы расстелить на траве",
+    faq8_a5: "• Деньги на личные расходы (только наличные: в посёлке Саты и на каньоне нет интернета)",
+    faq8_a6: "• Термос с горячим чаем по желанию",
+    faq8_a7: "• Личные лекарства (если есть аллергии или особенности)",
+
+    faq9_q: "Как правильно одеться?",
+    faq9_a1: "• Тёплая куртка / толстовка (утром и вечером прохладно)",
+    faq9_a2: "• Удобная обувь с нескользящей подошвой (кроссовки или треккинговые ботинки)",
+    faq9_a3: "• Головной убор (кепка от солнца или шапка), солнцезащитные очки",
+    faq9_a4: "• Запасные носки и удобная сменная обувь",
+    faq9_a5: "• Если вы едете в Туркестан: необходима закрытая скромная одежда (длинные рукава, брюки/юбка) и платок для посещения мавзолеев.",
 
     // Enhanced Booking Modal (RU)
     modal_title: "Бронирование тура в K.K. Tour",
@@ -425,6 +459,10 @@ const translations = {
     modal_guests_count_label: "Мест:",
     modal_total_price_label: "Итого к оплате:",
     modal_btn_whatsapp: "Забронировать через WhatsApp",
+    modal_phone_label: "WhatsApp номер",
+    tour1_title: "2 дня / 6 локаций: Кольсай, Каинды, Чарын",
+    tour2_title: "Плато Асы + Медвежий водопад (Закат)",
+    tour3_title: "Жемчужины Семиречья: 1 день / 6 локаций",
     modal_close_aria: "Закрыть окно",
     guests_unit: "чел.",
     toast_wa_redirect: "Спасибо! Открываем WhatsApp K.K. Tour с вашей заявкой...",
@@ -442,15 +480,25 @@ const translations = {
     wa_comment: "Вопросы / пожелания:",
 
     // Footer
+    footer_brand_sub: "Туроператор по Казахстану • Алматы",
     footer_desc: "K.K. Tour — туроператор по Алматинской области и Казахстану. Адрес: Панфилов көшесі, 52, Алматы. Время работы: 09:00 – 21:00.",
     footer_nav: "Навигация",
     footer_eco: "Условия и бронь",
-    footer_contact: "Связь с K.K. Tour",
+    footer_contact: "Контакты",
+    footer_hours: "09:00 – 21:00 (Ежедневно)",
     footer_kaspi: "Оплата через Kaspi Pay",
     footer_tickets: "Входные билеты в Нацпарки",
-    footer_address: "Панфилов көшесі, 52",
+    footer_address: "Алматы, Панфилов көшесі, 52",
     footer_offer: "Договор публичной оферты",
-    footer_rights: "© 2026 K.K. Tour. Все права защищены. Instagram: @k.k.tour"
+    footer_rights: "© 2026 K.K. Tour. Все права защищены. Алматы, Панфилов көшесі, 52.",
+
+    // Office info (contact page)
+    office_hours_label: "Время работы:",
+    office_hours: "Ежедневно: 09:00 – 21:00",
+    office_hours_sub: "Без выходных и перерывов",
+    office_address_label: "Адрес офиса:",
+    office_address: "Панфилов көшесі, 52, Алматы",
+    office_address_hint: "(ул. Панфилова, 52 • Вход со стороны улицы)"
   },
 
   kz: {
@@ -487,11 +535,13 @@ const translations = {
     search_season_label: "Шығу форматы",
     search_diff_label: "Ұзақтығы",
     search_btn: "Тур табу",
+    loc_all: "Барлық бағыттар (Алматы)",
     loc_kolsay: "Көлсай, Қайыңды & Шарын",
     loc_assy: "Асы үстірті & Сарқырама",
     loc_turkestan: "Түркістан (Тарихи тур)",
     loc_bao: "ҮАҮ (БАО) & Турист шыңы",
     loc_issyk: "Есік көлі & Бақтақ шаруашылығы",
+    season_all: "Кез келген формат",
     season_weekend: "Әр демалыс күндері (Сб-Жс)",
     season_daily: "1 күндік турлар",
     season_night: "Кешкі шығу",
@@ -720,6 +770,19 @@ const translations = {
     gis_rev3_author: "Диана Мұсаева",
     gis_rev3_date: "28 шілде 2026",
 
+    // Licenses and Documents Section
+    licenses_title: "Лицензиялар мен құжаттар",
+    licenses_desc: "K.K. Tour — ресми лицензиясы бар туристік компания. Заңды жұмыс жасаймыз, Kaspi Pay арқылы фискалдық чекпен төлем қабылдаймыз және ҚР заңнамасының талаптарына толық сәйкесіміз.",
+    licenses_btn: "ТОЛЫҒЫРАҚ",
+    licenses_cert1_title: "Туроператорлық қызметке лицензия",
+    licenses_cert1_sub: "Қазақстан Республикасының Туризм және спорт министрлігі",
+    licenses_cert2_title: "Мемлекеттік тіркеу туралы куәлік",
+    licenses_cert2_sub: "Қазақстан Республикасының Әділет министрлігі",
+    licenses_cert3_title: "Туристік қызмет сапасының сертификаты",
+    licenses_cert3_sub: "Қазақстан туристік ұйымдары қауымдастығы",
+    licenses_view_full: "Үлкейту",
+    licenses_modal_title: "Ресми құжат",
+
     // Newsletter
     newsletter_title: "K.K. Tour-дың 1 айлық турлар кестесін алыңыз",
     newsletter_desc: "Үздік күндерге орындарды бірінші болып брондау үшін телефон немесе e-mail қалдырыңыз.",
@@ -842,27 +905,46 @@ const translations = {
 
     // FAQ Section
     faq_badge: "K.K. Tour сұрақ-жауаптары",
-    faq_title: "Сапар алдында жиі қойылатын сұрақтар",
-    faq1_q: "Турға орынды қалай брондауға болады?",
-    faq1_a1: "Орынды брондау үшін 100% төлем жасау қажет. Төлемді екі тәсілмен жасауға болады:",
-    faq1_a2: "1. Қашықтан: Kaspi Gold (Kaspi Pay) ресми тәсілімен, барлық мәліметіңізді біздің WhatsApp-қа жазып (+7 747 280 16 71).",
-    faq1_a3: "2. Қолма-қол: Алматы қаласындағы кеңсемізде: Панфилов көшесі, 52 (09:00-ден 21:00-ге дейін).",
+    faq_title: "Жиі қойылатын сұрақтар",
+    faq_subtitle: "Қажетті ақпаратты таба алмадыңыз ба? «Кеңес алу» батырмасын басу арқылы менеджерлерімізге өз сұрағыңызды қоя аласыз.",
+    faq_btn_consult: "Кеңес алу",
 
-    faq2_q: "Сапарға өзіммен бірге не алуым керек?",
-    faq2_a1: "• Құжаттар: Жеке куәлік немесе төлқұжат",
-    faq2_a2: "• Жолда тамақтануға арналған 1 күндік тамақ пен сусындар",
-    faq2_a3: "• Жылы киімдер (тауда ауа райы тез өзгереді)",
-    faq2_a4: "• Шөпке төсейтін каремат немесе плед",
-    faq2_a5: "• Жеке шығындарға арналған ақша (тек қолма-қол: Саты ауылы мен шатқалда интернет жоқ)",
-    faq2_a6: "• Ыстық шайы бар термос (қалауыңызша)",
-    faq2_a7: "• Жеке дәрі-дәрмектер (егер аллергия немесе ерекшеліктер болса)",
+    faq1_q: "Турға қалай бронь жасауға болады?",
+    faq1_a: "Өзіңізге қолайлы тур мен күнді таңдаңыз, сайт арқылы өтінім қалдырыңыз немесе бізге WhatsApp арқылы жазыңыз. Менеджеріміз бос орындардың бар-жоғын растап, бронь рәсімдеуге көмектеседі. Броньды растау үшін әдетте алдын ала төлем жасау қажет.",
 
-    faq3_q: "Қалай киінген дұрыс?",
-    faq3_a1: "• Жылы күрте / қалың жемпір (таңертең және кешке салқын болады)",
-    faq3_a2: "• Табаны таймайтын ыңғайлы аяқ киім (кроссовка немесе треккингтік бәтеңке)",
-    faq3_a3: "• Бас киім (күннен қорғайтын кепка немесе қалпақ), күннен қорғайтын көзілдірік",
-    faq3_a4: "• Қосалқы шұлық пен ауыстыратын ыңғайлы аяқ киім",
-    faq3_a5: "• Егер Түркістанға баратын болсаңыз: жабық киім (ұзын жең, шалбар/ұзын белдемше) және кесенелерге кіруге орамал қажет.",
+    faq2_q: "K.K.TOUR қандай бағыттарды ұсынады?",
+    faq2_a: "Біз Алматы мен Алматы облысының ең көрікті жерлеріне, сондай-ақ Қазақстан, Қырғызстан және Өзбекстан бойынша саяхаттар ұйымдастырамыз. Біздің бағыттарымыздың қатарында Көлсай көлдері, Қайыңды көлі, Шарын шатқалы, Ассы үстірті, Түрген, Шымбұлақ және басқа да көптеген қызықты орындар бар.",
+
+    faq3_q: "Турлар қандай көлікпен жүзеге асырылады?",
+    faq3_a: "Көлік түрі туристер саны мен таңдалған бағытқа байланысты. Біз жеңіл автокөліктерді, жол талғамайтын көліктерді, минивэндерді, шағын автобустарды және туристік автобустарды пайдаланамыз.",
+
+    faq4_q: "Жеке турға тапсырыс беруге бола ма?",
+    faq4_a: "Иә! Біз жұптарға, отбасыларға, достар тобына және үлкен компанияларға арналған жеке турлар ұйымдастырамыз. Сіз өзіңізге ыңғайлы күнді, бағытты, көлік түрін және саяхат форматын таңдай аласыз.",
+
+    faq5_q: "K.K.TOUR-пен қалай байланысуға болады?",
+    faq5_a: "Сайт арқылы өтінім қалдыра аласыз немесе өзіңізге ыңғайлы байланыс тәсілі арқылы бізге жаза аласыз. Менеджерлеріміз сізге бағыт таңдауға, қолайлы күнді анықтауға және барлық сұрақтарыңызға жауап беруге көмектеседі.",
+
+    faq6_q: "Тур барысында тамақтану қарастырылған ба?",
+    faq6_a: "Бұл таңдалған тур бағдарламасына байланысты. Кейбір турларда тамақтану бағаға кіреді, ал басқа бағыттарда кафеға тоқтау немесе өзіңізбен бірге тамақ алу мүмкіндігі қарастырылған. Барлық ақпарат тур бағдарламасында көрсетіледі.",
+
+    faq7_q: "Турға жалғыз баруға бола ма?",
+    faq7_a: "Әрине! Көптеген туристеріміз саяхатқа жалғыз шығады. Сіз топтық турға қосылып, саяхат барысында жаңа адамдармен таныса аласыз.",
+
+    faq8_q: "Сапарға өзіммен бірге не алуым керек?",
+    faq8_a1: "• Құжаттар: Жеке куәлік немесе төлқұжат",
+    faq8_a2: "• Жолда тамақтануға арналған 1 күндік тамақ пен сусындар",
+    faq8_a3: "• Жылы киімдер (тауда ауа райы тез өзгереді)",
+    faq8_a4: "• Шөпке төсейтін каремат немесе плед",
+    faq8_a5: "• Жеке шығындарға арналған ақша (тек қолма-қол: Саты ауылы мен шатқалда интернет жоқ)",
+    faq8_a6: "• Ыстық шайы бар термос (қалауыңызша)",
+    faq8_a7: "• Жеке дәрі-дәрмектер (егер аллергия немесе ерекшеліктер болса)",
+
+    faq9_q: "Қалай киінген дұрыс?",
+    faq9_a1: "• Жылы күрте / қалың жемпір (таңертең және кешке салқын болады)",
+    faq9_a2: "• Табаны таймайтын ыңғайлы аяқ киім (кроссовка немесе треккингтік бәтеңке)",
+    faq9_a3: "• Бас киім (күннен қорғайтын кепка немесе қалпақ), күннен қорғайтын көзілдірік",
+    faq9_a4: "• Қосалқы шұлық пен ауыстыратын ыңғайлы аяқ киім",
+    faq9_a5: "• Егер Түркістанға баратын болсаңыз: жабық киім (ұзын жең, шалбар/ұзын белдемше) және кесенелерге кіруге орамал қажет.",
 
     // Enhanced Booking Modal (KZ)
     modal_title: "K.K. Tour-да турды брондау",
@@ -878,7 +960,11 @@ const translations = {
     modal_per_person: "1 адамға:",
     modal_guests_count_label: "Орын:",
     modal_total_price_label: "Барлығы төлеуге:",
-    modal_btn_whatsapp: "WhatsApp арқылы тапсырыс беру",
+    modal_btn_whatsapp: "WhatsApp арқылы брондау",
+    modal_phone_label: "WhatsApp нөмірі",
+    tour1_title: "2 күн / 6 локация: Көлсай, Қайыңды, Шарын",
+    tour2_title: "Асы үстірті + Аюлы сарқырама (Күн батуы)",
+    tour3_title: "Жетісу жауһарлары: 1 күн / 6 локация",
     modal_close_aria: "Терезені жабу",
     guests_unit: "адам",
     toast_wa_redirect: "Рақмет! K.K. Tour WhatsApp-қа бағытталудасыз...",
@@ -896,15 +982,25 @@ const translations = {
     wa_comment: "Сұрақтар / тілектер:",
 
     // Footer
+    footer_brand_sub: "Қазақстан бойынша туроператор • Алматы",
     footer_desc: "K.K. Tour — Алматы облысы және Қазақстан бойынша туроператор. Мекенжай: Панфилов көшесі, 52, Алматы. Жұмыс уақыты: 09:00 – 21:00.",
     footer_nav: "Навигация",
     footer_eco: "Шарттар & Бронь",
-    footer_contact: "K.K. Tour-мен байланыс",
+    footer_contact: "Байланыс",
+    footer_hours: "09:00 – 21:00 (Күн сайын)",
     footer_kaspi: "Kaspi Pay арқылы төлем",
     footer_tickets: "Ұлттық парктердің билеттері",
-    footer_address: "Панфилов көшесі, 52",
+    footer_address: "Алматы, Панфилов көшесі, 52",
     footer_offer: "Жария оферта шарты",
-    footer_rights: "© 2026 K.K. Tour. Барлық құқықтар қорғалған. Instagram: @k.k.tour"
+    footer_rights: "© 2026 K.K. Tour. Барлық құқықтар қорғалған. Алматы, Панфилов көшесі, 52.",
+
+    // Office info (contact page)
+    office_hours_label: "Жұмыс уақыты:",
+    office_hours: "Күн сайын: 09:00 – 21:00",
+    office_hours_sub: "Демалыссыз және үзіліссіз",
+    office_address_label: "Кеңсе мекенжайы:",
+    office_address: "Панфилов көшесі, 52, Алматы",
+    office_address_hint: "(Панфилов көшесі, 52 • Көше жағынан кіреберіс)"
   },
 
   en: {
@@ -941,11 +1037,13 @@ const translations = {
     search_season_label: "Departure Format",
     search_diff_label: "Duration",
     search_btn: "Find Tour",
+    loc_all: "All Destinations (Almaty)",
     loc_kolsay: "Kolsay, Kaindy & Charyn",
     loc_assy: "Assy Plateau & Waterfall",
     loc_turkestan: "Turkestan (Historic Silk Road)",
     loc_bao: "Big Almaty Lake & Tourist Peak",
     loc_issyk: "Lake Issyk & Trout Farm",
+    season_all: "Any Format",
     season_weekend: "Every Weekend (Sat-Sun)",
     season_daily: "Day Trips",
     season_night: "Evening Departure",
@@ -1173,6 +1271,19 @@ const translations = {
     gis_rev3_author: "Diana Musayeva",
     gis_rev3_date: "July 28, 2026",
 
+    // Licenses and Documents Section
+    licenses_title: "Licenses & Documents",
+    licenses_desc: "K.K. Tour is an officially licensed travel agency. We operate legally, accept payments via Kaspi Pay with a fiscal receipt, and fully comply with Kazakhstan tourism legislation.",
+    licenses_btn: "LEARN MORE",
+    licenses_cert1_title: "Tour Operator License",
+    licenses_cert1_sub: "Ministry of Tourism and Sports of the Republic of Kazakhstan",
+    licenses_cert2_title: "State Registration Certificate",
+    licenses_cert2_sub: "Ministry of Justice of the Republic of Kazakhstan",
+    licenses_cert3_title: "Tourism Service Quality Certificate",
+    licenses_cert3_sub: "Association of Tourism Organizations of Kazakhstan",
+    licenses_view_full: "Enlarge",
+    licenses_modal_title: "Official Document",
+
     // Newsletter
     newsletter_title: "Get K.K. Tour Monthly Trip Schedule",
     newsletter_desc: "Drop your email or phone to get early access to tour bookings and seasonal promo discounts.",
@@ -1295,27 +1406,46 @@ const translations = {
 
     // FAQ Section
     faq_badge: "K.K. Tour FAQ",
-    faq_title: "Frequently Asked Questions Before Departure",
-    faq1_q: "How to book a seat on a tour?",
-    faq1_a1: "To book your seat, a 100% deposit is required. Payment can be made in two convenient ways:",
-    faq1_a2: "1. Remotely: Officially via Kaspi Gold (Kaspi Pay) by sending your details to our WhatsApp (+7 747 280 16 71).",
-    faq1_a3: "2. Cash: At our office in Almaty at 52 Panfilov St (09:00 to 21:00 daily).",
+    faq_title: "Frequently Asked Questions",
+    faq_subtitle: "Didn't find the information you were looking for? You can ask our managers any questions by clicking the “Consultation” button.",
+    faq_btn_consult: "Consultation",
 
-    faq2_q: "What should I bring with me?",
-    faq2_a1: "• Documents: Passport or National ID",
-    faq2_a2: "• Food and drinks for 1-day trail snacks",
-    faq2_a3: "• Warm clothing (mountain weather can change rapidly)",
-    faq2_a4: "• Picnic blanket or foam mat to sit on the grass",
-    faq2_a5: "• Cash for personal expenses (there is no internet in Saty village or canyon)",
-    faq2_a6: "• Thermos with hot tea if desired",
-    faq2_a7: "• Personal medication (if any allergies or conditions)",
+    faq1_q: "How can I book a tour?",
+    faq1_a: "Choose your preferred tour and date, submit a request through our website, or contact us via WhatsApp. Our manager will confirm availability and assist you with the booking. A deposit is usually required to confirm your reservation.",
 
-    faq3_q: "What should I wear?",
-    faq3_a1: "• Warm jacket / hoodie (mornings and evenings are chilly)",
-    faq3_a2: "• Comfortable non-slip shoes (sneakers or trekking shoes)",
-    faq3_a3: "• Headwear (cap/sunhat or beanie), sunglasses",
-    faq3_a4: "• Extra socks and comfortable spare shoes",
-    faq3_a5: "• For Turkestan trips: Modest clothing with covered shoulders/legs and a headscarf for visiting mausoleums.",
+    faq2_q: "What destinations does K.K.TOUR offer?",
+    faq2_a: "We organize tours to the most beautiful destinations in Almaty and the Almaty Region, as well as trips around Kazakhstan, Kyrgyzstan, and Uzbekistan. Our destinations include the Kolsai Lakes, Kaindy Lake, Charyn Canyon, the Assy Plateau, Turgen, Shymbulak, and many other exciting locations.",
+
+    faq3_q: "What type of transportation is used for the tours?",
+    faq3_a: "The type of transportation depends on the number of tourists and the selected route. We use passenger cars, SUVs, minivans, minibuses, and tourist buses.",
+
+    faq4_q: "Can I book a private tour?",
+    faq4_a: "Yes! We organize private tours for couples, families, groups of friends, and larger groups. You can choose a convenient date, route, type of transportation, and travel format.",
+
+    faq5_q: "How can I contact K.K.TOUR?",
+    faq5_a: "You can submit a request through our website or contact us using any convenient method. Our managers will help you choose a destination, select a suitable date, and answer all your questions.",
+
+    faq6_q: "Are meals included during the tour?",
+    faq6_a: "This depends on the selected tour program. Meals are included in the price for some tours, while other tours include stops at cafés or allow you to bring your own food. All details are provided in the tour program.",
+
+    faq7_q: "Can I join a tour alone?",
+    faq7_a: "Of course! Many of our travelers join our tours on their own. You can join a group tour and meet new people during your trip.",
+
+    faq8_q: "What should I bring with me?",
+    faq8_a1: "• Documents: Passport or National ID",
+    faq8_a2: "• Food and drinks for 1-day trail snacks",
+    faq8_a3: "• Warm clothing (mountain weather can change rapidly)",
+    faq8_a4: "• Picnic blanket or foam mat to sit on the grass",
+    faq8_a5: "• Cash for personal expenses (there is no internet in Saty village or canyon)",
+    faq8_a6: "• Thermos with hot tea if desired",
+    faq8_a7: "• Personal medication (if any allergies or conditions)",
+
+    faq9_q: "What should I wear?",
+    faq9_a1: "• Warm jacket / hoodie (mornings and evenings are chilly)",
+    faq9_a2: "• Comfortable non-slip shoes (sneakers or trekking shoes)",
+    faq9_a3: "• Headwear (cap/sunhat or beanie), sunglasses",
+    faq9_a4: "• Extra socks and comfortable spare shoes",
+    faq9_a5: "• For Turkestan trips: Modest clothing with covered shoulders/legs and a headscarf for visiting mausoleums.",
 
     // Enhanced Booking Modal (EN)
     modal_title: "Book with K.K. Tour",
@@ -1332,7 +1462,11 @@ const translations = {
     modal_guests_count_label: "Seats:",
     modal_total_price_label: "Total amount:",
     modal_btn_whatsapp: "Book via WhatsApp",
-    modal_close_aria: "Close modal",
+    modal_phone_label: "WhatsApp number",
+    tour1_title: "2 Days / 6 Spots: Kolsay, Kaindy, Charyn",
+    tour2_title: "Assy Plateau + Bear Waterfall (Sunset)",
+    tour3_title: "Jewels of Semirechye: 1 Day / 6 Spots",
+    modal_close_aria: "Close Window",
     guests_unit: "guests",
     toast_wa_redirect: "Thank you! Opening K.K. Tour WhatsApp with your request...",
     toast_form_success: "Request created successfully!",
@@ -1349,15 +1483,25 @@ const translations = {
     wa_comment: "Questions / wishes:",
 
     // Footer
+    footer_brand_sub: "Tour Operator in Kazakhstan • Almaty",
     footer_desc: "K.K. Tour — Tour operator for Almaty region & Kazakhstan. Address: 52 Panfilov St, Almaty. Working hours: 09:00 – 21:00.",
     footer_nav: "Navigation",
     footer_eco: "Booking & Terms",
-    footer_contact: "Contact K.K. Tour",
+    footer_contact: "Contacts",
+    footer_hours: "09:00 – 21:00 (Daily)",
     footer_kaspi: "Payment via Kaspi Pay",
     footer_tickets: "National Park Entrance Tickets",
     footer_address: "52 Panfilov St, Almaty",
     footer_offer: "Public Offer Agreement",
-    footer_rights: "© 2026 K.K. Tour. All rights reserved. Instagram: @k.k.tour"
+    footer_rights: "© 2026 K.K. Tour. All rights reserved. 52 Panfilov St, Almaty.",
+
+    // Office info (contact page)
+    office_hours_label: "Working Hours:",
+    office_hours: "Daily: 09:00 – 21:00",
+    office_hours_sub: "No days off, no breaks",
+    office_address_label: "Office Address:",
+    office_address: "52 Panfilov St, Almaty",
+    office_address_hint: "(52 Panfilov St • Street-side entrance)"
   }
 };
 

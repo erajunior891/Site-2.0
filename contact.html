@@ -128,12 +128,13 @@
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
     </div>
+    <!-- Mobile Language Switcher -->
     <div class="py-4 border-b border-slate-100">
       <span data-i18n="lang_select_label" class="text-xs text-slate-400 font-semibold uppercase block mb-2">Язык / Тіл / Language:</span>
-      <div class="flex items-center gap-2">
-        <button data-set-lang="kz" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇰🇿 ҚАЗ</button>
-        <button data-set-lang="ru" class="flex-1 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center">🇷🇺 РУС</button>
-        <button data-set-lang="en" class="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-center hover:bg-slate-50">🇬🇧 ENG</button>
+      <div class="flex items-center bg-slate-100 p-1 rounded-2xl border border-slate-200 text-xs">
+        <button data-set-lang="kz" class="flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer">🇰🇿 ҚАЗ</button>
+        <button data-set-lang="ru" class="flex-1 py-2.5 rounded-xl transition-all bg-emerald-600 text-white font-bold shadow-sm text-center cursor-pointer">🇷🇺 РУС</button>
+        <button data-set-lang="en" class="flex-1 py-2.5 rounded-xl transition-all text-slate-600 hover:bg-slate-200 font-medium text-center cursor-pointer">🇬🇧 ENG</button>
       </div>
     </div>
     <nav class="flex flex-col gap-4 py-6 flex-1">
@@ -320,7 +321,16 @@
           <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
           <span data-i18n="faq_badge">FAQ K.K. Tour</span>
         </div>
-        <h2 data-i18n="faq_title" class="text-3xl sm:text-4xl font-bold font-serif text-slate-900">Часто задаваемые вопросы перед поездкой</h2>
+        <h2 data-i18n="faq_title" class="text-3xl sm:text-4xl font-bold font-serif text-slate-900">Часто задаваемые вопросы</h2>
+        <p data-i18n="faq_subtitle" class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto mt-3 leading-relaxed">
+          Не нашли нужную информацию? Вы можете задать вопрос нашим менеджерам, нажав кнопку «Консультация».
+        </p>
+        <div class="mt-4">
+          <a href="https://wa.me/77472801671" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold tracking-wide uppercase transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span data-i18n="faq_btn_consult">Консультация</span>
+          </a>
+        </div>
       </div>
 
       <div class="space-y-4">
@@ -328,45 +338,109 @@
         <!-- FAQ 1: Booking -->
         <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll">
           <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-            <span data-i18n="faq1_q" class="font-bold text-slate-900 text-base pr-4">Как забронировать место в туре?</span>
+            <span data-i18n="faq1_q" class="font-bold text-slate-900 text-base pr-4">Как забронировать тур?</span>
             <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-2 border-t border-emerald-50 pt-4">
-            <p data-i18n="faq1_a1">Чтобы забронировать место, необходимо внести 100% оплату. Оплату можно произвести двумя способами:</p>
-            <p data-i18n="faq1_a2" class="ml-3">1. Дистанционно: Официальным способом через Kaspi Gold (Kaspi Pay), написав свои данные нам на WhatsApp (+7 747 280 16 71).</p>
-            <p data-i18n="faq1_a3" class="ml-3">2. Наличными: В нашем офисе в г. Алматы по адресу: Панфилов көшесі, 52 с 09:00 до 21:00 (предварительно напишите нам на WhatsApp).</p>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq1_a">Выберите подходящий тур и дату, оставьте заявку через наш сайт или напишите нам в WhatsApp. Наш менеджер подтвердит наличие свободных мест и поможет оформить бронь. Для подтверждения бронирования обычно требуется внести предоплату.</p>
           </div>
         </details>
 
-        <!-- FAQ 2: What to bring -->
+        <!-- FAQ 2: Destinations -->
         <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-100">
           <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-            <span data-i18n="faq2_q" class="font-bold text-slate-900 text-base pr-4">Что нужно взять с собой в поездку?</span>
+            <span data-i18n="faq2_q" class="font-bold text-slate-900 text-base pr-4">Какие направления предлагает K.K.TOUR?</span>
             <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
           </summary>
-          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-1.5 border-t border-emerald-50 pt-4">
-            <p data-i18n="faq2_a1">• Документы: Удостоверение личности или паспорт</p>
-            <p data-i18n="faq2_a2">• Еду и напитки на день для перекуса в дороге</p>
-            <p data-i18n="faq2_a3">• Тёплые вещи (погода в горах переменчива)</p>
-            <p data-i18n="faq2_a4">• Каремат или плед, чтобы расстелить на траве</p>
-            <p data-i18n="faq2_a5">• Деньги на личные расходы (только наличные: в посёлке Саты и на каньоне нет интернета)</p>
-            <p data-i18n="faq2_a6">• Термос с горячим чаем по желанию</p>
-            <p data-i18n="faq2_a7">• Личные лекарства (если есть аллергии или особенности)</p>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq2_a">Мы организуем туры по самым красивым местам Алматы и Алматинской области, а также путешествия по Казахстану, Кыргызстану и Узбекистану. В числе наших направлений: Кольсайские озера, озеро Каинды, Чарынский каньон, плато Асы, Тургень, Шымбулак и множество других интересных локаций.</p>
           </div>
         </details>
 
-        <!-- FAQ 3: What to wear -->
+        <!-- FAQ 3: Transportation -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-150">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq3_q" class="font-bold text-slate-900 text-base pr-4">На каком транспорте осуществляются туры?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq3_a">Тип транспорта зависит от количества туристов и выбранного маршрута. Мы используем легковые автомобили, комфортабельные внедорожники, минивэны, микроавтобусы и просторные туристические автобусы.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 4: Private Tours -->
         <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-200">
           <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-            <span data-i18n="faq3_q" class="font-bold text-slate-900 text-base pr-4">Как правильно одеться?</span>
+            <span data-i18n="faq4_q" class="font-bold text-slate-900 text-base pr-4">Можно ли заказать индивидуальный тур?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq4_a">Да! Мы организуем индивидуальные туры для пар, семей, компании друзей и больших групп. Вы можете выбрать удобную дату, маршрут, тип транспорта и желаемый формат путешествия.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 5: Contact -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq5_q" class="font-bold text-slate-900 text-base pr-4">Как связаться с K.K.TOUR?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq5_a">Вы можете оставить заявку на сайте или написать нам любым удобным способом связи. Наши менеджеры помогут вам выбрать маршрут, определить подходящую дату и с радостью ответят на все ваши вопросы.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 6: Meals -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-100">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq6_q" class="font-bold text-slate-900 text-base pr-4">Предусмотрено ли питание во время тура?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq6_a">Это зависит от выбранной программы тура. В некоторых турах питание уже включено в стоимость, а на других маршрутах предусмотрены остановки в проверенных кафе или возможность взять еду с собой. Вся подробная информация указана в описании каждого тура.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 7: Solo Travelers -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-150">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq7_q" class="font-bold text-slate-900 text-base pr-4">Можно ли отправиться в тур одному?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed border-t border-emerald-50 pt-4">
+            <p data-i18n="faq7_a">Конечно! Многие наши путешественники отправляются в тур в одиночку. Вы можете присоединиться к сборной группе и познакомиться с новыми людьми во время поездки.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 8: What to bring -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-200">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq8_q" class="font-bold text-slate-900 text-base pr-4">Что нужно взять с собой в поездку?</span>
             <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
           </summary>
           <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-1.5 border-t border-emerald-50 pt-4">
-            <p data-i18n="faq3_a1">• Тёплая куртка / толстовка (утром и вечером прохладно)</p>
-            <p data-i18n="faq3_a2">• Удобная обувь с нескользящей подошвой (кроссовки или треккинговые ботинки)</p>
-            <p data-i18n="faq3_a3">• Головной убор (кепка от солнца или шапка), солнцезащитные очки</p>
-            <p data-i18n="faq3_a4">• Запасные носки и удобная сменная обувь</p>
-            <p data-i18n="faq3_a5">• Если вы едете в Туркестан: необходима закрытая скромная одежда (длинные рукава, брюки/юбка) и платок для посещения мавзолеев.</p>
+            <p data-i18n="faq8_a1">• Документы: Удостоверение личности или паспорт</p>
+            <p data-i18n="faq8_a2">• Еду и напитки на день для перекуса в дороге</p>
+            <p data-i18n="faq8_a3">• Тёплые вещи (погода в горах переменчива)</p>
+            <p data-i18n="faq8_a4">• Каремат или плед, чтобы расстелить на траве</p>
+            <p data-i18n="faq8_a5">• Деньги на личные расходы (только наличные: в посёлке Саты и на каньоне нет интернета)</p>
+            <p data-i18n="faq8_a6">• Термос с горячим чаем по желанию</p>
+            <p data-i18n="faq8_a7">• Личные лекарства (если есть аллергии или особенности)</p>
+          </div>
+        </details>
+
+        <!-- FAQ 9: What to wear -->
+        <details class="group bg-[#F9FBF9] rounded-2xl border border-emerald-100 shadow-sm reveal-on-scroll delay-250">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span data-i18n="faq9_q" class="font-bold text-slate-900 text-base pr-4">Как правильно одеться?</span>
+            <i data-lucide="chevron-down" class="w-5 h-5 text-emerald-600 shrink-0 group-open:rotate-180 transition-transform duration-200"></i>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-slate-600 leading-relaxed space-y-1.5 border-t border-emerald-50 pt-4">
+            <p data-i18n="faq9_a1">• Тёплая куртка / толстовка (утром и вечером прохладно)</p>
+            <p data-i18n="faq9_a2">• Удобная обувь с нескользящей подошвой (кроссовки или треккинговые ботинки)</p>
+            <p data-i18n="faq9_a3">• Головной убор (кепка от солнца или шапка), солнцезащитные очки</p>
+            <p data-i18n="faq9_a4">• Запасные носки и удобная сменная обувь</p>
+            <p data-i18n="faq9_a5">• Если вы едете в Туркестан: необходима закрытая скромная одежда (длинные рукава, брюки/юбка) и платок для посещения мавзолеев.</p>
           </div>
         </details>
 
@@ -386,67 +460,65 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+  <footer class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-3">
-            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-11 h-11 rounded-xl object-cover shadow border border-slate-700">
-            <span class="text-2xl font-bold font-serif text-white">K.K. Tour</span>
+        
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/logo.jpg" alt="K.K. Tour" class="w-12 h-12 rounded-2xl object-cover border border-emerald-500/30">
+            <div>
+              <span class="text-2xl font-bold font-serif tracking-tight text-white">K.K. <span class="text-emerald-400">Tour</span></span>
+              <p data-i18n="footer_brand_sub" class="text-xs text-emerald-400/80 font-medium">Туроператор по Казахстану • Алматы</p>
+            </div>
           </div>
-          <p data-i18n="footer_desc" class="text-xs leading-relaxed text-slate-400">
-            K.K. Tour — туроператор по Алматинской области и Казахстану. Адрес: Панфилов көшесі, 52, Алматы. Время работы: 09:00 – 21:00.
+          <p data-i18n="footer_desc" class="text-slate-400 text-sm max-w-md leading-relaxed">
+            Организуем авторские и групповые туры по самым живописным уголкам Казахстана. Комфортный транспорт, опытные гиды, официальная оплата Kaspi Pay.
           </p>
-          <div class="flex items-center gap-3 mt-2">
-            <a href="https://instagram.com/k.k.tour/" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-pink-500/50" title="Instagram @k.k.tour">
-              <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-full h-full object-cover rounded-lg">
-            </a>
-            <a href="https://wa.me/77472801671" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-emerald-500/50" title="WhatsApp K.K. Tour">
-              <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-full h-full object-cover rounded-lg">
-            </a>
-            <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="w-9 h-9 rounded-xl overflow-hidden shadow hover:scale-110 transition-transform bg-white/5 flex items-center justify-center p-1 border border-slate-800 hover:border-[#00A550]/50" title="2GIS K.K. Tour">
-              <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-full h-full object-cover rounded-lg">
-            </a>
-          </div>
         </div>
+
         <div>
-          <h4 data-i18n="footer_nav" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Навигация</h4>
-          <ul class="space-y-2 text-xs">
+          <h4 data-i18n="footer_nav" class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Навигация</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
             <li><a href="index.html" data-i18n="nav_home" class="hover:text-emerald-400 transition-colors">Главная</a></li>
             <li><a href="destinations.html" data-i18n="nav_tours" class="hover:text-emerald-400 transition-colors">Туры</a></li>
-            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас и отзывы 2ГИС</a></li>
-            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты и FAQ</a></li>
+            <li><a href="about.html" data-i18n="nav_about" class="hover:text-emerald-400 transition-colors">О нас & Отзывы 2ГИС</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact" class="hover:text-emerald-400 transition-colors">Контакты</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 data-i18n="footer_eco" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Условия и бронь</h4>
-          <ul class="space-y-2 text-xs">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_kaspi">Оплата через Kaspi Pay</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_tickets">Входные билеты в Нацпарки</span></li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52</a></li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> <span data-i18n="footer_offer">Договор публичной оферты</span></li>
+          <h4 data-i18n="footer_contact" class="text-sm font-bold uppercase tracking-wider text-slate-200 mb-4">Контакты</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0"></i>
+              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="footer_address" class="hover:text-emerald-400 transition-colors">Алматы, Панфилов көшесі, 52</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <a href="https://wa.me/77472801671" target="_blank" class="hover:text-emerald-400 transition-colors">+7 747 280 16 71</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span data-i18n="footer_hours">09:00 – 21:00 (Ежедневно)</span>
+            </li>
           </ul>
-        </div>
-        <div>
-          <h4 data-i18n="footer_contact" class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Связь с K.K. Tour</h4>
-          <div class="space-y-3 text-xs">
-            <div class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
-              <a href="tel:+77472801671" class="hover:text-white">+7 (747) 280-16-71</a>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="clock" class="w-4 h-4 text-emerald-500"></i>
-              <span data-i18n="office_hours">Ежедневно: 09:00 – 21:00</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500"></i>
-              <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" data-i18n="office_address" class="hover:text-emerald-400 transition-colors">Панфилов көшесі, 52, Алматы</a>
-            </div>
-          </div>
         </div>
       </div>
-      <div class="pt-8 text-center text-xs text-slate-500" data-i18n="footer_rights">
-        © 2026 K.K. Tour. Все права защищены. Instagram: @k.k.tour
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p data-i18n="footer_rights">© 2026 K.K. Tour. Все права защищены. Алматы, Панфилов көшесі, 52.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com/k.k.tour/" target="_blank" class="hover:scale-110 transition-transform" title="Instagram @k.k.tour">
+            <img src="assets/images/icon_instagram.jpg" alt="Instagram" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+          <a href="https://wa.me/77472801671" target="_blank" class="hover:scale-110 transition-transform" title="WhatsApp K.K. Tour">
+            <img src="assets/images/icon_whatsapp.png" alt="WhatsApp" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+          <a href="https://2gis.kz/almaty/search/k.k.tour" target="_blank" class="hover:scale-110 transition-transform" title="2GIS K.K. Tour">
+            <img src="assets/images/icon_2gis.png" alt="2GIS" class="w-7 h-7 rounded-lg object-cover">
+          </a>
+        </div>
       </div>
     </div>
   </footer>
