@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsCounter();
   initCard3DTilt();
   initQuickSearch();
+  initHeroVideos();
 });
 
 // 1. Full Language Switcher (RU, KZ, EN)
@@ -823,4 +824,37 @@ function showToast(message, type = 'info') {
     toast.classList.add('opacity-0', 'translate-y-2');
     setTimeout(() => toast.remove(), 300);
   }, 5000);
+}
+
+// 14. Ensure Hero Videos autoplay smoothly on all mobile devices (iOS Safari, Android Chrome)
+function initHeroVideos() {
+  const videos = document.querySelectorAll('video');
+  videos.forEach(video => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    
+    const tryPlay = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          const playOnInteraction = () => {
+            video.play().catch(() => {});
+            ['touchstart', 'touchend', 'click', 'scroll'].forEach(evt => {
+              document.removeEventListener(evt, playOnInteraction);
+            });
+          };
+          ['touchstart', 'touchend', 'click', 'scroll'].forEach(evt => {
+            document.addEventListener(evt, playOnInteraction, { once: true, passive: true });
+          });
+        });
+      }
+    };
+
+    tryPlay();
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
+    });
+  });
 }
