@@ -1,8 +1,5 @@
 /**
- * Безопасный Worker для Cloudflare Pages
- * - Не ломает основной сайт
- * - Реализует чистые URL на admin.kktour.kz
- * - Блокирует /admin на основном домене и workers.dev
+ * Безопасный Worker — не падает при отсутствии env.ASSETS
  */
 
 export default {
@@ -11,10 +8,23 @@ export default {
     const hostname = url.hostname.toLowerCase();
     const pathname = url.pathname;
 
-    // ====================== 1. АДМИНКА: admin.kktour.kz ======================
+    // Вспомогательная функция — никогда не падает
+    async function serve(req) {
+      try {
+        if (env && env.ASSETS && typeof env.ASSETS.fetch === 'function') {
+          return await env.ASSETS.fetch(req);
+        }
+      } catch (e) {
+        console.error('ASSETS fetch error:', e);
+      }
+      // Если ASSETS нет — возвращаем простую ошибку вместо падения
+      return new Response('Asset serving is not configured', { status: 500 });
+    }
+
+    // ====================== 1. АДМИНКА ======================
     if (hostname === 'admin.kktour.kz') {
-      // Редирект со старых путей /admin/*
-      if (pathname === '/admin' || pathname === '/admin/' || pathname === '/admin/login.html' || pathname === '/admin/login') {
+      if (pathname === '/admin' || pathname === '/admin/' || 
+          pathname === '/admin/login.html' || pathname === '/admin/login') {
         return Response.redirect(url.origin + '/', 302);
       }
       if (pathname === '/admin/index.html' || pathname === '/admin/index') {
@@ -28,12 +38,12 @@ export default {
         return Response.redirect(url.origin + clean + url.search, 302);
       }
 
-      // Статика отдаём как есть
+      // Статика
       if (pathname.startsWith('/assets/') || pathname.startsWith('/supabase/') || pathname === '/favicon.ico') {
-        return env.ASSETS.fetch(request);
+        return serve(request);
       }
 
-      // Чистые URL → реальные файлы
+      // Чистые URL
       let target = pathname;
       if (pathname === '/' || pathname === '') {
         target = '/admin/login.html';
@@ -49,18 +59,16 @@ export default {
 
       const newUrl = new URL(request.url);
       newUrl.pathname = target;
-      return env.ASSETS.fetch(new Request(newUrl.toString(), request));
+      return serve(new Request(newUrl.toString(), request));
     }
 
     // ====================== 2. ОСНОВНОЙ САЙТ ======================
-    // Блокируем /admin на kktour.kz и www
     if ((hostname === 'kktour.kz' || hostname === 'www.kktour.kz') &&
         (pathname === '/admin' || pathname.startsWith('/admin/'))) {
       return Response.redirect('https://kktour.kz/', 302);
     }
 
-    // ====================== 3. ВСЕ ОСТАЛЬНЫЕ ДОМЕНЫ ======================
-    // Запрет /admin на workers.dev и любых других доменах
+    // ====================== 3. ДРУГИЕ ДОМЕНЫ ======================
     if (pathname === '/admin' || pathname.startsWith('/admin/')) {
       return new Response('403 Access Denied', {
         status: 403,
@@ -68,7 +76,7 @@ export default {
       });
     }
 
-    // Обычные страницы сайта — просто отдаём ассеты
-    return env.ASSETS.fetch(request);
+    // Обычные страницы
+    return serve(request);
   }
 };
