@@ -156,11 +156,17 @@
     document.addEventListener('DOMContentLoaded', async () => {
       if (window.lucide) lucide.createIcons();
 
+      // Helper to navigate to dashboard
+      const goToDashboard = () => {
+        const isCleanDomain = window.location.hostname === 'admin.kktour.kz';
+        window.location.href = isCleanDomain ? 'dashboard' : 'index.html';
+      };
+
       // Check if already authenticated
       if (window.adminApi) {
         const profile = await window.adminApi.getCurrentAdminProfile();
         if (profile && ['admin', 'editor'].includes(profile.role)) {
-          window.location.href = 'index.html';
+          goToDashboard();
           return;
         }
       }
@@ -182,7 +188,7 @@
           const email = emailInput.value.trim();
           const pass = passInput.value;
           await window.adminApi.adminLogin(email, pass);
-          window.location.href = 'index.html';
+          goToDashboard();
         } catch (err) {
           errBanner.classList.remove('hidden');
           errText.textContent = err.message || 'Неверный email или пароль.';

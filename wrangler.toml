@@ -1,0 +1,11 @@
+name = "kktour-admin-router"
+main = "_worker.js"
+compatibility_date = "2026-09-01"
+
+# Настройка маршрутов для Cloudflare Worker
+# Домены привязываются в панели Cloudflare -> Workers & Pages -> Custom Domains / Triggers
+routes = [
+  { pattern = "admin.kktour.kz/*", zone_name = "kktour.kz" },
+  { pattern = "kktour.kz/admin*", zone_name = "kktour.kz" },
+  { pattern = "www.kktour.kz/admin*", zone_name = "kktour.kz" }
+]

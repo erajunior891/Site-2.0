@@ -76,7 +76,8 @@
     if (client) {
       await client.auth.signOut();
     }
-    window.location.href = 'login.html';
+    const isCleanDomain = window.location.hostname === 'admin.kktour.kz';
+    window.location.href = isCleanDomain ? '/' : 'login.html';
   }
 
   /**

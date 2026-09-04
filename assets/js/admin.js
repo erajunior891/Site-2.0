@@ -43,7 +43,8 @@
 
     currentAdminProfile = await window.adminApi.getCurrentAdminProfile();
     if (!currentAdminProfile || !['admin', 'editor'].includes(currentAdminProfile.role)) {
-      window.location.href = 'login.html';
+      const isCleanDomain = window.location.hostname === 'admin.kktour.kz';
+      window.location.href = isCleanDomain ? '/' : 'login.html';
       return false;
     }
 
@@ -208,7 +209,7 @@
             <div class="flex items-center gap-3.5">
               <img src="${photoSrc}" alt="${tourName}" class="w-12 h-12 rounded-xl object-cover border border-slate-700 shrink-0" onerror="this.src='../assets/images/album_lake.jpg'">
               <div class="max-w-[280px]">
-                <a href="tour-edit.html?id=${tour.id}" class="text-white font-bold hover:text-emerald-400 transition-colors line-clamp-1 block">${tourName}</a>
+                <a href="tour-edit?id=${tour.id}" class="text-white font-bold hover:text-emerald-400 transition-colors line-clamp-1 block">${tourName}</a>
                 <span class="text-xs font-mono text-slate-500">${tour.slug}</span>
                 <div class="flex items-center gap-1.5 mt-0.5 text-[10px] font-bold">
                   <span class="text-emerald-400">RU</span>
@@ -249,7 +250,7 @@
           <!-- Actions -->
           <td class="py-4 px-4 text-right">
             <div class="flex items-center justify-end gap-2">
-              <a href="tour-edit.html?id=${tour.id}" class="p-2 rounded-xl bg-slate-800 hover:bg-emerald-600/30 text-slate-300 hover:text-emerald-300 transition-colors border border-slate-700" title="Редактировать тур">
+              <a href="tour-edit?id=${tour.id}" class="p-2 rounded-xl bg-slate-800 hover:bg-emerald-600/30 text-slate-300 hover:text-emerald-300 transition-colors border border-slate-700" title="Редактировать тур">
                 <i data-lucide="edit-3" class="w-4 h-4"></i>
               </a>
               <button 
@@ -618,7 +619,8 @@
       await window.adminApi.saveTour(payload);
       showAdminToast('✓ Тур успешно сохранён в Supabase!');
       setTimeout(() => {
-        window.location.href = 'index.html';
+        const isCleanDomain = window.location.hostname === 'admin.kktour.kz';
+        window.location.href = isCleanDomain ? 'dashboard' : 'index.html';
       }, 800);
     } catch (err) {
       showAdminToast('Ошибка сохранения: ' + err.message, true);
