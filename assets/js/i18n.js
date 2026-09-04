@@ -28,7 +28,7 @@ const translations = {
     // Hero Section
     hero_badge: "Туроператор №1 по Казахстану из Алматы",
     hero_title: "Открой невероятную природу Казахстана с K.K. Tour",
-    hero_desc: "Незабываемые поездки на Кольсай, Каинды, Чарынский каньон, Плато Асы и в Туркестан. Комфортабельные спринтеры, опытные гиды, классная атмосфера и фотоотчёт в подарок!",
+    hero_desc: "Незабываемые поездки на Кольсай, Каинды, Чарынский каньон, Плато Асы и в Туркестан. Комфортабельные спринтеры, опытные гиды и душевная атмосфера в каждой поездке!",
     hero_btn_explore: "Выбрать направление",
     hero_btn_album: "Все туры K.K. Tour",
     hero_btn_tours: "Все туры K.K. Tour",
@@ -91,7 +91,7 @@ const translations = {
       "Вкусное домашнее питание (ужин, завтрак, обед)",
       "Все входные билеты и эко-сборы во все нацпарки",
       "Услуги опытного гида-экскурсовода",
-      "Яркий фотоотчёт в высоком качестве"
+      "Экскурсии по каньонам и озёрам"
     ],
 
     "tour_assy-sunset_name": "Плато Асы + Медвежий водопад (Закат)",
@@ -106,7 +106,7 @@ const translations = {
       "Прогулка к Медвежьему водопаду",
       "Экскурсия к обсерватории Асы-Тургень",
       "Сопровождение позитивного гида",
-      "Фото и видеоотчёт от гида"
+      "Встреча заката на высокогорном плато"
     ],
 
     "tour_kolsay-1day_name": "Жемчужины Семиречья: 1 день / 6 локаций",
@@ -120,7 +120,7 @@ const translations = {
       "Все эко-сборы в Нацпарки Кольсай и Шарын",
       "Сопровождение гида-экскурсовода",
       "Экскурсия по Чарынскому каньону и Кольсаю",
-      "Фотоотчет от гида"
+      "Панорамные смотровые площадки каньонов"
     ],
 
     "tour_turkestan-2days_name": "Исторический Юг: Туркестан и Отырар",
@@ -147,7 +147,7 @@ const translations = {
       "Транспортное обслуживание из Алматы и обратно",
       "Входные билеты на озеро Иссык и музей",
       "Экскурсионное сопровождение",
-      "Фотоотчет от гида"
+      "Посещение музея и живописного водопада"
     ],
 
     "tour_bao-trek_name": "БАО (Большое Алматинское Озеро)",
@@ -160,7 +160,7 @@ const translations = {
       "Эко-трансфер из Алматы",
       "Экологический сбор в Иле-Алатауский нацпарк",
       "Сопровождение гида",
-      "Смотровые площадки и фотоотчёт"
+      "Лучшие панорамные смотровые площадки"
     ],
 
     "tour_assy-camping_name": "Кемпинг на Плато Асы (Ночь под звёздами)",
@@ -239,7 +239,7 @@ const translations = {
     feat1_title: "Официально и надёжно: Kaspi Pay",
     feat1_desc: "Оплата онлайн через Kaspi Gold / Kaspi Pay с фискальным чеком или наличными в офисе в Алматы (ул. Панфилова, 52).",
     feat2_title: "Опытные позитивные гиды",
-    feat2_desc: "Наши гиды знают лучшие фотолокации, историю Семиречья и создают тёплую атмосферу в каждой группе.",
+    feat2_desc: "Наши гиды знают самые красивые видовые точки, историю Семиречья и создают тёплую атмосферу в каждой группе.",
     feat3_title: "Комфортабельный транспорт",
     feat3_desc: "Удобные туристические микроавтобусы Mercedes Sprinter с кондиционером, откидными сиденьями и опытными водителями.",
 
@@ -259,7 +259,7 @@ const translations = {
     gis_verified: "✓ Проверенный турист 2GIS",
     
     gis_rev1_title: "«Тур на 2 дня Кольсай-Каинды-Чарын просто супер!»",
-    gis_rev1_desc: "«Ездили на прошлых выходных всей семьей. Организация от K.K. Tour на высшем уровне: чистый спринтер, гид очень весёлый и заботливый, сделал нам кучу шикарных фото на Кольсае. Ночёвка в Саты была очень уютной, накормили от души. Обязательно поедем на Плато Асы!»",
+    gis_rev1_desc: "«Ездили на прошлых выходных всей семьей. Организация от K.K. Tour на высшем уровне: чистый спринтер, гид очень весёлый и заботливый, показал самые красивые локации на Кольсае. Ночёвка в Саты была очень уютной, накормили от души. Обязательно поедем на Плато Асы!»",
     gis_rev1_author: "Айсулу Бауыржанова",
     gis_rev1_date: "12 августа 2026",
 
@@ -352,7 +352,7 @@ const translations = {
     card6_tag: "🌿 Команда K.K. Tour",
     card6_badge: "Гиды K.K. Tour",
     card6_title: "Всегда с улыбкой и заботой",
-    card6_desc: "Лучшие фотолокации и весёлая компания",
+    card6_desc: "Живописные панорамы и весёлая компания",
     card6_name: "Тропы Заилийского Алатау",
     card6_sub: "Сопровождение K.K. Tour",
 
@@ -362,11 +362,9 @@ const translations = {
     about_page_subtitle: "K.K. Tour — лицензированная туристическая компания из Алматы (Панфилов көшесі, 52). Мы организуем групповые, индивидуальные и корпоративные туры по Казахстану.",
     mission_badge: "Наши ценности",
     mission_title: "Качественный отдых без забот и переплат",
-    mission_desc: "Мы берём на себя всю организацию: транспорт, эко-сборы нацпарков, проживание в уютных гостевых домах посёлка Саты, сопровождение гида и памятный фотоотчёт.",
+    mission_desc: "Мы берём на себя всю организацию: транспорт, эко-сборы нацпарков, проживание в уютных гостевых домах посёлка Саты и профессиональное сопровождение гида.",
     val1_title: "Прозрачная оплата через Kaspi Pay",
     val1_desc: "Официальная оплата через Kaspi Gold / Kaspi Pay дистанционно или наличными в офисе на Панфилова 52.",
-    val2_title: "Фотоотчёт в подарок",
-    val2_desc: "Наши гиды сделают для вас сотни классных фотографий и видео на самых красивых смотровых площадках.",
     val3_title: "Уютные гостевые дома в пос. Саты",
     val3_desc: "Вкусное домашнее питание, тёплые номера и горячая баня после горной прогулки.",
     about_cta_title: "Поехали с нами на этих выходных?",
@@ -525,7 +523,7 @@ const translations = {
     // Hero Section
     hero_badge: "Алматы бойынша №1 туроператор",
     hero_title: "K.K. Tour-мен бірге Қазақстанның ғажайып табиғатын ашыңыз",
-    hero_desc: "Көлсай, Қайыңды, Шарын шатқалы, Асы үстірті және Түркістанға ұмытылмас саяхаттар. Ыңғайлы көліктер, тәжірибелі гидтер, керемет көңіл-күй және тегін фотоесеп!",
+    hero_desc: "Көлсай, Қайыңды, Шарын шатқалы, Асы үстірті және Түркістанға ұмытылмас саяхаттар. Ыңғайлы көліктер, тәжірибелі гидтер және тамаша көңіл-күй!",
     hero_btn_explore: "Бағытты таңдау",
     hero_btn_album: "K.K. Tour барлық турлары",
     hero_btn_tours: "K.K. Tour барлық турлары",
@@ -588,7 +586,7 @@ const translations = {
       "Толыққанды тамақтану (кешкі ас, таңғы ас, түскі ас)",
       "Барлық ұлттық парктердің эко-алымдары",
       "Кәсіби гид-экскурсовод қызметі",
-      "Жоғары сападағы тегін фотоесеп"
+      "Шатқалдар мен көлдерге қызықты экскурсиялар"
     ],
 
     "tour_assy-sunset_name": "Асы үстірті + Аюлы сарқырама (Күн батуы)",
@@ -603,7 +601,7 @@ const translations = {
       "Аюлы сарқырамасына жаяу серуен",
       "Асы-Түрген обсерваториясына экскурсия",
       "Тәжірибелі гид сүйемелдеуі",
-      "Гидтен тегін фото және видеоесеп"
+      "Биік таулы үстіртте күннің батуын тамашалау"
     ],
 
     "tour_kolsay-1day_name": "Жетісу жауһарлары: 1 күн / 6 локация",
@@ -617,7 +615,7 @@ const translations = {
       "Көлсай және Шарын нацпарктерінің эко-алымдары",
       "Кәсіби гид-экскурсовод қызметі",
       "Шарын шатқалы мен Көлсайдағы серуен",
-      "Саяхаттан сапалы фотоесеп"
+      "Шатқалдардың панорамалық шолу алаңдары"
     ],
 
     "tour_turkestan-2days_name": "Тарихи Оңтүстік: Түркістан және Отырар",
@@ -644,7 +642,7 @@ const translations = {
       "Алматыдан және кері көлік қызметі",
       "Есік көлі мен мұражайдың кіру билеттері",
       "Экскурсиялық гид қызметі",
-      "Гидтен сапалы фотоесеп"
+      "Мұражай мен көрікті сарқыраманы аралау"
     ],
 
     "tour_bao-trek_name": "ҮАҮ (Үлкен Алматы Көлі)",
@@ -657,7 +655,7 @@ const translations = {
       "Алматыдан эко-трансфер",
       "Іле-Алатау нацпаркінің эко-алымы",
       "Гид сүйемелдеуі",
-      "Шолу алаңдары мен фотоесеп"
+      "Үздік панорамалық шолу алаңдары"
     ],
 
     "tour_assy-camping_name": "Асы үстіртіндегі кемпинг (Жұлдызды түн)",
@@ -736,7 +734,7 @@ const translations = {
     feat1_title: "Ресми әрі сенімді: Kaspi Pay",
     feat1_desc: "Kaspi Gold / Kaspi Pay арқылы онлайн төлем немесе Алматыдағы кеңсемізде қолма-қол төлеу (Панфилов к-сі, 52).",
     feat2_title: "Көңілді әрі кәсіби гидтер",
-    feat2_desc: "Біздің гидтер ең керемет фото орындарды, Жетісу тарихын жақсы біледі және әр топта жылы атмосфера қалыптастырады.",
+    feat2_desc: "Біздің гидтер ең көрікті панорамалық нүктелерді, Жетісу тарихын жақсы біледі және әр топта жылы атмосфера қалыптастырады.",
     feat3_title: "Ыңғайлы туристік көліктер",
     feat3_desc: "Кондиционері, жұмсақ орындықтары бар Mercedes Sprinter микроавтобустары және тәжірибелі жүргізушілер.",
 
@@ -756,7 +754,7 @@ const translations = {
     gis_verified: "✓ 2GIS расталған саяхатшысы",
 
     gis_rev1_title: "«Көлсай-Қайыңды-Шарын 2 күндік туры өте керемет өтті!»",
-    gis_rev1_desc: "«Өткен демалыста отбасымызбен бардық. K.K. Tour ұйымдастыруы жоғары деңгейде: спринтер таза, гид өте көңілді және бізге Көлсайда көптеген әдемі фото түсіріп берді. Сатыдағы қону жайлы болды, дәмді тамақтандырды. Келесі жолы Асы үстіртіне барамыз!»",
+    gis_rev1_desc: "«Өткен демалыста отбасымызбен бардық. K.K. Tour ұйымдастыруы жоғары деңгейде: спринтер таза, гид өте көңілді және бізге Көлсайда ең көрікті жерлерді көрсетті. Сатыдағы қону жайлы болды, дәмді тамақтандырды. Келесі жолы Асы үстіртіне барамыз!»",
     gis_rev1_author: "Айсұлу Бауыржанова",
     gis_rev1_date: "12 тамыз 2026",
 
@@ -854,7 +852,7 @@ const translations = {
     card6_tag: "🌿 K.K. Tour командасы",
     card6_badge: "K.K. Tour гидтері",
     card6_title: "Әрқашан күлімдеп, қамқорлықпен",
-    card6_desc: "Ең үздік фотолокациялар мен көңілді орта",
+    card6_desc: "Әсем табиғат пен көңілді орта",
     card6_name: "Іле-Алатау соқпақтары",
     card6_sub: "K.K. Tour сүйемелдеуімен",
 
@@ -864,11 +862,9 @@ const translations = {
     about_page_subtitle: "K.K. Tour — Алматы қаласындағы лицензияланған туроператор (Панфилов к-сі, 52). Қазақстан бойынша топтық және жеке турлар ұйымдастырамыз.",
     mission_badge: "Біздің құндылықтар",
     mission_title: "Артық төлемсіз және уайымсыз сапалы демалыс",
-    mission_desc: "Барлық ұйымдастыру жұмыстарын өзімізге аламыз: көлік, эко-алымдар, Саты ауылындағы жайлы қонақ үйлер, гид сүйемелдеуі және фотоесеп.",
+    mission_desc: "Барлық ұйымдастыру жұмыстарын өзімізге аламыз: көлік, эко-алымдар, Саты ауылындағы жайлы қонақ үйлер және гид сүйемелдеуі.",
     val1_title: "Kaspi Pay арқылы ашық төлем",
     val1_desc: "Kaspi Gold / Kaspi Pay арқылы онлайн немесе Панфилов 52 кеңсемізде қолма-қол төлеу.",
-    val2_title: "Тегін фотоесеп сыйлыққа",
-    val2_desc: "Біздің гидтер ең көрікті шолу алаңдарында сізге жүздеген әдемі фото мен видео түсіріп береді.",
     val3_title: "Саты ауылындағы жайлы қонақ үйлер",
     val3_desc: "Дәмді үй тағамы, жылы бөлмелер және тау серуенінен кейінгі ыстық монша.",
     about_cta_title: "Осы демалыста бізбен бірге барасыз ба?",
@@ -1027,7 +1023,7 @@ const translations = {
     // Hero Section
     hero_badge: "Top Rated Tour Operator in Almaty, Kazakhstan",
     hero_title: "Explore Kazakhstan's Wild Wonders with K.K. Tour",
-    hero_desc: "Unforgettable journeys to Kolsay Lakes, Kaindy Submerged Forest, Charyn Canyon, Assy Plateau, and Turkestan. Comfortable Sprinter vans, cheerful English-speaking guides, and free high-res photos!",
+    hero_desc: "Unforgettable journeys to Kolsay Lakes, Kaindy Submerged Forest, Charyn Canyon, Assy Plateau, and Turkestan. Comfortable Sprinter vans, cheerful English-speaking guides, and great atmosphere!",
     hero_btn_explore: "Explore Tours",
     hero_btn_album: "All K.K. Tour Trips",
     hero_btn_tours: "All K.K. Tour Trips",
@@ -1090,7 +1086,7 @@ const translations = {
       "Full board meals (dinner, breakfast, lunch)",
       "All national park entry tickets & eco-fees",
       "Professional English-speaking guide",
-      "High-resolution photo report as a gift"
+      "Guided canyon and lake walking tours"
     ],
 
     "tour_assy-sunset_name": "Assy Plateau + Bear Waterfall (Sunset)",
@@ -1105,7 +1101,7 @@ const translations = {
       "Guided hike to Bear Waterfall",
       "Excursion to Assy-Turgen Observatory",
       "Certified mountain guide",
-      "High-res photo report"
+      "Sunset sightseeing on the plateau"
     ],
 
     "tour_kolsay-1day_name": "Jewels of Semirechye: 1 Day / 6 Locations",
@@ -1119,7 +1115,7 @@ const translations = {
       "All eco-fees for Kolsay & Charyn National Parks",
       "Professional tour leader",
       "Guided canyon & lake hiking routes",
-      "Photo report"
+      "Panoramic canyon viewpoints"
     ],
 
     "tour_turkestan-2days_name": "Historic South: Turkestan & Otrar",
@@ -1146,7 +1142,7 @@ const translations = {
       "Round-trip transport from Almaty",
       "Lake Issyk & Museum entry tickets",
       "Tour guide assistance",
-      "Photo memories"
+      "Museum visit and waterfall walk"
     ],
 
     "tour_bao-trek_name": "Big Almaty Lake (BAO)",
@@ -1159,7 +1155,7 @@ const translations = {
       "Eco-transfer from Almaty",
       "National park entry permit",
       "English-speaking escort guide",
-      "Scenic viewpoints & photos"
+      "Best panoramic scenic viewpoints"
     ],
 
     "tour_assy-camping_name": "Assy Plateau Tent Camping (Night Under Stars)",
@@ -1237,7 +1233,7 @@ const translations = {
     feat1_title: "Official & Trusted: Kaspi Pay",
     feat1_desc: "Instant and secure payment via Kaspi Gold / Kaspi Pay with receipt, or cash at our Almaty office (52 Panfilov St).",
     feat2_title: "Friendly & Knowledgeable Guides",
-    feat2_desc: "Our guides know the best photo spots, local folklore, and create a warm, friendly vibe in every group.",
+    feat2_desc: "Our guides know the most scenic viewpoints, local folklore, and create a warm, friendly vibe in every group.",
     feat3_title: "Comfortable Sprinter Fleet",
     feat3_desc: "Modern Mercedes Sprinter vans with air conditioning, reclining seats, luggage space, and experienced drivers.",
 
@@ -1257,7 +1253,7 @@ const translations = {
     gis_verified: "✓ 2GIS Verified Traveler",
 
     gis_rev1_title: "«2-day tour to Kolsay, Kaindy, Charyn was amazing!»",
-    gis_rev1_desc: "«We traveled with the whole family last weekend. The organization was top-notch: clean Sprinter van, very cheerful and helpful guide who took tons of beautiful photos for us at Kolsay. The Saty guesthouse was super cozy with delicious homemade food. Highly recommended!»",
+    gis_rev1_desc: "«We traveled with the whole family last weekend. The organization was top-notch: clean Sprinter van, very cheerful and helpful guide who showed us the most scenic locations at Kolsay. The Saty guesthouse was super cozy with delicious homemade food. Highly recommended!»",
     gis_rev1_author: "Aisulu Bauyrzhanova",
     gis_rev1_date: "August 12, 2026",
 
@@ -1355,7 +1351,7 @@ const translations = {
     card6_tag: "🌿 K.K. Tour Guides",
     card6_badge: "K.K. Tour Team",
     card6_title: "Always with a Smile & Care",
-    card6_desc: "Best photo angles & great company",
+    card6_desc: "Scenic viewpoints & great company",
     card6_name: "Trails of Zailiyskiy Alatau",
     card6_sub: "Guided by K.K. Tour",
 
@@ -1365,11 +1361,9 @@ const translations = {
     about_page_subtitle: "K.K. Tour is a licensed tour operator based in Almaty (52 Panfilov St). We organize group, private, and corporate trips across Kazakhstan.",
     mission_badge: "Our Mission",
     mission_title: "Hassle-free, High-Quality Weekend Travel",
-    mission_desc: "We handle everything: comfortable transport, park entrance fees, guesthouse lodging in Saty village, guide services, and free photo memories.",
+    mission_desc: "We handle everything: comfortable transport, park entrance fees, guesthouse lodging in Saty village, and professional guide services.",
     val1_title: "Transparent Kaspi Pay Payment",
     val1_desc: "Official online payment via Kaspi Gold / Kaspi Pay or cash at 52 Panfilov St office.",
-    val2_title: "Free High-Res Photo Report",
-    val2_desc: "Our guides will capture hundreds of stunning photos and videos of you at scenic viewpoints.",
     val3_title: "Cozy Guesthouses in Saty Village",
     val3_desc: "Delicious home-cooked meals, warm rooms, and hot sauna after your mountain hikes.",
     about_cta_title: "Ready to Explore with Us This Weekend?",

@@ -88,21 +88,21 @@ BEGIN
         (v_tour_id, 'ru', 'Вкусное домашнее питание (ужин, завтрак, обед)', 3),
         (v_tour_id, 'ru', 'Все входные билеты и эко-сборы во все нацпарки', 4),
         (v_tour_id, 'ru', 'Услуги опытного гида-экскурсовода', 5),
-        (v_tour_id, 'ru', 'Яркий фотоотчёт в высоком качестве', 6),
+        (v_tour_id, 'ru', 'Экскурсии по каньонам и озёрам', 6),
 
         (v_tour_id, 'kz', 'Mercedes Sprinter-мен екі жаққа трансфер', 1),
         (v_tour_id, 'kz', 'Саты ауылындағы жайлы қонақ үйлерде тұру', 2),
         (v_tour_id, 'kz', 'Толыққанды тамақтану (кешкі ас, таңғы ас, түскі ас)', 3),
         (v_tour_id, 'kz', 'Барлық ұлттық парктердің эко-алымдары', 4),
         (v_tour_id, 'kz', 'Кәсіби гид-экскурсовод қызметі', 5),
-        (v_tour_id, 'kz', 'Жоғары сападағы тегін фотоесеп', 6),
+        (v_tour_id, 'kz', 'Шатқалдар мен көлдерге қызықты экскурсиялар', 6),
 
         (v_tour_id, 'en', 'Comfortable round-trip transport (Mercedes Sprinter)', 1),
         (v_tour_id, 'en', 'Accommodation in Saty village guest houses', 2),
         (v_tour_id, 'en', 'Delicious home-cooked meals (dinner, breakfast, lunch)', 3),
         (v_tour_id, 'en', 'All national park entrance & eco-fees included', 4),
         (v_tour_id, 'en', 'Professional English/Russian speaking tour guide', 5),
-        (v_tour_id, 'en', 'Complimentary high-quality photo report', 6);
+        (v_tour_id, 'en', 'Guided canyon and lake walking tours', 6);
 
 
     -- ------------------------------------------------------------------------
@@ -174,21 +174,21 @@ BEGIN
         (v_tour_id, 'ru', 'Пешая прогулка к Медвежьему водопаду', 3),
         (v_tour_id, 'ru', 'Экскурсия к обсерватории Асы-Тургень', 4),
         (v_tour_id, 'ru', 'Сопровождение опытного гида', 5),
-        (v_tour_id, 'ru', 'Фото- и видеосъёмка на закате', 6),
+        (v_tour_id, 'ru', 'Встреча заката на высокогорном плато', 6),
 
         (v_tour_id, 'kz', 'Ыңғайлы көлік (Алматы — Асы — Алматы)', 1),
         (v_tour_id, 'kz', 'Іле-Алатау ұлттық паркіне кіру билеттері', 2),
         (v_tour_id, 'kz', 'Аюлы сарқырамасына жаяу серуен', 3),
         (v_tour_id, 'kz', 'Асы-Түрген обсерваториясына экскурсия', 4),
         (v_tour_id, 'kz', 'Тәжірибелі гид сүйемелдеуі', 5),
-        (v_tour_id, 'kz', 'Гидтен тегін фото және видеоесеп', 6),
+        (v_tour_id, 'kz', 'Биік таулы үстіртте күннің батуын тамашалау', 6),
 
         (v_tour_id, 'en', 'Comfortable round-trip transport from Almaty', 1),
         (v_tour_id, 'en', 'Ile-Alatau National Park entrance & eco-fees', 2),
         (v_tour_id, 'en', 'Guided scenic hike to Bear Waterfall (30m)', 3),
         (v_tour_id, 'en', 'Excursion to the Assy-Turgen Observatory', 4),
         (v_tour_id, 'en', 'Experienced bilingual mountain guide', 5),
-        (v_tour_id, 'en', 'Golden hour sunset photo & video session', 6);
+        (v_tour_id, 'en', 'Sunset sightseeing on the plateau', 6);
 
 
     -- ------------------------------------------------------------------------
@@ -254,19 +254,19 @@ BEGIN
         (v_tour_id, 'ru', 'Эко-сборы нацпарков Кольсай и Чарын', 2),
         (v_tour_id, 'ru', 'Услуги профессионального гида', 3),
         (v_tour_id, 'ru', 'Экскурсии по каньону и озеру', 4),
-        (v_tour_id, 'ru', 'Памятный фотоотчёт', 5),
+        (v_tour_id, 'ru', 'Панорамные смотровые площадки каньонов', 5),
 
         (v_tour_id, 'kz', 'Микроавтобуспен екі жаққа трансфер', 1),
         (v_tour_id, 'kz', 'Көлсай және Шарын нацпарктерінің эко-алымдары', 2),
         (v_tour_id, 'kz', 'Кәсіби гид-экскурсовод қызметі', 3),
         (v_tour_id, 'kz', 'Шарын шатқалы мен Көлсайдағы серуен', 4),
-        (v_tour_id, 'kz', 'Саяхаттан сапалы фотоесеп', 5),
+        (v_tour_id, 'kz', 'Шатқалдардың панорамалық шолу алаңдары', 5),
 
         (v_tour_id, 'en', 'Round-trip Sprinter transfer from Almaty', 1),
         (v_tour_id, 'en', 'Kolsay and Charyn national park entrance fees', 2),
         (v_tour_id, 'en', 'Professional tour guide service', 3),
         (v_tour_id, 'en', 'Guided excursions at Charyn Canyon & Kolsay Lake', 4),
-        (v_tour_id, 'en', 'High resolution photo pack', 5);
+        (v_tour_id, 'en', 'Panoramic canyon viewpoints', 5);
 
 
     -- ------------------------------------------------------------------------
@@ -409,17 +409,17 @@ BEGIN
         (v_tour_id, 'ru', 'Трансфер из Алматы и обратно', 1),
         (v_tour_id, 'ru', 'Входные билеты на озеро Иссык и в музей', 2),
         (v_tour_id, 'ru', 'Услуги экскурсовода', 3),
-        (v_tour_id, 'ru', 'Фотоотчёт', 4),
+        (v_tour_id, 'ru', 'Посещение музея и водопада', 4),
 
         (v_tour_id, 'kz', 'Алматыдан және кері көлік қызметі', 1),
         (v_tour_id, 'kz', 'Есік көлі мен мұражайдың кіру билеттері', 2),
         (v_tour_id, 'kz', 'Экскурсиялық гид қызметі', 3),
-        (v_tour_id, 'kz', 'Гидтен сапалы фотоесеп', 4),
+        (v_tour_id, 'kz', 'Мұражай мен сарқыраманы аралау', 4),
 
         (v_tour_id, 'en', 'Round-trip transport from Almaty', 1),
         (v_tour_id, 'en', 'Issyk Lake & Golden Man museum tickets', 2),
         (v_tour_id, 'en', 'Guided tour escort', 3),
-        (v_tour_id, 'en', 'Complimentary photo report', 4);
+        (v_tour_id, 'en', 'Museum and waterfall walk', 4);
 
 
     -- ------------------------------------------------------------------------
@@ -484,17 +484,17 @@ BEGIN
         (v_tour_id, 'ru', 'Эко-трансфер из Алматы и обратно', 1),
         (v_tour_id, 'ru', 'Эко-сборы Иле-Алатауского нацпарка', 2),
         (v_tour_id, 'ru', 'Сопровождение гида', 3),
-        (v_tour_id, 'ru', 'Фотосессия на лучших смотровых площадках', 4),
+        (v_tour_id, 'ru', 'Лучшие панорамные смотровые площадки', 4),
 
         (v_tour_id, 'kz', 'Алматыдан эко-трансфер', 1),
         (v_tour_id, 'kz', 'Іле-Алатау нацпаркінің эко-алымы', 2),
         (v_tour_id, 'kz', 'Гидпен бірге серуен', 3),
-        (v_tour_id, 'kz', 'Үздік панорамалық нүктелерде фотосессия', 4),
+        (v_tour_id, 'kz', 'Үздік панорамалық шолу алаңдары', 4),
 
         (v_tour_id, 'en', 'Round-trip eco-transport from Almaty', 1),
         (v_tour_id, 'en', 'National park environmental permits', 2),
         (v_tour_id, 'en', 'Professional guide', 3),
-        (v_tour_id, 'en', 'Panoramic photo stops', 4);
+        (v_tour_id, 'en', 'Panoramic scenic viewpoints', 4);
 
 
     -- ------------------------------------------------------------------------
@@ -560,19 +560,19 @@ BEGIN
         (v_tour_id, 'ru', 'Палатки, карематы, спальные мешки', 2),
         (v_tour_id, 'ru', 'Походное горячее питание и костёр', 3),
         (v_tour_id, 'ru', 'Все эко-сборы нацпарка', 4),
-        (v_tour_id, 'ru', 'Ночная астрофотосессия от гида', 5),
+        (v_tour_id, 'ru', 'Наблюдение за звёздным небом', 5),
 
         (v_tour_id, 'kz', 'Көлік трансфері', 1),
         (v_tour_id, 'kz', 'Шатырлар, карематтар және ұйықтайтын қаптар', 2),
         (v_tour_id, 'kz', 'Ыстық походтық тамақтану', 3),
         (v_tour_id, 'kz', 'Ұлттық парктің эко-алымдары', 4),
-        (v_tour_id, 'kz', 'Түнгі жұлдызды фотосессия', 5),
+        (v_tour_id, 'kz', 'Түнгі жұлдызды аспанды бақылау', 5),
 
         (v_tour_id, 'en', 'Round-trip 4WD transport', 1),
         (v_tour_id, 'en', 'Full camping gear (tents, sleeping bags, mats)', 2),
         (v_tour_id, 'en', 'Hot campfire dinner & breakfast', 3),
         (v_tour_id, 'en', 'National park environmental fees', 4),
-        (v_tour_id, 'en', 'Stargazing photography session', 5);
+        (v_tour_id, 'en', 'Stargazing under night skies', 5);
 
 
     -- ------------------------------------------------------------------------
@@ -716,19 +716,19 @@ BEGIN
         (v_tour_id, 'ru', 'Проживание в отеле в Бишкеке', 2),
         (v_tour_id, 'ru', 'Входные билеты и проход на подвесной мост', 3),
         (v_tour_id, 'ru', 'Сопровождение гида на всём маршруте', 4),
-        (v_tour_id, 'ru', 'Фотоотчёт', 5),
+        (v_tour_id, 'ru', 'Экскурсионная программа', 5),
 
         (v_tour_id, 'kz', 'Халықаралық трансфер (Алматы — Бішкек — Шұңқыршақ)', 1),
         (v_tour_id, 'kz', 'Бішкектегі қонақ үйде тұру', 2),
         (v_tour_id, 'kz', 'Аспалы көпірге кіру билеттері', 3),
         (v_tour_id, 'kz', 'Гид қызметі', 4),
-        (v_tour_id, 'kz', 'Сапалы фотоесеп', 5),
+        (v_tour_id, 'kz', 'Экскурсиялық бағдарлама', 5),
 
         (v_tour_id, 'en', 'Cross-border transport (Almaty–Bishkek–Chunkurchak)', 1),
         (v_tour_id, 'en', 'Hotel accommodation in Bishkek', 2),
         (v_tour_id, 'en', 'Suspension bridge entrance tickets', 3),
         (v_tour_id, 'en', 'Full-time tour leader & guide', 4),
-        (v_tour_id, 'en', 'Photo pack', 5);
+        (v_tour_id, 'en', 'Sightseeing excursion program', 5);
 
 
     -- ------------------------------------------------------------------------
